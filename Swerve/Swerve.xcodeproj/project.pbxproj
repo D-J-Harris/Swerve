@@ -73,14 +73,38 @@
 			isa = PBXGroup;
 			children = (
 				BEEA72E82106D261008779B0 /* AppDelegate.swift */,
-				BEEA72EA2106D261008779B0 /* ViewController.swift */,
-				BEEA72EC2106D262008779B0 /* Main.storyboard */,
+				BEEA73002107D87B008779B0 /* Controllers */,
+				BEEA72FF2107D862008779B0 /* Storyboards */,
+				BEEA72FE2107D84B008779B0 /* Supporting */,
+			);
+			path = Swerve;
+			sourceTree = "<group>";
+		};
+		BEEA72FE2107D84B008779B0 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
 				BEEA72EF2106D263008779B0 /* Assets.xcassets */,
-				BEEA72F12106D263008779B0 /* LaunchScreen.storyboard */,
 				BEEA72F42106D263008779B0 /* Info.plist */,
 				BEEA72FC2107D6E2008779B0 /* GoogleService-Info.plist */,
 			);
-			path = Swerve;
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		BEEA72FF2107D862008779B0 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				BEEA72F12106D263008779B0 /* LaunchScreen.storyboard */,
+				BEEA72EC2106D262008779B0 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		BEEA73002107D87B008779B0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BEEA72EA2106D261008779B0 /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		C48DEFADD6D217232987C943 /* Frameworks */ = {
@@ -377,7 +401,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AL84MLV79J;
-				INFOPLIST_FILE = Swerve/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Swerve/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -396,7 +420,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AL84MLV79J;
-				INFOPLIST_FILE = Swerve/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Swerve/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
