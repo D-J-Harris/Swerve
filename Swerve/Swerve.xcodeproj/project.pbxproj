@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9FA07E5B41745C3D8BFC3826 /* Pods_Swerve.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F063702A96D56C3A069C6B39 /* Pods_Swerve.framework */; };
 		BEEA72E92106D261008779B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEA72E82106D261008779B0 /* AppDelegate.swift */; };
 		BEEA72EB2106D261008779B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEA72EA2106D261008779B0 /* ViewController.swift */; };
 		BEEA72EE2106D262008779B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEEA72EC2106D262008779B0 /* Main.storyboard */; };
 		BEEA72F02106D263008779B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEEA72EF2106D263008779B0 /* Assets.xcassets */; };
 		BEEA72F32106D263008779B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEEA72F12106D263008779B0 /* LaunchScreen.storyboard */; };
+		BEEA72FD2107D6E3008779B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEEA72FC2107D6E2008779B0 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1BF4EA8BC2242851E8483804 /* Pods-Swerve.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swerve.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swerve/Pods-Swerve.release.xcconfig"; sourceTree = "<group>"; };
 		BEEA72E52106D261008779B0 /* Swerve.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swerve.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEEA72E82106D261008779B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEEA72EA2106D261008779B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,9 @@
 		BEEA72EF2106D263008779B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BEEA72F22106D263008779B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BEEA72F42106D263008779B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEEA72FC2107D6E2008779B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F063702A96D56C3A069C6B39 /* Pods_Swerve.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swerve.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDCFA47EE7A537E079FF9066 /* Pods-Swerve.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swerve.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swerve/Pods-Swerve.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FA07E5B41745C3D8BFC3826 /* Pods_Swerve.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D2049D7B390A06F3E0055AE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FDCFA47EE7A537E079FF9066 /* Pods-Swerve.debug.xcconfig */,
+				1BF4EA8BC2242851E8483804 /* Pods-Swerve.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BEEA72DC2106D261008779B0 = {
 			isa = PBXGroup;
 			children = (
 				BEEA72E72106D261008779B0 /* Swerve */,
 				BEEA72E62106D261008779B0 /* Products */,
+				4D2049D7B390A06F3E0055AE /* Pods */,
+				C48DEFADD6D217232987C943 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +78,17 @@
 				BEEA72EF2106D263008779B0 /* Assets.xcassets */,
 				BEEA72F12106D263008779B0 /* LaunchScreen.storyboard */,
 				BEEA72F42106D263008779B0 /* Info.plist */,
+				BEEA72FC2107D6E2008779B0 /* GoogleService-Info.plist */,
 			);
 			path = Swerve;
+			sourceTree = "<group>";
+		};
+		C48DEFADD6D217232987C943 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F063702A96D56C3A069C6B39 /* Pods_Swerve.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BEEA72F72106D263008779B0 /* Build configuration list for PBXNativeTarget "Swerve" */;
 			buildPhases = (
+				73555D3E3021A8BDA12F719C /* [CP] Check Pods Manifest.lock */,
 				BEEA72E12106D261008779B0 /* Sources */,
 				BEEA72E22106D261008779B0 /* Frameworks */,
 				BEEA72E32106D261008779B0 /* Resources */,
+				8D2443A02895D153CDA780F2 /* [CP] Embed Pods Frameworks */,
+				EC19A641C8517DE483C64490 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -123,12 +153,76 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEEA72F32106D263008779B0 /* LaunchScreen.storyboard in Resources */,
+				BEEA72FD2107D6E3008779B0 /* GoogleService-Info.plist in Resources */,
 				BEEA72F02106D263008779B0 /* Assets.xcassets in Resources */,
 				BEEA72EE2106D262008779B0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		73555D3E3021A8BDA12F719C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Swerve-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D2443A02895D153CDA780F2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Swerve/Pods-Swerve-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swerve/Pods-Swerve-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC19A641C8517DE483C64490 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Swerve/Pods-Swerve-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swerve/Pods-Swerve-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BEEA72E12106D261008779B0 /* Sources */ = {
@@ -278,6 +372,7 @@
 		};
 		BEEA72F82106D263008779B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDCFA47EE7A537E079FF9066 /* Pods-Swerve.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -296,6 +391,7 @@
 		};
 		BEEA72F92106D263008779B0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BF4EA8BC2242851E8483804 /* Pods-Swerve.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
