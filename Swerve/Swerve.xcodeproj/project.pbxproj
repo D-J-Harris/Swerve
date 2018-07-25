@@ -10,6 +10,7 @@
 		9FA07E5B41745C3D8BFC3826 /* Pods_Swerve.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F063702A96D56C3A069C6B39 /* Pods_Swerve.framework */; };
 		BE2D52082108E7A0004113DB /* CreateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2D52072108E7A0004113DB /* CreateUsernameViewController.swift */; };
 		BE5544552108F74800A9CCA2 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5544542108F74800A9CCA2 /* UserService.swift */; };
+		BE55445721090CB900A9CCA2 /* motionKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE55445621090CB900A9CCA2 /* motionKeyViewController.swift */; };
 		BEEA72E92106D261008779B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEA72E82106D261008779B0 /* AppDelegate.swift */; };
 		BEEA72EE2106D262008779B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEEA72EC2106D262008779B0 /* Main.storyboard */; };
 		BEEA72F02106D263008779B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEEA72EF2106D263008779B0 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		1BF4EA8BC2242851E8483804 /* Pods-Swerve.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swerve.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swerve/Pods-Swerve.release.xcconfig"; sourceTree = "<group>"; };
 		BE2D52072108E7A0004113DB /* CreateUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameViewController.swift; sourceTree = "<group>"; };
 		BE5544542108F74800A9CCA2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		BE55445621090CB900A9CCA2 /* motionKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = motionKeyViewController.swift; sourceTree = "<group>"; };
 		BEEA72E52106D261008779B0 /* Swerve.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swerve.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEEA72E82106D261008779B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEEA72ED2106D262008779B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				BEEA73032107DB0D008779B0 /* LoginViewController.swift */,
 				BE2D52072108E7A0004113DB /* CreateUsernameViewController.swift */,
+				BE55445621090CB900A9CCA2 /* motionKeyViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			files = (
 				BE2D52082108E7A0004113DB /* CreateUsernameViewController.swift in Sources */,
 				BE5544552108F74800A9CCA2 /* UserService.swift in Sources */,
+				BE55445721090CB900A9CCA2 /* motionKeyViewController.swift in Sources */,
 				BEEA73072107FED8008779B0 /* User.swift in Sources */,
 				BEEA73042107DB0D008779B0 /* LoginViewController.swift in Sources */,
 				BEEA72E92106D261008779B0 /* AppDelegate.swift in Sources */,
