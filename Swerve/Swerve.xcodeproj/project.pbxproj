@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9FA07E5B41745C3D8BFC3826 /* Pods_Swerve.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F063702A96D56C3A069C6B39 /* Pods_Swerve.framework */; };
+		BE2D52082108E7A0004113DB /* CreateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2D52072108E7A0004113DB /* CreateUsernameViewController.swift */; };
+		BE5544552108F74800A9CCA2 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5544542108F74800A9CCA2 /* UserService.swift */; };
 		BEEA72E92106D261008779B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEA72E82106D261008779B0 /* AppDelegate.swift */; };
-		BEEA72EB2106D261008779B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEA72EA2106D261008779B0 /* ViewController.swift */; };
 		BEEA72EE2106D262008779B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEEA72EC2106D262008779B0 /* Main.storyboard */; };
 		BEEA72F02106D263008779B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEEA72EF2106D263008779B0 /* Assets.xcassets */; };
 		BEEA72F32106D263008779B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEEA72F12106D263008779B0 /* LaunchScreen.storyboard */; };
@@ -21,9 +22,10 @@
 
 /* Begin PBXFileReference section */
 		1BF4EA8BC2242851E8483804 /* Pods-Swerve.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swerve.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swerve/Pods-Swerve.release.xcconfig"; sourceTree = "<group>"; };
+		BE2D52072108E7A0004113DB /* CreateUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameViewController.swift; sourceTree = "<group>"; };
+		BE5544542108F74800A9CCA2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		BEEA72E52106D261008779B0 /* Swerve.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swerve.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEEA72E82106D261008779B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BEEA72EA2106D261008779B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BEEA72ED2106D262008779B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BEEA72EF2106D263008779B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BEEA72F22106D263008779B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BE5544532108F73700A9CCA2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BE5544542108F74800A9CCA2 /* UserService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		BEEA72DC2106D261008779B0 = {
 			isa = PBXGroup;
 			children = (
@@ -78,8 +88,9 @@
 		BEEA72E72106D261008779B0 /* Swerve */ = {
 			isa = PBXGroup;
 			children = (
-				BEEA73052107FEC6008779B0 /* Models */,
 				BEEA72E82106D261008779B0 /* AppDelegate.swift */,
+				BE5544532108F73700A9CCA2 /* Services */,
+				BEEA73052107FEC6008779B0 /* Models */,
 				BEEA73002107D87B008779B0 /* Controllers */,
 				BEEA72FF2107D862008779B0 /* Storyboards */,
 				BEEA72FE2107D84B008779B0 /* Supporting */,
@@ -110,8 +121,8 @@
 		BEEA73002107D87B008779B0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BEEA72EA2106D261008779B0 /* ViewController.swift */,
 				BEEA73032107DB0D008779B0 /* LoginViewController.swift */,
+				BE2D52072108E7A0004113DB /* CreateUsernameViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -271,9 +282,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE2D52082108E7A0004113DB /* CreateUsernameViewController.swift in Sources */,
+				BE5544552108F74800A9CCA2 /* UserService.swift in Sources */,
 				BEEA73072107FED8008779B0 /* User.swift in Sources */,
 				BEEA73042107DB0D008779B0 /* LoginViewController.swift in Sources */,
-				BEEA72EB2106D261008779B0 /* ViewController.swift in Sources */,
 				BEEA72E92106D261008779B0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

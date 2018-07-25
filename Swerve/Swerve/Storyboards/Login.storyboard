@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N3H-FS-PHc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GGx-Rp-VDE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -55,13 +56,115 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UnS-mN-NhG"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ttK-PF-En0"/>
                     <connections>
                         <outlet property="loginButton" destination="q5t-UX-O0m" id="hSR-Tr-HKx"/>
+                        <segue destination="2ZT-88-rLe" kind="show" identifier="toCreateUsername" id="QUg-DW-8PA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qt0-HZ-goR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="903.20000000000005" y="-18.440779610194905"/>
+        </scene>
+        <!--Create Username View Controller-->
+        <scene sceneID="IOo-sI-iAQ">
+            <objects>
+                <viewController id="2ZT-88-rLe" customClass="CreateUsernameViewController" customModule="Swerve" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S7W-KB-gFV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LB4-Sc-dXL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aj5-T7-SCr">
+                                        <rect key="frame" x="28" y="120" width="320.5" height="45.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="38"/>
+                                        <color key="textColor" red="0.92941176469999998" green="0.96078431369999995" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Username Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zim-DJ-1E3">
+                                        <rect key="frame" x="87.5" y="200.5" width="200" height="30"/>
+                                        <color key="backgroundColor" red="0.019607843140000001" green="0.21960784310000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="raD-zR-yB5"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                                <color key="value" red="0.92941176470588238" green="0.96078431372549022" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fV-cY-lII">
+                                        <rect key="frame" x="87" y="262" width="200" height="200"/>
+                                        <color key="backgroundColor" red="0.019607843140000001" green="0.21960784310000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="5fV-cY-lII" secondAttribute="height" multiplier="1:1" id="hag-HA-1Pt"/>
+                                            <constraint firstAttribute="width" constant="200" id="ytF-zw-xTy"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="Next">
+                                            <color key="titleColor" red="0.92941176469999998" green="0.96078431369999995" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loginButtonTapped:" destination="N3H-FS-PHc" eventType="touchUpInside" id="3xf-c7-OCp"/>
+                                            <action selector="nextButtonTapped:" destination="2ZT-88-rLe" eventType="touchUpInside" id="0HC-xv-HUX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="tcSeafoamGreen"/>
+                                <constraints>
+                                    <constraint firstItem="aj5-T7-SCr" firstAttribute="centerX" secondItem="LB4-Sc-dXL" secondAttribute="centerX" id="5Ow-Lk-7If"/>
+                                    <constraint firstItem="zim-DJ-1E3" firstAttribute="centerX" secondItem="LB4-Sc-dXL" secondAttribute="centerX" id="NWt-TQ-iHU"/>
+                                    <constraint firstItem="5fV-cY-lII" firstAttribute="centerX" secondItem="LB4-Sc-dXL" secondAttribute="centerX" id="Onx-R8-odW"/>
+                                    <constraint firstItem="5fV-cY-lII" firstAttribute="top" secondItem="zim-DJ-1E3" secondAttribute="bottom" constant="32" id="QRb-Xf-AIj"/>
+                                    <constraint firstItem="zim-DJ-1E3" firstAttribute="top" secondItem="aj5-T7-SCr" secondAttribute="bottom" constant="35" id="ciB-Dt-aUZ"/>
+                                    <constraint firstItem="aj5-T7-SCr" firstAttribute="top" secondItem="LB4-Sc-dXL" secondAttribute="top" constant="120" id="hVs-BU-qUb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92941176469999998" green="0.96078431369999995" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="LB4-Sc-dXL" firstAttribute="bottom" secondItem="IH0-3P-5rK" secondAttribute="bottom" id="9yg-Qx-Zu5"/>
+                            <constraint firstItem="LB4-Sc-dXL" firstAttribute="top" secondItem="S7W-KB-gFV" secondAttribute="top" id="IxS-g4-BCc"/>
+                            <constraint firstItem="LB4-Sc-dXL" firstAttribute="trailing" secondItem="IH0-3P-5rK" secondAttribute="trailing" id="gYU-xc-Ch4"/>
+                            <constraint firstItem="LB4-Sc-dXL" firstAttribute="leading" secondItem="IH0-3P-5rK" secondAttribute="leading" id="uy5-dR-bUQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IH0-3P-5rK"/>
+                    </view>
+                    <connections>
+                        <outlet property="nextButton" destination="5fV-cY-lII" id="XEJ-oI-kYN"/>
+                        <outlet property="usernameTextField" destination="zim-DJ-1E3" id="lR3-pj-Ll3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E4U-VG-bWH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1684" y="-19.340329835082461"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mAf-gQ-lDi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="GGx-Rp-VDE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qh8-1U-xq3">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="N3H-FS-PHc" kind="relationship" relationship="rootViewController" id="Xov-h4-urp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dob-4h-tAa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="-36" y="-18.440779610194905"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="tcSeafoamGreen">
+            <color red="0.34900000689999999" green="0.85500001910000001" blue="0.64300000670000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

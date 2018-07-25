@@ -44,21 +44,29 @@ class LoginViewController: UIViewController {
 extension LoginViewController: FUIAuthDelegate {
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         if let error = error {
-            assertionFailure(error.localizedDescription)
+            assertionFailure("Error signing in: \(error.localizedDescription)")
             return
         }
+        
         guard let user = authDataResult?.user
-            else {
-                return
-        }
-        let userRef = Database.database().reference().child("users/\(user.uid)")
-        userRef.observeSingleEvent(of: .value) { (snapshot) in
+            else { return }
+        
+        let userRef = Database.database().reference().child("users").child(user.uid)
+    
+        userRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let user = User(snapshot: snapshot) {
-                print("Welcome back, \(user.username)")
+                User.setCurrent(user)
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: .main)
+                
+                if let initialViewController = storyboard.instantiateInitialViewController() {
+                    self.view.window?.rootViewController = initialViewController
+                    self.view.window?.makeKeyAndVisible()
+                }
             } else {
-                print("New user!")
+                self.performSegue(withIdentifier: "toCreateUsername", sender: self)
             }
-        }
+        })
     }
 }
 
