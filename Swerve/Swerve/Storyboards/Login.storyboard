@@ -20,10 +20,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EJf-IV-M3f">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5t-UX-O0m">
-                                        <rect key="frame" x="87" y="300" width="200" height="200"/>
+                                        <rect key="frame" x="87" y="233.5" width="200" height="200"/>
                                         <color key="backgroundColor" red="0.019607843137254902" green="0.2196078431372549" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="q5t-UX-O0m" secondAttribute="height" multiplier="1:1" id="ekC-LC-UcB"/>
@@ -40,9 +40,9 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.36078431372549019" green="0.85882352941176465" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="q5t-UX-O0m" firstAttribute="top" secondItem="EJf-IV-M3f" secondAttribute="top" constant="300" id="JEX-qW-eXj"/>
-                                    <constraint firstAttribute="height" constant="400" id="NoJ-sL-rQI"/>
+                                    <constraint firstItem="q5t-UX-O0m" firstAttribute="centerY" secondItem="EJf-IV-M3f" secondAttribute="centerY" id="84A-qK-ooj"/>
                                     <constraint firstItem="q5t-UX-O0m" firstAttribute="centerX" secondItem="EJf-IV-M3f" secondAttribute="centerX" id="vVD-Ac-PCp"/>
+                                    <constraint firstItem="q5t-UX-O0m" firstAttribute="centerX" secondItem="EJf-IV-M3f" secondAttribute="centerX" id="zVZ-rO-WCh"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -51,6 +51,7 @@
                             <constraint firstItem="EJf-IV-M3f" firstAttribute="trailing" secondItem="UnS-mN-NhG" secondAttribute="trailing" id="7VP-JD-s6n"/>
                             <constraint firstItem="EJf-IV-M3f" firstAttribute="top" secondItem="bal-Oa-xXs" secondAttribute="top" id="R13-Wc-U3h"/>
                             <constraint firstItem="EJf-IV-M3f" firstAttribute="leading" secondItem="UnS-mN-NhG" secondAttribute="leading" id="vgz-io-qFW"/>
+                            <constraint firstItem="UnS-mN-NhG" firstAttribute="bottom" secondItem="EJf-IV-M3f" secondAttribute="bottom" id="vkD-tf-8s1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UnS-mN-NhG"/>
                     </view>
