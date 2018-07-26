@@ -26,7 +26,7 @@ class testMotionViewController: UIViewController {
     var isTimerRunning = false
     let updateFrequency: Double = 1.0 / 100.0 // 1 / hertz
     var csvText: String = "time,attitude Magnitude\n"
-    var initialAttitude: CMAttitude? = nil
+    var initialAttitude: CMAttitude? = nil //for reference from start position
     var isFirst = true //to interact with just first loop of device updates and store initial attitude
     
     override func viewDidLoad() {
@@ -46,7 +46,7 @@ class testMotionViewController: UIViewController {
         if isTimerRunning == true {
             
             //timer to fetch motion data
-            self.timer = Timer.scheduledTimer(timeInterval: self.updateFrequency * 2, target: self, selector: (#selector(testMotionViewController.updateMotion)), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: self.updateFrequency, target: self, selector: (#selector(testMotionViewController.updateMotion)), userInfo: nil, repeats: true)
         }
         
         //note this point is reached immediately
@@ -64,7 +64,7 @@ class testMotionViewController: UIViewController {
                 self.motion.deviceMotionUpdateInterval = self.updateFrequency
                 self.motion.showsDeviceMovementDisplay = true
                 
-                self.motion.startDeviceMotionUpdates(using: CMAttitudeReferenceFrame.xArbitraryZVertical, to: OperationQueue.current!) { (motion, error) in
+                self.motion.startDeviceMotionUpdates(to: OperationQueue.current!) { (motion, error) in
                     
                     //START Code here runs every 'updateFrequency'
                     
