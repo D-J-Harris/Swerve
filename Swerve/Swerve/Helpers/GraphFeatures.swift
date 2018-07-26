@@ -10,11 +10,32 @@ import Foundation
 import Accelerate
 import simd
 
-struct GraphFeatures {
+class GraphFeatures {
     
-    func getRootMeanSquareDiff(device1 results1: [[Double]], device2 results2: [[Double]]) {
+    //trapezium rule using time interval as trapz heights
+    func getIntegral(results: [[Double]]) -> Double {
         
+        let interval: Double = abs(results[0][0] - results[1][0])
+
+        var runningHelpSum: Double = 0
+        runningHelpSum += results[0][1] + results[results.count-1][1]
+        for i in 1...results.count-2 {
+            runningHelpSum += 2 * results[i][1]
+        }
+        
+        return 0.5 * interval * runningHelpSum
     }
+    
+    
+    func getSimilarityCoefficient(results1: [[Double]], results2: [[Double]]) -> Double {
+        
+        
+        
+        
+        return 0.0
+    }
+    
+    
     
     func normalise(results: [Double]) -> [Double] {
         let mean: Double = results.reduce(0,+) / Double(results.count)

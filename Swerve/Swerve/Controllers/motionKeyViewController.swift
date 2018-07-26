@@ -28,6 +28,7 @@ class testMotionViewController: UIViewController {
     var csvText: String = "time,attitude Magnitude\n"
     var initialAttitude: CMAttitude? = nil //for reference from start position
     var isFirst = true //to interact with just first loop of device updates and store initial attitude
+    var resultsMatrix = [[Double]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +57,7 @@ class testMotionViewController: UIViewController {
     
     @objc func updateMotion() {
         
-        if self.timerCounter >= 0 {  //only want to capture data for 5 seconds
+        if self.timerCounter > 0 {  //only want to capture data for timer limit
             
             
             //ensure hardware available
@@ -78,8 +79,15 @@ class testMotionViewController: UIViewController {
                         
                         //attitude of phone impacted by user
                         data.attitude.multiply(byInverseOf: self.initialAttitude!)
-                        let attitudeMagnitude = self.magnitudeFromAttitude(attitude: data.attitude)
+                        let attitudeMagnitude = String(format: "%.3f", self.magnitudeFromAttitude(attitude: data.attitude))
                         let time = String(format: "%.2f", self.timerCounter)
+                        
+                        
+                        //save to matrices to be passed into featureFunctions
+                        self.resultsMatrix.append([self.timerCounter,self.magnitudeFromAttitude(attitude: data.attitude)])
+                        
+                        
+                        
                         
                         self.csvText.append("\(time),\(attitudeMagnitude)\n") //add data to CSV file
                     }
@@ -96,10 +104,12 @@ class testMotionViewController: UIViewController {
     }
     
     func stopDeviceMotion() {
+        let graphFeatures = GraphFeatures()
         self.timer.invalidate()
         self.motion.stopDeviceMotionUpdates()
         isTimerRunning = false
         saveAsCSV(from: self.csvText)
+        print("Integral: \(graphFeatures.getIntegral(results: self.resultsMatrix))")
     }
     
     
@@ -115,8 +125,7 @@ class testMotionViewController: UIViewController {
     }
     
     // get magnitude of vector via Pythagorean theorem, as String
-    func magnitudeFromAttitude(attitude: CMAttitude) -> String {
-        let temp = sqrt(pow(attitude.roll, 2) + pow(attitude.yaw, 2) + pow(attitude.pitch, 2))
-        return String(format: "%.3f", temp)
+    func magnitudeFromAttitude(attitude: CMAttitude) -> Double {
+        return sqrt(pow(attitude.roll, 2) + pow(attitude.yaw, 2) + pow(attitude.pitch, 2))
     }
 }
