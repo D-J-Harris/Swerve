@@ -25,9 +25,9 @@ class testMotionViewController: UIViewController {
     var timerCounter: Double = 3 //Number of seconds on timer
     var isTimerRunning = false
     let updateFrequency: Double = 1.0 / 100.0 // 1 / hertz
-    var csvText: String = "time,xValue,yValue,zValue\n"
-    
-    
+    var csvText: String = "time,attitude Magnitude\n"
+    var initialAttitude: CMAttitude? = nil
+    var isFirst = true //to interact with just first loop of device updates and store initial attitude
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,27 +63,28 @@ class testMotionViewController: UIViewController {
             if self.motion.isDeviceMotionAvailable {
                 self.motion.deviceMotionUpdateInterval = self.updateFrequency
                 self.motion.showsDeviceMovementDisplay = true
-                self.motion.startDeviceMotionUpdates(to: OperationQueue.current!) { (motion, error) in
+                
+                self.motion.startDeviceMotionUpdates(using: CMAttitudeReferenceFrame.xArbitraryZVertical, to: OperationQueue.current!) { (motion, error) in
                     
                     //START Code here runs every 'updateFrequency'
                     
                     if let data = self.motion.deviceMotion {
                         
-                        //acceleration impacted by user
-                        let xFound = data.attitude.pitch; let x = String(format: "%.3f", xFound)
-                        let yFound = data.attitude.roll; let y = String(format: "%.3f", yFound)
-                        let zFound = data.attitude.yaw; let z = String(format: "%.3f", zFound)
+                        //Store initial attitude for reference
+                        if self.isFirst == true {
+                            self.initialAttitude = data.attitude
+                            self.isFirst = false
+                        }
+                        
+                        //attitude of phone impacted by user
+                        data.attitude.multiply(byInverseOf: self.initialAttitude!)
+                        let attitudeMagnitude = self.magnitudeFromAttitude(attitude: data.attitude)
                         let time = String(format: "%.2f", self.timerCounter)
                         
-                        
-                        //USE MOTION DATA HERE
-                        self.xLabel.text = x
-                        self.yLabel.text = y
-                        self.zLabel.text = z
-                        
-                        self.csvText.append("\(time),\(x),\(y),\(z)\n") //add data to CSV file
+                        self.csvText.append("\(time),\(attitudeMagnitude)\n") //add data to CSV file
                     }
-                    print(self.timerCounter)
+                    print(self.timerCounter
+                    )
                     self.timerCounter -= self.updateFrequency
                     //END Code here runs every 'updateFrequency'
                 }
@@ -111,5 +112,11 @@ class testMotionViewController: UIViewController {
         } catch {
             print("error creating file")
         }
+    }
+    
+    // get magnitude of vector via Pythagorean theorem, as String
+    func magnitudeFromAttitude(attitude: CMAttitude) -> String {
+        let temp = sqrt(pow(attitude.roll, 2) + pow(attitude.yaw, 2) + pow(attitude.pitch, 2))
+        return String(format: "%.3f", temp)
     }
 }
