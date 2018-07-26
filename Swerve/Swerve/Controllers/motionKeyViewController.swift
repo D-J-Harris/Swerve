@@ -13,9 +13,8 @@ import CoreMotion
 class testMotionViewController: UIViewController {
     
     //Outlets
-    @IBOutlet weak var xLabel: UILabel!
-    @IBOutlet weak var yLabel: UILabel!
-    @IBOutlet weak var zLabel: UILabel!
+    
+    @IBOutlet weak var integralLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     
     
@@ -110,6 +109,7 @@ class testMotionViewController: UIViewController {
         isTimerRunning = false
         saveAsCSV(from: self.csvText)
         print("Integral: \(graphFeatures.getIntegral(results: self.resultsMatrix))")
+        self.integralLabel.text = String(format: "%.3f", graphFeatures.getIntegral(results: self.resultsMatrix))
     }
     
     
