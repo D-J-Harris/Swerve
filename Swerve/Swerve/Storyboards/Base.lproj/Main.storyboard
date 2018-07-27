@@ -119,7 +119,7 @@
                     <navigationItem key="navigationItem" title="Sender Info" id="1rm-gw-xYT">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qMi-3b-72i">
                             <connections>
-                                <segue destination="7Bs-Wn-5YG" kind="unwind" identifier="backToSenderReceiver" unwindAction="unwindWithSegue:" id="sR4-Si-Dam"/>
+                                <segue destination="7Bs-Wn-5YG" kind="unwind" identifier="backFromSender" unwindAction="unwindWithSegue:" id="sR4-Si-Dam"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

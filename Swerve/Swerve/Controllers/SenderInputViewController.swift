@@ -31,7 +31,7 @@ class SenderInputViewController: UIViewController {
             let stringTest = "testString"
             let destination = segue.destination as! MotionViewController
             destination.testLabelText = stringTest
-        case Constants.Segue.backToSenderReceiver:
+        case Constants.Segue.backFromSender:
             UserService.deleteUserReference(User.current)
             print("testPrint")
         default:
