@@ -13,6 +13,9 @@
 		BE2D52082108E7A0004113DB /* CreateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2D52072108E7A0004113DB /* CreateUsernameViewController.swift */; };
 		BE5544552108F74800A9CCA2 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5544542108F74800A9CCA2 /* UserService.swift */; };
 		BE55445721090CB900A9CCA2 /* motionKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE55445621090CB900A9CCA2 /* motionKeyViewController.swift */; };
+		BEA780CA210B83A30068115E /* SenderReceiverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780C9210B83A30068115E /* SenderReceiverViewController.swift */; };
+		BEA780CC210B89B80068115E /* SenderInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780CB210B89B80068115E /* SenderInputViewController.swift */; };
+		BEA780CE210B8A670068115E /* MotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780CD210B8A670068115E /* MotionViewController.swift */; };
 		BEEA72E92106D261008779B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEA72E82106D261008779B0 /* AppDelegate.swift */; };
 		BEEA72EE2106D262008779B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEEA72EC2106D262008779B0 /* Main.storyboard */; };
 		BEEA72F02106D263008779B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEEA72EF2106D263008779B0 /* Assets.xcassets */; };
@@ -30,6 +33,9 @@
 		BE2D52072108E7A0004113DB /* CreateUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameViewController.swift; sourceTree = "<group>"; };
 		BE5544542108F74800A9CCA2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		BE55445621090CB900A9CCA2 /* motionKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = motionKeyViewController.swift; sourceTree = "<group>"; };
+		BEA780C9210B83A30068115E /* SenderReceiverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderReceiverViewController.swift; sourceTree = "<group>"; };
+		BEA780CB210B89B80068115E /* SenderInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderInputViewController.swift; sourceTree = "<group>"; };
+		BEA780CD210B8A670068115E /* MotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionViewController.swift; sourceTree = "<group>"; };
 		BEEA72E52106D261008779B0 /* Swerve.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swerve.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEEA72E82106D261008779B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEEA72ED2106D262008779B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -148,6 +154,9 @@
 				BEEA73032107DB0D008779B0 /* LoginViewController.swift */,
 				BE2D52072108E7A0004113DB /* CreateUsernameViewController.swift */,
 				BE55445621090CB900A9CCA2 /* motionKeyViewController.swift */,
+				BEA780C9210B83A30068115E /* SenderReceiverViewController.swift */,
+				BEA780CB210B89B80068115E /* SenderInputViewController.swift */,
+				BEA780CD210B8A670068115E /* MotionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -310,8 +319,11 @@
 				BE2D52082108E7A0004113DB /* CreateUsernameViewController.swift in Sources */,
 				BE5544552108F74800A9CCA2 /* UserService.swift in Sources */,
 				BE55445721090CB900A9CCA2 /* motionKeyViewController.swift in Sources */,
+				BEA780CA210B83A30068115E /* SenderReceiverViewController.swift in Sources */,
+				BEA780CE210B8A670068115E /* MotionViewController.swift in Sources */,
 				BEEA73072107FED8008779B0 /* User.swift in Sources */,
 				BEEA73042107DB0D008779B0 /* LoginViewController.swift in Sources */,
+				BEA780CC210B89B80068115E /* SenderInputViewController.swift in Sources */,
 				BE0577A3210A2ED900BCFAE1 /* Storyboard+Utility.swift in Sources */,
 				BEEA72E92106D261008779B0 /* AppDelegate.swift in Sources */,
 				BE0577A6210A2F9000BCFAE1 /* GraphFeatures.swift in Sources */,
