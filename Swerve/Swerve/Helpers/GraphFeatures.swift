@@ -27,12 +27,6 @@ class GraphFeatures {
     }
     
     
-    func getSimilarityCoefficient(results1: [[Double]], results2: [[Double]]) -> Double {
-        return 0.0
-    }
-    
-    
-    
     func normalise(results: [Double]) -> [Double] {
         let mean: Double = results.reduce(0,+) / Double(results.count)
         let deviationTemp: [Double] = results.map{ $0 - mean }.map{ pow($0, 2) }
@@ -43,11 +37,11 @@ class GraphFeatures {
     
     func getNumberOfPeaks(results: [[Double]]) -> Int {
         var counter: Int = 0
-        for i in 1...results.count-2 {
-            if results[i-1][1] - results[i][1] < 0 && results[i][1] - results[i+1][1] > 0 {
+        for i in 3...results.count-4 {
+            if results[i-3][1] - results[i][1] < 0 && results[i][1] - results[i+3][1] > 0 {
                 counter += 1
             }
-            if results[i-1][1] - results[i][1] > 0 && results[i][1] - results[i+1][1] < 0 {
+            if results[i-3][1] - results[i][1] > 0 && results[i][1] - results[i+3][1] < 0 {
                 counter += 1
             }
         }

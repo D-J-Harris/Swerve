@@ -43,7 +43,7 @@ class testMotionViewController: UIViewController {
     
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
-        perform(#selector(testMotionViewController.startDeviceMotion), with: nil, afterDelay: 10 -  round(NSDate.timeIntervalSinceReferenceDate).truncatingRemainder(dividingBy: 10))
+        perform(#selector(testMotionViewController.startDeviceMotion), with: nil, afterDelay: 10 -  NSDate.timeIntervalSinceReferenceDate.truncatingRemainder(dividingBy: 10))
         
     }
     
@@ -116,12 +116,13 @@ class testMotionViewController: UIViewController {
         print("Integral: \(graphFeatures.getIntegral(results: self.resultsMatrix))")
         self.integralLabel.text = String(format: "%.3f", graphFeatures.getIntegral(results: self.resultsMatrix))
         self.peakCounterLabel.text = String(graphFeatures.getNumberOfPeaks(results: self.resultsMatrix))
+        
         //quick methods for allowing in-app reset
         resultsMatrix = [[Double]]()
         timerCounter = 3.0
     }
     
-    
+    //save output data as csv for MATLAB testing
     func saveAsCSV(from csvFile: String) {
         let filemanager = FileManager.default
         do {
@@ -138,19 +139,7 @@ class testMotionViewController: UIViewController {
         return sqrt(pow(attitude.roll, 2) + pow(attitude.yaw, 2) + pow(attitude.pitch, 2))
     }
     
-    func getInitialAttitude(completion: @escaping ((CMAttitude) -> ())) {
-        
-        if self.motion.isDeviceMotionAvailable {
-            self.motion.startDeviceMotionUpdates()
-            if let data = self.motion.deviceMotion {
-                completion(data.attitude)
-            }
-            else{ return }
-        }
-        else{ return }
-        
-    }
-    
+    //function to retrieve the rounded time modulo 10
     @objc func getTime() {
         let currTime = round(NSDate.timeIntervalSinceReferenceDate).truncatingRemainder(dividingBy: 10)
         
