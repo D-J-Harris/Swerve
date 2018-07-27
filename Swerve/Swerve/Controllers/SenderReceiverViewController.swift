@@ -47,6 +47,10 @@ class SenderReceiverViewController: UIViewController {
         self.performSegue(withIdentifier: Constants.Segue.receiverToMotion, sender: self)
     }
     
+    @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
+        
+    }
+    
     
     
     

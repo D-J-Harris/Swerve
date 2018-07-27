@@ -96,7 +96,7 @@
             </objects>
             <point key="canvasLocation" x="2866.4000000000001" y="38.23088455772114"/>
         </scene>
-        <!--Sender Input View Controller-->
+        <!--Sender Info-->
         <scene sceneID="ine-CK-6Ml">
             <objects>
                 <viewController id="Rhk-yU-Jch" customClass="SenderInputViewController" customModule="Swerve" customModuleProvider="target" sceneMemberID="viewController">
@@ -116,12 +116,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="oI8-YQ-pHh"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Sender Info" id="1rm-gw-xYT">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qMi-3b-72i">
+                            <connections>
+                                <segue destination="7Bs-Wn-5YG" kind="unwind" identifier="backToSenderReceiver" unwindAction="unwindWithSegue:" id="sR4-Si-Dam"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="toMotionButton" destination="9gf-Wi-YLx" id="hn5-Xd-5rL"/>
                         <segue destination="zww-C7-nWV" kind="show" identifier="senderInfoToMotion" id="6Wf-Xf-yQo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tRE-b0-4jp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="7Bs-Wn-5YG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3738.4000000000001" y="-483.50824587706148"/>
         </scene>
@@ -238,7 +246,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-890" y="-802"/>
+            <point key="canvasLocation" x="1927" y="-722"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vs9-dG-IbF">
@@ -250,6 +258,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="I43-qT-9Xt">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="Q38-ZN-tSa" kind="relationship" relationship="rootViewController" id="YbV-vd-2lo"/>
                     </connections>
@@ -260,6 +271,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OnX-3Y-0Jj"/>
+        <segue reference="6Wf-Xf-yQo"/>
     </inferredMetricsTieBreakers>
 </document>

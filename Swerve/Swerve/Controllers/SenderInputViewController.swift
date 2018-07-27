@@ -24,11 +24,20 @@ class SenderInputViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Constants.Segue.senderInfoToMotion {
+        guard let identifier = segue.identifier else {return}
+        
+        switch identifier {
+        case Constants.Segue.senderInfoToMotion:
             let stringTest = "testString"
             let destination = segue.destination as! MotionViewController
             destination.testLabelText = stringTest
+        case Constants.Segue.backToSenderReceiver:
+            UserService.deleteUserReference(User.current)
+            print("testPrint")
+        default:
+            print("error no correct segue identified")
         }
+
         
         
     }

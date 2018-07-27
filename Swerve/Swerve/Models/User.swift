@@ -13,8 +13,8 @@ class User: Codable {
     
     let uid: String
     let username: String
-    let type: String
-    let integralKey: String
+    var type: String
+    var integralKey: String
     
     
     init(uid: String, username: String) {

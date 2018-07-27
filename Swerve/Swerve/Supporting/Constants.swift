@@ -13,10 +13,9 @@ struct Constants {
         static let senderToSenderInfo = "senderToSenderInfo"
         static let receiverToMotion = "receiverToMotion"
         static let senderInfoToMotion = "senderInfoToMotion"
+        static let backToSenderReceiver = "backToSenderReceiver"
     }
-    struct UserDefaults {
-        static let currentUser = "currentUser"
-    }
+
     struct UserDictionary {
         static let unselected = "unselected"
         static let sender = "sender"
