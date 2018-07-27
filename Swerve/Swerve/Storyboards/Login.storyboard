@@ -77,18 +77,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LB4-Sc-dXL">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aj5-T7-SCr">
-                                        <rect key="frame" x="28" y="120" width="320.5" height="45.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="38"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aj5-T7-SCr">
+                                        <rect key="frame" x="30" y="120" width="315" height="44.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="37"/>
                                         <color key="textColor" red="0.92941176469999998" green="0.96078431369999995" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Username Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zim-DJ-1E3">
-                                        <rect key="frame" x="87.5" y="200.5" width="200" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zim-DJ-1E3">
+                                        <rect key="frame" x="85" y="199.5" width="205" height="30"/>
                                         <color key="backgroundColor" red="0.019607843140000001" green="0.21960784310000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="raD-zR-yB5"/>
-                                        </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -99,7 +96,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fV-cY-lII">
-                                        <rect key="frame" x="87" y="262" width="200" height="200"/>
+                                        <rect key="frame" x="87" y="261" width="200" height="200"/>
                                         <color key="backgroundColor" red="0.019607843140000001" green="0.21960784310000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="5fV-cY-lII" secondAttribute="height" multiplier="1:1" id="hag-HA-1Pt"/>
@@ -118,11 +115,15 @@
                                 <color key="backgroundColor" name="tcSeafoamGreen"/>
                                 <constraints>
                                     <constraint firstItem="aj5-T7-SCr" firstAttribute="centerX" secondItem="LB4-Sc-dXL" secondAttribute="centerX" id="5Ow-Lk-7If"/>
+                                    <constraint firstAttribute="trailing" secondItem="aj5-T7-SCr" secondAttribute="trailing" constant="30" id="MhI-pM-Q7Q"/>
                                     <constraint firstItem="zim-DJ-1E3" firstAttribute="centerX" secondItem="LB4-Sc-dXL" secondAttribute="centerX" id="NWt-TQ-iHU"/>
                                     <constraint firstItem="5fV-cY-lII" firstAttribute="centerX" secondItem="LB4-Sc-dXL" secondAttribute="centerX" id="Onx-R8-odW"/>
                                     <constraint firstItem="5fV-cY-lII" firstAttribute="top" secondItem="zim-DJ-1E3" secondAttribute="bottom" constant="32" id="QRb-Xf-AIj"/>
+                                    <constraint firstItem="aj5-T7-SCr" firstAttribute="leading" secondItem="LB4-Sc-dXL" secondAttribute="leading" constant="30" id="UWZ-Nl-HXj"/>
+                                    <constraint firstItem="zim-DJ-1E3" firstAttribute="leading" secondItem="LB4-Sc-dXL" secondAttribute="leading" constant="85" id="aOU-FN-g6V"/>
                                     <constraint firstItem="zim-DJ-1E3" firstAttribute="top" secondItem="aj5-T7-SCr" secondAttribute="bottom" constant="35" id="ciB-Dt-aUZ"/>
                                     <constraint firstItem="aj5-T7-SCr" firstAttribute="top" secondItem="LB4-Sc-dXL" secondAttribute="top" constant="120" id="hVs-BU-qUb"/>
+                                    <constraint firstAttribute="trailing" secondItem="zim-DJ-1E3" secondAttribute="trailing" constant="85" id="r00-pm-JWn"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -136,6 +137,7 @@
                         <viewLayoutGuide key="safeArea" id="IH0-3P-5rK"/>
                     </view>
                     <connections>
+                        <outlet property="createUsernameLabel" destination="aj5-T7-SCr" id="irW-7V-dkY"/>
                         <outlet property="nextButton" destination="5fV-cY-lII" id="XEJ-oI-kYN"/>
                         <outlet property="usernameTextField" destination="zim-DJ-1E3" id="lR3-pj-Ll3"/>
                     </connections>

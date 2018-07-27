@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,7 +41,6 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.019607843140000001" green="0.21960784310000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="M9p-Sl-Myx" firstAttribute="leading" secondItem="UYl-fE-bNd" secondAttribute="leading" id="5wF-Eo-JbZ"/>
                                             <constraint firstItem="M9p-Sl-Myx" firstAttribute="centerX" secondItem="UYl-fE-bNd" secondAttribute="centerX" id="WAs-Sa-sRe"/>
                                             <constraint firstAttribute="trailing" secondItem="M9p-Sl-Myx" secondAttribute="trailing" id="hcW-LH-8Wx"/>
                                             <constraint firstItem="M9p-Sl-Myx" firstAttribute="centerY" secondItem="UYl-fE-bNd" secondAttribute="centerY" id="hoO-Gr-krY"/>
@@ -77,9 +77,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.92941176469999998" green="0.96078431369999995" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="y8f-Jy-n5M" firstAttribute="top" secondItem="Nkq-bo-kxl" secondAttribute="top" id="6U6-B2-PIj"/>
                             <constraint firstItem="0jx-nO-T7Q" firstAttribute="trailing" secondItem="y8f-Jy-n5M" secondAttribute="trailing" id="7Wj-0c-YDe"/>
                             <constraint firstItem="y8f-Jy-n5M" firstAttribute="leading" secondItem="0jx-nO-T7Q" secondAttribute="leading" id="IB6-QR-L4D"/>
+                            <constraint firstItem="y8f-Jy-n5M" firstAttribute="top" secondItem="Nkq-bo-kxl" secondAttribute="top" id="MRQ-8R-ixS"/>
                             <constraint firstItem="0jx-nO-T7Q" firstAttribute="bottom" secondItem="y8f-Jy-n5M" secondAttribute="bottom" id="jKt-Vu-eaV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0jx-nO-T7Q"/>
@@ -104,16 +104,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gf-Wi-YLx">
-                                <rect key="frame" x="153" y="300" width="68" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="To Motion"/>
-                                <connections>
-                                    <action selector="toMotionButtonTapped:" destination="Rhk-yU-Jch" eventType="touchUpInside" id="wTX-bF-PJu"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="NTv-nK-Mbn">
+                                <rect key="frame" x="0.0" y="214" width="375" height="144"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Transfer Text Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G5x-pY-9HJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                        <color key="backgroundColor" red="0.019607843140000001" green="0.21960784310000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.92941176469999998" green="0.96078431369999995" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                                <color key="value" red="0.92941176470588238" green="0.96078431372549022" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gf-Wi-YLx">
+                                        <rect key="frame" x="0.0" y="64" width="375" height="80"/>
+                                        <color key="backgroundColor" red="0.019607843140000001" green="0.21960784310000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="MYr-Gc-zOX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                        <state key="normal" title="To Motion">
+                                            <color key="titleColor" red="0.92941176469999998" green="0.96078431369999995" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="toMotionButtonTapped:" destination="Rhk-yU-Jch" eventType="touchUpInside" id="wTX-bF-PJu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="tcSeafoamGreen"/>
+                        <constraints>
+                            <constraint firstItem="NTv-nK-Mbn" firstAttribute="leading" secondItem="oI8-YQ-pHh" secondAttribute="leading" id="99b-sA-amB"/>
+                            <constraint firstItem="NTv-nK-Mbn" firstAttribute="top" secondItem="oI8-YQ-pHh" secondAttribute="top" constant="150" id="NYa-Nt-Q3A"/>
+                            <constraint firstItem="NTv-nK-Mbn" firstAttribute="centerX" secondItem="Rzt-bc-FuI" secondAttribute="centerX" id="hUd-e3-JX4"/>
+                            <constraint firstItem="oI8-YQ-pHh" firstAttribute="trailing" secondItem="NTv-nK-Mbn" secondAttribute="trailing" id="jZp-p3-80a"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="oI8-YQ-pHh"/>
                     </view>
                     <navigationItem key="navigationItem" title="Sender Info" id="1rm-gw-xYT">
@@ -124,6 +153,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="testTextTransferTextField" destination="G5x-pY-9HJ" id="yE4-Ur-x48"/>
                         <outlet property="toMotionButton" destination="9gf-Wi-YLx" id="hn5-Xd-5rL"/>
                         <segue destination="zww-C7-nWV" kind="show" identifier="senderInfoToMotion" id="6Wf-Xf-yQo"/>
                     </connections>
@@ -141,15 +171,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwe-af-Vgl">
-                                <rect key="frame" x="145" y="222" width="33" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receiver So No Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwe-af-Vgl">
+                                <rect key="frame" x="0.0" y="224" width="375" height="80"/>
+                                <color key="backgroundColor" red="0.019607843140000001" green="0.21960784310000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="1gD-Nt-ys8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" red="0.92941176469999998" green="0.96078431369999995" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.4431372549" green="0.66666666669999997" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="tcSeafoamGreen"/>
+                        <constraints>
+                            <constraint firstItem="bwe-af-Vgl" firstAttribute="top" secondItem="Pgz-w8-mzf" secondAttribute="top" constant="160" id="30W-Bg-jmy"/>
+                            <constraint firstItem="bwe-af-Vgl" firstAttribute="leading" secondItem="Pgz-w8-mzf" secondAttribute="leading" id="x2W-9B-Jcc"/>
+                            <constraint firstItem="Pgz-w8-mzf" firstAttribute="trailing" secondItem="bwe-af-Vgl" secondAttribute="trailing" id="zZF-Lw-rXi"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Pgz-w8-mzf"/>
                     </view>
                     <navigationItem key="navigationItem" title="Motion View" id="7Md-kz-erh">
@@ -278,7 +316,15 @@
             <point key="canvasLocation" x="1927.2" y="38.23088455772114"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="tcSeafoamGreen">
+            <color red="0.34900000689999999" green="0.85500001910000001" blue="0.64300000670000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="tcSeafoamGreen">
+            <color red="0.34900000689999999" green="0.85500001910000001" blue="0.64300000670000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6Wf-Xf-yQo"/>
+        <segue reference="OnX-3Y-0Jj"/>
     </inferredMetricsTieBreakers>
 </document>

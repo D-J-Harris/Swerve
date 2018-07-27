@@ -13,14 +13,26 @@ import UIKit
 class SenderInputViewController: UIViewController {
     
     @IBOutlet weak var toMotionButton: UIButton!
+    @IBOutlet weak var testTextTransferTextField: UITextField!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Handle tapping to deactivate keyboard
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    //Calls this function when the tap is recognized
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -28,17 +40,13 @@ class SenderInputViewController: UIViewController {
         
         switch identifier {
         case Constants.Segue.senderInfoToMotion:
-            let stringTest = "testString"
             let destination = segue.destination as! MotionViewController
-            destination.testLabelText = stringTest
+            destination.testLabelText = testTextTransferTextField.text ?? "No text entered"
         case Constants.Segue.backFromSender:
             UserService.deleteUserReference(User.current)
         default:
             print("error no correct segue identified")
         }
-
-        
-        
     }
     
     @IBAction func toMotionButtonTapped(_ sender: UIButton) {

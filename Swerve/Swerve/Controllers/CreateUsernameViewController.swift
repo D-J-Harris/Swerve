@@ -16,13 +16,27 @@ class CreateUsernameViewController: UIViewController {
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var createUsernameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nextButton.layer.masksToBounds = true
+        nextButton.layer.cornerRadius = nextButton.frame.width / 2
+        createUsernameLabel.adjustsFontSizeToFitWidth = true
+        
+        //Handle tapping to deactivate keyboard
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    //Calls this function when the tap is recognized
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {

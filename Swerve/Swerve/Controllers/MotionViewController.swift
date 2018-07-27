@@ -12,15 +12,13 @@ import UIKit
 
 class MotionViewController: UIViewController {
     
-    var testLabelText: String = "Hello"
-    
+    var testLabelText: String = "Receiver So No Data"
     @IBOutlet weak var testLabel: UILabel!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         testLabel.text = testLabelText
-        
     }
     
     override func didReceiveMemoryWarning() {
