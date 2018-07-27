@@ -24,7 +24,7 @@ class SenderInputViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "senderInfoToMotion" {
+        if segue.identifier == Constants.Segue.senderInfoToMotion {
             let stringTest = "testString"
             let destination = segue.destination as! MotionViewController
             destination.testLabelText = stringTest
@@ -34,7 +34,7 @@ class SenderInputViewController: UIViewController {
     }
     
     @IBAction func toMotionButtonTapped(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "senderInfoToMotion", sender: self)
+        self.performSegue(withIdentifier: Constants.Segue.senderInfoToMotion, sender: self)
     }
     
     
