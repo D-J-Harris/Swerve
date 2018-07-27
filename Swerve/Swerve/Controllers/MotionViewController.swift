@@ -27,6 +27,19 @@ class MotionViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else {return}
+        
+        switch identifier {
+        case Constants.Segue.backFromReceiver:
+            if User.current.type == Constants.UserDictionary.receiver {
+                UserService.deleteUserReference(User.current)
+            }
+        default:
+            print("error no correct segue identified")
+        }
+    }
+    
     
     
 }

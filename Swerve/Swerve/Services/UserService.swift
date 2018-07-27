@@ -57,7 +57,6 @@ struct UserService {
         switch userType {
         case Constants.UserDictionary.sender:
             ref = ref.child(Constants.UserDictionary.sender).child(currentUser.uid)
-            print(ref)
         case Constants.UserDictionary.receiver:
             ref = ref.child(Constants.UserDictionary.receiver).child(currentUser.uid)
         default:

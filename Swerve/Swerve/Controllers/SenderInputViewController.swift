@@ -33,7 +33,6 @@ class SenderInputViewController: UIViewController {
             destination.testLabelText = stringTest
         case Constants.Segue.backFromSender:
             UserService.deleteUserReference(User.current)
-            print("testPrint")
         default:
             print("error no correct segue identified")
         }
@@ -44,6 +43,9 @@ class SenderInputViewController: UIViewController {
     
     @IBAction func toMotionButtonTapped(_ sender: UIButton) {
         self.performSegue(withIdentifier: Constants.Segue.senderInfoToMotion, sender: self)
+    }
+    
+    @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue){
     }
     
     
