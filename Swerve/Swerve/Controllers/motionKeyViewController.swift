@@ -16,6 +16,7 @@ class testMotionViewController: UIViewController {
     
     @IBOutlet weak var integralLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var peakCounterLabel: UILabel!
     
     
     //Initialisation
@@ -104,6 +105,10 @@ class testMotionViewController: UIViewController {
         saveAsCSV(from: self.csvText)
         print("Integral: \(graphFeatures.getIntegral(results: self.resultsMatrix))")
         self.integralLabel.text = String(format: "%.3f", graphFeatures.getIntegral(results: self.resultsMatrix))
+        self.peakCounterLabel.text = String(graphFeatures.getNumberOfPeaks(results: self.resultsMatrix))
+        //quick methods for allowing in-app reset
+        resultsMatrix = [[Double]]()
+        timerCounter = 3.0
     }
     
     
