@@ -17,11 +17,14 @@ class testMotionViewController: UIViewController {
     @IBOutlet weak var integralLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var peakCounterLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
     
     
     //Initialisation
     let motion = CMMotionManager()
     var timer = Timer()
+    var backgroundTimer = Timer()
     var timerCounter: Double = 3 //Number of seconds on timer
     let updateFrequency: Double = 1.0 / 100.0 // 1 / hertz
     var csvText: String = "time,attitude Magnitude\n"
@@ -30,16 +33,23 @@ class testMotionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        backgroundTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.getTime), userInfo: nil, repeats: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        backgroundTimer.invalidate()
     }
     
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
-        startDeviceMotion()
+        perform(#selector(testMotionViewController.startDeviceMotion), with: nil, afterDelay: 10 -  round(NSDate.timeIntervalSinceReferenceDate).truncatingRemainder(dividingBy: 10))
+        
     }
     
     
     
-    func startDeviceMotion() {
+    @objc func startDeviceMotion() {
         
         self.motion.deviceMotionUpdateInterval = self.updateFrequency
         self.motion.startDeviceMotionUpdates()
@@ -139,6 +149,13 @@ class testMotionViewController: UIViewController {
         }
         else{ return }
         
+    }
+    
+    @objc func getTime() {
+        let currTime = round(NSDate.timeIntervalSinceReferenceDate).truncatingRemainder(dividingBy: 10)
+        
+        
+        self.timeLabel.text = String(currTime)
     }
 
 }
