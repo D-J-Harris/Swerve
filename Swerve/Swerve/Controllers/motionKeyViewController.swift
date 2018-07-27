@@ -22,12 +22,10 @@ class testMotionViewController: UIViewController {
     let motion = CMMotionManager()
     var timer = Timer()
     var timerCounter: Double = 3 //Number of seconds on timer
-    var isTimerRunning = false
     let updateFrequency: Double = 1.0 / 100.0 // 1 / hertz
     var csvText: String = "time,attitude Magnitude\n"
-    var initialAttitude: CMAttitude? = nil //for reference from start position
-    var isFirst = true //to interact with just first loop of device updates and store initial attitude
     var resultsMatrix = [[Double]]()
+    var initialAttitude: CMAttitude? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +33,6 @@ class testMotionViewController: UIViewController {
     
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
-        isTimerRunning = true
         startDeviceMotion()
     }
     
@@ -43,20 +40,22 @@ class testMotionViewController: UIViewController {
     
     func startDeviceMotion() {
         
-        if isTimerRunning == true {
-            
-            //timer to fetch motion data
-            self.timer = Timer.scheduledTimer(timeInterval: self.updateFrequency, target: self, selector: (#selector(testMotionViewController.updateMotion)), userInfo: nil, repeats: true)
-        }
+        self.motion.deviceMotionUpdateInterval = self.updateFrequency
+        self.motion.startDeviceMotionUpdates()
+        sleep(1) //fix this delay at some point
+        initialAttitude = self.motion.deviceMotion?.attitude
+        self.motion.stopDeviceMotionUpdates()
         
-        //note this point is reached immediately
+        //timer to fetch motion data
+        self.timer = Timer.scheduledTimer(timeInterval: self.updateFrequency, target: self, selector: (#selector(testMotionViewController.updateMotion)), userInfo: nil, repeats: true)
     }
     
     
     
     @objc func updateMotion() {
         
-        if self.timerCounter > 0 {  //only want to capture data for timer limit
+        //only want to capture data for timer limit
+        if self.timerCounter > 0 {
             
             
             //ensure hardware available
@@ -69,12 +68,8 @@ class testMotionViewController: UIViewController {
                     //START Code here runs every 'updateFrequency'
                     
                     if let data = self.motion.deviceMotion {
-                        
-                        //Store initial attitude for reference
-                        if self.isFirst == true {
-                            self.initialAttitude = data.attitude
-                            self.isFirst = false
-                        }
+
+                        //store initial attitude here
                         
                         //attitude of phone impacted by user
                         data.attitude.multiply(byInverseOf: self.initialAttitude!)
@@ -106,7 +101,6 @@ class testMotionViewController: UIViewController {
         let graphFeatures = GraphFeatures()
         self.timer.invalidate()
         self.motion.stopDeviceMotionUpdates()
-        isTimerRunning = false
         saveAsCSV(from: self.csvText)
         print("Integral: \(graphFeatures.getIntegral(results: self.resultsMatrix))")
         self.integralLabel.text = String(format: "%.3f", graphFeatures.getIntegral(results: self.resultsMatrix))
@@ -128,4 +122,18 @@ class testMotionViewController: UIViewController {
     func magnitudeFromAttitude(attitude: CMAttitude) -> Double {
         return sqrt(pow(attitude.roll, 2) + pow(attitude.yaw, 2) + pow(attitude.pitch, 2))
     }
+    
+    func getInitialAttitude(completion: @escaping ((CMAttitude) -> ())) {
+        
+        if self.motion.isDeviceMotionAvailable {
+            self.motion.startDeviceMotionUpdates()
+            if let data = self.motion.deviceMotion {
+                completion(data.attitude)
+            }
+            else{ return }
+        }
+        else{ return }
+        
+    }
+
 }

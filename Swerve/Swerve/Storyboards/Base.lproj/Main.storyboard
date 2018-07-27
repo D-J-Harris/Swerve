@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="SRA-MT-fWH">
-                                <rect key="frame" x="159.5" y="90" width="58" height="41"/>
+                                <rect key="frame" x="158.5" y="90" width="58" height="41"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Integral" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RpW-MX-1W5">
                                         <rect key="frame" x="0.0" y="0.0" width="58" height="20.5"/>
@@ -36,7 +36,12 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Eb-dC-Jf4">
-                                <rect key="frame" x="170.5" y="231" width="34" height="30"/>
+                                <rect key="frame" x="87.5" y="231" width="200" height="150"/>
+                                <color key="backgroundColor" red="0.92941176469999998" green="0.96078431369999995" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="8Ot-mF-fB1"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="kTI-AI-gpT"/>
+                                </constraints>
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ipv-Ry-t6m"/>
