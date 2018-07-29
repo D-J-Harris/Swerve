@@ -59,29 +59,14 @@ struct FirebaseCheckerService {
                     viewController.present(alertControllerReceiver, animated: true, completion: nil)
                 }
                 
+                //loading overlay hides
+                LoadingOverlay.shared.hideOverlayView()
+            
             }
             //I should add code to return the user with the closest integral value (not just any old close value)
-            
-            //overlay display goes here
-            
- 
-                let alertControllerSender = UIAlertController(title: "Match Info", message: "You matched with \(currentUser.matchedWith)", preferredStyle: .alert)
-                let alertControllerReceiver = UIAlertController(title: "Match Info", message: "You matched with \(currentUser.matchedWith), and received \(currentUser.passableTestText)", preferredStyle: .alert)
-
-                let actionOk = UIAlertAction(title: "OK", style: .default, handler: nil)
-                
-                alertControllerSender.addAction(actionOk); alertControllerReceiver.addAction(actionOk)
-                
-                if currentUser.type == Constants.UserDictionary.sender {
-                    viewController.present(alertControllerSender, animated: true, completion: nil)
-                }
-                else if currentUser.type == Constants.UserDictionary.receiver {
-                    viewController.present(alertControllerReceiver, animated: true, completion: nil)
-                }
-            
-            UserService.resetUserValues(currentUser)
+    
         }
-        //or overlay goes here
-        print("overlay reached")
+        //overlay display start
+        LoadingOverlay.shared.showOverlay(viewController.view)
     }
 }

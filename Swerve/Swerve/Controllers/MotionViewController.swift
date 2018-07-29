@@ -66,6 +66,7 @@ class MotionViewController: UIViewController {
     
     @objc func startDeviceMotion() {
         
+        LoadingOverlay.shared.showSwerveView(self.view)
         self.motion.deviceMotionUpdateInterval = self.updateFrequency
         self.motion.startDeviceMotionUpdates()
         sleep(1) //fix this delay at some point
@@ -111,6 +112,7 @@ class MotionViewController: UIViewController {
     }
     
     func stopDeviceMotion() {
+        LoadingOverlay.shared.hideSwerveView()
         let graphFeatures = GraphFeatures()
         self.timer.invalidate()
         self.motion.stopDeviceMotionUpdates()
