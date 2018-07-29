@@ -20,6 +20,6 @@ struct Constants {
     struct UserDictionary {
         static let unselected = "unselected"
         static let sender = "sender"
-        static let receiver = "receiver"
+        static let receiver: String = "receiver"
     }
 }

@@ -17,6 +17,7 @@
 		BEA780CC210B89B80068115E /* SenderInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780CB210B89B80068115E /* SenderInputViewController.swift */; };
 		BEA780CE210B8A670068115E /* MotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780CD210B8A670068115E /* MotionViewController.swift */; };
 		BEA780D2210B9B070068115E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780D1210B9B070068115E /* Constants.swift */; };
+		BEA780DA210D30730068115E /* FirebaseCheckerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780D9210D30730068115E /* FirebaseCheckerService.swift */; };
 		BEEA72E92106D261008779B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEA72E82106D261008779B0 /* AppDelegate.swift */; };
 		BEEA72EE2106D262008779B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEEA72EC2106D262008779B0 /* Main.storyboard */; };
 		BEEA72F02106D263008779B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEEA72EF2106D263008779B0 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		BEA780CB210B89B80068115E /* SenderInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderInputViewController.swift; sourceTree = "<group>"; };
 		BEA780CD210B8A670068115E /* MotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionViewController.swift; sourceTree = "<group>"; };
 		BEA780D1210B9B070068115E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BEA780D9210D30730068115E /* FirebaseCheckerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCheckerService.swift; sourceTree = "<group>"; };
 		BEEA72E52106D261008779B0 /* Swerve.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swerve.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEEA72E82106D261008779B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEEA72ED2106D262008779B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				BE5544542108F74800A9CCA2 /* UserService.swift */,
+				BEA780D9210D30730068115E /* FirebaseCheckerService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				BEEA73072107FED8008779B0 /* User.swift in Sources */,
 				BEEA73042107DB0D008779B0 /* LoginViewController.swift in Sources */,
 				BEA780CC210B89B80068115E /* SenderInputViewController.swift in Sources */,
+				BEA780DA210D30730068115E /* FirebaseCheckerService.swift in Sources */,
 				BE0577A3210A2ED900BCFAE1 /* Storyboard+Utility.swift in Sources */,
 				BEEA72E92106D261008779B0 /* AppDelegate.swift in Sources */,
 				BE0577A6210A2F9000BCFAE1 /* GraphFeatures.swift in Sources */,

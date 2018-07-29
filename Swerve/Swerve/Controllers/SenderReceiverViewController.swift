@@ -31,8 +31,10 @@ class SenderReceiverViewController: UIViewController {
         switch identifier {
         case Constants.Segue.senderToSenderInfo:
             UserService.copyUserToSenders(User.current)
+            User.current.type = Constants.UserDictionary.sender
         case Constants.Segue.receiverToMotion:
             UserService.copyUserToReceivers(User.current)
+            User.current.type = Constants.UserDictionary.receiver
         default:
             print("error no correct segue identified")
         }

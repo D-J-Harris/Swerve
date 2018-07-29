@@ -14,27 +14,35 @@ class User: Codable {
     let uid: String
     let username: String
     var type: String
-    var integralKey: String
+    var integralKey: Double
+    var passableTestText: String
+    var matchedWith: String
     
     
     init(uid: String, username: String) {
         self.uid = uid
         self.username = username
         self.type = Constants.UserDictionary.unselected
-        self.integralKey = "-1"
+        self.integralKey = -1.0
+        self.passableTestText = ""
+        self.matchedWith = ""
     }
     
     init?(snapshot: DataSnapshot) {
         guard let dict = snapshot.value as? [String : Any],
             let username = dict["username"] as? String,
             let type = dict["type"] as? String,
-            let integralKey = dict["integralKey"] as? String
+            let integralKey = dict["integralKey"] as? Double,
+            let passableTestText = dict["passableTestText"] as? String,
+            let matchedWith = dict["matchedWith"] as? String
             else { return nil }
         
         self.uid = snapshot.key
         self.username = username
         self.type = type
         self.integralKey = integralKey
+        self.passableTestText = passableTestText
+        self.matchedWith = matchedWith
     }
     
     private static var _current: User?
