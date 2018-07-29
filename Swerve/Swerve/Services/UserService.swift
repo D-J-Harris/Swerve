@@ -32,35 +32,47 @@ struct UserService {
         }
     }
     
-    static func copyUserToSenders(_ currentUser: User) {
-        let ref = Database.database().reference().child(Constants.UserDictionary.sender).child(currentUser.uid)
-        let userAttrs = ["username": currentUser.username,
-                         "type": Constants.UserDictionary.sender,
-                         "integralKey": currentUser.integralKey,
-                         "passableTestText": currentUser.passableTestText,
-                         "matchedWith": currentUser.matchedWith] as [String: Any]
-        currentUser.type = Constants.UserDictionary.sender
-        
-        ref.setValue(userAttrs)
-    }
-    
-    static func updateUserText(_ user: User, childNode node: String, passableTestText: String) {
-        let ref = Database.database().reference().child(node).child(user.uid)
+    static func updateUserText(_ user: User, passableTestText: String) {
+        let ref = Database.database().reference().child("users").child(user.uid)
         let userAttrs = ["passableTestText": passableTestText]
         ref.updateChildValues(userAttrs)
     }
     
-    static func updateMatchedWith(_ user: User, childNode node: String, matchedWith: String) {
-        let ref = Database.database().reference().child(node).child(user.uid)
+    static func updateMatchedWith(_ user: User, matchedWith: String) {
+        let ref = Database.database().reference().child("users").child(user.uid)
         let userAttrs = ["matchedWith": matchedWith]
         ref.updateChildValues(userAttrs)
     }
     
-    static func updateUserIntegralKey(_ user: User, childNode node: String, integralKey: Double) {
-        let ref = Database.database().reference().child(node).child(user.uid)
+    static func updateUserIntegralKey(_ user: User, integralKey: Double) {
+        let ref = Database.database().reference().child("users").child(user.uid)
         let userAttrs = ["integralKey": integralKey]
         ref.updateChildValues(userAttrs)
     }
+    
+    static func updateUserType(_ user: User, type: String) {
+        let ref = Database.database().reference().child("users").child(user.uid)
+        let userAttrs = ["type": type]
+        ref.updateChildValues(userAttrs)
+    }
+    
+    static func updatePassableTestText(_ user: User, passableTestText: String) {
+        let ref = Database.database().reference().child("users").child(user.uid)
+        let userAttrs = ["passableTestText": passableTestText]
+        ref.updateChildValues(userAttrs)
+    }
+    
+    static func resetUserValues(_ user: User) {
+        let ref = Database.database().reference().child("users").child(user.uid)
+        let userAttrs = ["type": Constants.UserDictionary.unselected,
+                         "integralKey": -1.0,
+                         "passableTestText": "",
+                         "matchedWith": ""] as [String: Any]
+        ref.updateChildValues(userAttrs)
+        user.integralKey = -1.0; user.matchedWith = ""; user.passableTestText = ""; user.type = Constants.UserDictionary.unselected
+    }
+
+    /*
     
     static func copyUserToReceivers(_ currentUser: User) {
         let ref = Database.database().reference().child(Constants.UserDictionary.receiver).child(currentUser.uid)
@@ -70,6 +82,18 @@ struct UserService {
                          "passableTestText": currentUser.passableTestText,
                          "matchedWith": currentUser.matchedWith] as [String: Any]
         currentUser.type = Constants.UserDictionary.receiver
+        
+        ref.setValue(userAttrs)
+    }
+    
+    static func copyUserToSenders(_ currentUser: User) {
+        let ref = Database.database().reference().child(Constants.UserDictionary.sender).child(currentUser.uid)
+        let userAttrs = ["username": currentUser.username,
+                         "type": Constants.UserDictionary.sender,
+                         "integralKey": currentUser.integralKey,
+                         "passableTestText": currentUser.passableTestText,
+                         "matchedWith": currentUser.matchedWith] as [String: Any]
+        currentUser.type = Constants.UserDictionary.sender
         
         ref.setValue(userAttrs)
     }
@@ -94,4 +118,6 @@ struct UserService {
         }
          User.current.type = Constants.UserDictionary.unselected
     }
+ 
+    */
 }

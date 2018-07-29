@@ -18,7 +18,7 @@ class MotionViewController: UIViewController {
     var timer = Timer()
     var backgroundTimer = Timer()
     var timerCounter: Double = 3 //Number of seconds on timer
-    let updateFrequency: Double = 1.0 / 100.0 // 1 / hertz
+    let updateFrequency: Double = 1.0 / 100.0 // hertz
     var resultsMatrix = [[Double]]()
     var initialAttitude: CMAttitude? = nil
     var testLabelText: String = "Receiver So No Data"
@@ -50,8 +50,9 @@ class MotionViewController: UIViewController {
         switch identifier {
         case Constants.Segue.backFromReceiver:
             if User.current.type == Constants.UserDictionary.receiver {
-                UserService.deleteUserReference(User.current)
+                //UserService.deleteUserReference(User.current)
                 User.current.type = Constants.UserDictionary.unselected
+                UserService.updateUserType(User.current, type: Constants.UserDictionary.unselected)
             }
         default:
             print("error no correct segue identified")
@@ -114,7 +115,7 @@ class MotionViewController: UIViewController {
         self.timer.invalidate()
         self.motion.stopDeviceMotionUpdates()
         self.integralLabel.text = String(format: "%.3f", graphFeatures.getIntegral(results: self.resultsMatrix))
-        UserService.updateUserIntegralKey(User.current, childNode: User.current.type, integralKey: graphFeatures.getIntegral(results: self.resultsMatrix))
+        UserService.updateUserIntegralKey(User.current, integralKey: graphFeatures.getIntegral(results: self.resultsMatrix))
         User.current.integralKey = graphFeatures.getIntegral(results: self.resultsMatrix)
         
         //quick methods for allowing in-app reset
@@ -123,6 +124,7 @@ class MotionViewController: UIViewController {
         
         //run autochecker and then confirmation alert
         FirebaseCheckerService.findMatchingDevice(User.current, self)
+        print("end of firebasecheckerservice")
     }
     
     // get magnitude of vector via Pythagorean theorem, as String

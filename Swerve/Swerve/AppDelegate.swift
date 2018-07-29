@@ -43,10 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        let senderRef = Database.database().reference().child(Constants.UserDictionary.sender)
-        let receiverRef = Database.database().reference().child(Constants.UserDictionary.receiver)
-        senderRef.removeValue()
-        receiverRef.removeValue()
+        UserService.resetUserValues(User.current)
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 

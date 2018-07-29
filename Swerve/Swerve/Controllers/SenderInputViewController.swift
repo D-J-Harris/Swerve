@@ -42,10 +42,11 @@ class SenderInputViewController: UIViewController {
         case Constants.Segue.senderInfoToMotion:
             let destination = segue.destination as! MotionViewController
             destination.testLabelText = testTextTransferTextField.text ?? "No text entered"
-            UserService.updateUserText(User.current, childNode: Constants.UserDictionary.sender, passableTestText: testTextTransferTextField.text ?? "No text entered")
+            UserService.updateUserText(User.current, passableTestText: testTextTransferTextField.text ?? "No text entered")
         case Constants.Segue.backFromSender:
-            UserService.deleteUserReference(User.current)
+            //UserService.deleteUserReference(User.current)
             User.current.type = Constants.UserDictionary.unselected
+            UserService.updateUserType(User.current, type: Constants.UserDictionary.unselected)
         default:
             print("error no correct segue identified")
         }
