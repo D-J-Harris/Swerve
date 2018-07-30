@@ -15,6 +15,8 @@ struct Constants {
         static let senderInfoToMotion = "senderInfoToMotion"
         static let backFromSender = "backFromSender"
         static let backFromReceiver = "backFromReceiver"
+        static let toInstructions = "toInstructions"
+        static let toDisplayResult = "toDisplayResult"
     }
 
     struct UserDictionary {

@@ -46,19 +46,21 @@ struct FirebaseCheckerService {
                 else {print("no snapshots exist")}
                 
                 //Match Info Alert
-                let alertControllerSender = UIAlertController(title: "Match Info", message: "You matched with \(currentUser.matchedWith)", preferredStyle: .alert)
-                let alertControllerReceiver = UIAlertController(title: "Match Info", message: "You matched with \(currentUser.matchedWith), and received \(currentUser.passableTestText)", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Match Info", message: "You matched with \(currentUser.matchedWith). Is this correct?", preferredStyle: .alert)
                 
-                let actionOk = UIAlertAction(title: "OK", style: .default, handler: nil)
+                let actionYes = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+                    if currentUser.type == Constants.UserDictionary.receiver {
+                        viewController.performSegue(withIdentifier: Constants.Segue.toDisplayResult, sender: viewController)
+                    }
+                })
+                let actionNo = UIAlertAction(title: "No", style: .cancel, handler: nil)
                 
-                alertControllerSender.addAction(actionOk); alertControllerReceiver.addAction(actionOk)
+                alertController.addAction(actionYes)
+                alertController.addAction(actionNo)
                 
-                if currentUser.type == Constants.UserDictionary.sender {
-                    viewController.present(alertControllerSender, animated: true, completion: nil)
-                }
-                else if currentUser.type == Constants.UserDictionary.receiver {
-                    viewController.present(alertControllerReceiver, animated: true, completion: nil)
-                }
+              
+                viewController.present(alertController, animated: true, completion: nil)
+                
                 
                 //loading overlay hides
                 LoadingOverlay.shared.hideOverlayView()

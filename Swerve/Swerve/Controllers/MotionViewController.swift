@@ -54,6 +54,9 @@ class MotionViewController: UIViewController {
                 User.current.type = Constants.UserDictionary.unselected
                 UserService.updateUserType(User.current, type: Constants.UserDictionary.unselected)
             }
+        case Constants.Segue.toDisplayResult:
+            let destination = segue.destination as! DisplayResultViewController
+            destination.receivedTextLabelText = User.current.passableTestText 
         default:
             print("error no correct segue identified")
         }
