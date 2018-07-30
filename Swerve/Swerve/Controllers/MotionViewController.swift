@@ -129,7 +129,8 @@ class MotionViewController: UIViewController {
         timerCounter = 3.0
         
         //run autochecker and then confirmation alert
-        FirebaseCheckerService.findMatchingDevice(User.current, self)
+        let partnerCheckerService = PartnerCheckerService()
+        partnerCheckerService.findMatchingDevice(User.current, self)
         
         startButton.isEnabled = true
     }

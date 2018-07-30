@@ -10,24 +10,26 @@ import Foundation
 import FirebaseDatabase
 import UIKit
 
-struct FirebaseCheckerService {
+struct PartnerCheckerService {
+    
+    
     
     
     //I should add code to return the user with the closest integral value (not just any old close value)
     //Also search only for devices on the opposite sender/receiver type (fine on small scale)
-    static func findMatchingDevice(_ currentUser: User, _ viewController: UIViewController) {
+    func findMatchingDevice(_ currentUser: User, _ viewController: UIViewController) {
         
         let integralKeyTolerance = 0.5
         
         //overlay display start
         LoadingOverlay.shared.showOverlay(viewController.view)
         
-        _ = Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (timer) in
             
             //loop over all users to find matching integralKey
             let ref = Database.database().reference().child("users")
             
-            ref.observe(.value) { (snapshot) in
+            ref.observeSingleEvent(of: .value) { (snapshot) in
                 if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                     for child in snapshots {
                         guard let userDict = child.value as? [String: Any],
@@ -69,7 +71,6 @@ struct FirebaseCheckerService {
                 
                 //loading overlay hides
                 LoadingOverlay.shared.hideOverlayView()
-                timer.invalidate()
             }
         }
     }

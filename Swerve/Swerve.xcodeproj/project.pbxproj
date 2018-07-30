@@ -16,7 +16,7 @@
 		BEA780CC210B89B80068115E /* SenderInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780CB210B89B80068115E /* SenderInputViewController.swift */; };
 		BEA780CE210B8A670068115E /* MotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780CD210B8A670068115E /* MotionViewController.swift */; };
 		BEA780D2210B9B070068115E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780D1210B9B070068115E /* Constants.swift */; };
-		BEA780DA210D30730068115E /* FirebaseCheckerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780D9210D30730068115E /* FirebaseCheckerService.swift */; };
+		BEA780DA210D30730068115E /* PartnerCheckerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780D9210D30730068115E /* PartnerCheckerService.swift */; };
 		BEA780DC210E3CE80068115E /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780DB210E3CE80068115E /* LoadingOverlay.swift */; };
 		BEA780DE210ED0610068115E /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780DD210ED0610068115E /* InstructionsViewController.swift */; };
 		BEA780E0210ED0BF0068115E /* Instructions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEA780DF210ED0BF0068115E /* Instructions.storyboard */; };
@@ -41,7 +41,7 @@
 		BEA780CB210B89B80068115E /* SenderInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderInputViewController.swift; sourceTree = "<group>"; };
 		BEA780CD210B8A670068115E /* MotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionViewController.swift; sourceTree = "<group>"; };
 		BEA780D1210B9B070068115E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		BEA780D9210D30730068115E /* FirebaseCheckerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCheckerService.swift; sourceTree = "<group>"; };
+		BEA780D9210D30730068115E /* PartnerCheckerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerCheckerService.swift; sourceTree = "<group>"; };
 		BEA780DB210E3CE80068115E /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		BEA780DD210ED0610068115E /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 		BEA780DF210ED0BF0068115E /* Instructions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Instructions.storyboard; sourceTree = "<group>"; };
@@ -102,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				BE5544542108F74800A9CCA2 /* UserService.swift */,
-				BEA780D9210D30730068115E /* FirebaseCheckerService.swift */,
+				BEA780D9210D30730068115E /* PartnerCheckerService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -339,7 +339,7 @@
 				BEEA73072107FED8008779B0 /* User.swift in Sources */,
 				BEEA73042107DB0D008779B0 /* LoginViewController.swift in Sources */,
 				BEA780CC210B89B80068115E /* SenderInputViewController.swift in Sources */,
-				BEA780DA210D30730068115E /* FirebaseCheckerService.swift in Sources */,
+				BEA780DA210D30730068115E /* PartnerCheckerService.swift in Sources */,
 				BE0577A3210A2ED900BCFAE1 /* Storyboard+Utility.swift in Sources */,
 				BEA780E2210ED7BC0068115E /* DisplayResultViewController.swift in Sources */,
 				BEEA72E92106D261008779B0 /* AppDelegate.swift in Sources */,
