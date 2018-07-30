@@ -60,7 +60,7 @@ class MotionViewController: UIViewController {
     }
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
-        perform(#selector(testMotionViewController.startDeviceMotion), with: nil, afterDelay: 10 -  NSDate.timeIntervalSinceReferenceDate.truncatingRemainder(dividingBy: 10))
+        perform(#selector(MotionViewController.startDeviceMotion), with: nil, afterDelay: 10 -  NSDate.timeIntervalSinceReferenceDate.truncatingRemainder(dividingBy: 10))
         
     }
     
@@ -74,7 +74,7 @@ class MotionViewController: UIViewController {
         self.motion.stopDeviceMotionUpdates()
         
         //timer to fetch motion data
-        self.timer = Timer.scheduledTimer(timeInterval: self.updateFrequency, target: self, selector: (#selector(testMotionViewController.updateMotion)), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: self.updateFrequency, target: self, selector: (#selector(MotionViewController.updateMotion)), userInfo: nil, repeats: true)
     }
     
     @objc func updateMotion() {
@@ -139,4 +139,20 @@ class MotionViewController: UIViewController {
         let currTime = round(NSDate.timeIntervalSinceReferenceDate).truncatingRemainder(dividingBy: 10)
         self.timeLabel.text = String(currTime)
     }
+    
+    /*
+    
+    //save output data as csv for MATLAB testing
+    func saveAsCSV(from csvFile: String) {
+        let filemanager = FileManager.default
+        do {
+            let path = try filemanager.url(for: .documentDirectory, in: .allDomainsMask, appropriateFor: nil, create: false)
+            let fileURL = path.appendingPathComponent("accData.csv")
+            try csvFile.write(to: fileURL, atomically: true, encoding: String.Encoding.utf8)
+        } catch {
+            print("error creating file")
+        }
+    }
+ 
+ */
 }
