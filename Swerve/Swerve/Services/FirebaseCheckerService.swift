@@ -17,6 +17,7 @@ struct FirebaseCheckerService {
         let integralKeyTolerance = 0.5
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            
         
             //loop over all users to find matching integralKey
             let ref = Database.database().reference().child("users")
@@ -64,6 +65,7 @@ struct FirebaseCheckerService {
             
             }
             //I should add code to return the user with the closest integral value (not just any old close value)
+            //Also search only for devices on the opposite sender/receiver type (fine on small scale)
     
         }
         //overlay display start

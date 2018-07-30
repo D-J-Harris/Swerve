@@ -48,7 +48,7 @@
                                         <rect key="frame" x="0.0" y="337.5" width="375" height="329.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHU-FI-Xa7">
-                                                <rect key="frame" x="73.5" y="65" width="228" height="200"/>
+                                                <rect key="frame" x="0.0" y="65" width="375" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="ALb-vk-eDp"/>
                                                 </constraints>
@@ -60,11 +60,30 @@
                                                     <action selector="receiverButtonTapped:" destination="Q38-ZN-tSa" eventType="touchUpInside" id="GnK-1u-2Ah"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdS-vc-A1x">
+                                                <rect key="frame" x="0.0" y="279.5" width="375" height="50"/>
+                                                <color key="backgroundColor" name="tcSeafoamGreen"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="A6Y-k0-zx7"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                                <state key="normal" title="How Does This Work?">
+                                                    <color key="titleColor" red="0.019607843140000001" green="0.21960784310000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="bsR-Tw-OeS" kind="show" id="UQb-yU-6oZ"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.019607843140000001" green="0.21960784310000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="VHU-FI-Xa7" firstAttribute="centerY" secondItem="W2A-gf-cwH" secondAttribute="centerY" id="4LA-km-dVW"/>
                                             <constraint firstItem="VHU-FI-Xa7" firstAttribute="centerX" secondItem="W2A-gf-cwH" secondAttribute="centerX" id="6Au-5I-pBa"/>
+                                            <constraint firstItem="VHU-FI-Xa7" firstAttribute="leading" secondItem="W2A-gf-cwH" secondAttribute="leading" id="AfO-Ee-pOU"/>
+                                            <constraint firstAttribute="bottom" secondItem="cdS-vc-A1x" secondAttribute="bottom" id="KVC-n3-fje"/>
+                                            <constraint firstItem="cdS-vc-A1x" firstAttribute="leading" secondItem="W2A-gf-cwH" secondAttribute="leading" id="Kvx-mz-v6Q"/>
+                                            <constraint firstAttribute="trailing" secondItem="cdS-vc-A1x" secondAttribute="trailing" id="cJA-lz-81P"/>
+                                            <constraint firstAttribute="trailing" secondItem="VHU-FI-Xa7" secondAttribute="trailing" id="u1v-I6-tRj"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -73,7 +92,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.92941176469999998" green="0.96078431369999995" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="tcSeafoamGreen"/>
                         <constraints>
                             <constraint firstItem="0jx-nO-T7Q" firstAttribute="trailing" secondItem="y8f-Jy-n5M" secondAttribute="trailing" id="7Wj-0c-YDe"/>
                             <constraint firstItem="y8f-Jy-n5M" firstAttribute="leading" secondItem="0jx-nO-T7Q" secondAttribute="leading" id="IB6-QR-L4D"/>
@@ -264,8 +283,22 @@
             </objects>
             <point key="canvasLocation" x="1927.2" y="38.23088455772114"/>
         </scene>
+        <!--Instructions-->
+        <scene sceneID="qYg-zx-UXE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Instructions" id="bsR-Tw-OeS" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lUO-GI-er1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2866" y="832"/>
+        </scene>
     </scenes>
     <resources>
+        <namedColor name="tcSeafoamGreen">
+            <color red="0.34900000689999999" green="0.85500001910000001" blue="0.64300000670000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="tcSeafoamGreen">
+            <color red="0.34900000689999999" green="0.85500001910000001" blue="0.64300000670000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="tcSeafoamGreen">
             <color red="0.34900000689999999" green="0.85500001910000001" blue="0.64300000670000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

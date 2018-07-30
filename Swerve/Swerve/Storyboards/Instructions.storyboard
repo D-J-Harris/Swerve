@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fgI-eL-9LP">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Instructions View Controller-->
+        <scene sceneID="Jl1-ed-Px3">
+            <objects>
+                <viewController id="fgI-eL-9LP" customClass="InstructionsViewController" customModule="Swerve" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sw4-0d-sJa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="M0C-Aa-rEy">
+                                <rect key="frame" x="16" y="84" width="343" height="500"/>
+                                <color key="backgroundColor" red="0.019607843140000001" green="0.21960784310000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="500" id="W8v-hg-awJ"/>
+                                </constraints>
+                                <mutableString key="text">Welcome to Swerve, the music (text atm) sharing app!
+
+From the home screen you'll find the option to pick to send or receive text. The sender inputs what they want to send, then both go to the SWERVE screen.
+
+The idea is that we can identify and pair phones based on motion alone. You press 'sync', clasp both phones in one hand, and then move them around for a few seconds! This is enough!
+
+The timer allows you time to set up holding two phones in one hand - once 'sync' is pressed, motion will trigger when the timer hits 0. Be sure to give yourself time!
+
+Keep in mind that steady,  slow and non-jerky motion tends to yield best results.
+
+Enjoy Swerve - Music in Motion</mutableString>
+                                <color key="textColor" red="0.92941176469999998" green="0.96078431369999995" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" name="tcSeafoamGreen"/>
+                        <constraints>
+                            <constraint firstItem="M0C-Aa-rEy" firstAttribute="centerY" secondItem="sw4-0d-sJa" secondAttribute="centerY" id="GcO-3p-f6a"/>
+                            <constraint firstItem="M0C-Aa-rEy" firstAttribute="leading" secondItem="sw4-0d-sJa" secondAttribute="leadingMargin" id="pz1-XT-LvE"/>
+                            <constraint firstItem="M0C-Aa-rEy" firstAttribute="centerX" secondItem="sw4-0d-sJa" secondAttribute="centerX" id="xAX-x2-PbH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8fL-Pf-4eG"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gcI-NH-QSK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2864.8000000000002" y="831.63418290854577"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="tcSeafoamGreen">
+            <color red="0.34900000689999999" green="0.85500001910000001" blue="0.64300000670000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
