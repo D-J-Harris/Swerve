@@ -63,6 +63,7 @@ class MotionViewController: UIViewController {
     }
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
+        sender.isEnabled = false
         perform(#selector(MotionViewController.startDeviceMotion), with: nil, afterDelay: 10 -  NSDate.timeIntervalSinceReferenceDate.truncatingRemainder(dividingBy: 10))
         
     }
@@ -129,7 +130,8 @@ class MotionViewController: UIViewController {
         
         //run autochecker and then confirmation alert
         FirebaseCheckerService.findMatchingDevice(User.current, self)
-        print("end of firebasecheckerservice")
+        
+        startButton.isEnabled = true
     }
     
     // get magnitude of vector via Pythagorean theorem, as String

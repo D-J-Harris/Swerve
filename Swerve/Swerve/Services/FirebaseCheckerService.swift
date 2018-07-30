@@ -12,16 +12,21 @@ import UIKit
 
 struct FirebaseCheckerService {
     
+    
+    //I should add code to return the user with the closest integral value (not just any old close value)
+    //Also search only for devices on the opposite sender/receiver type (fine on small scale)
     static func findMatchingDevice(_ currentUser: User, _ viewController: UIViewController) {
         
         let integralKeyTolerance = 0.5
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            
+        //overlay display start
+        LoadingOverlay.shared.showOverlay(viewController.view)
         
+        _ = Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (timer) in
+            
             //loop over all users to find matching integralKey
             let ref = Database.database().reference().child("users")
-
+            
             ref.observe(.value) { (snapshot) in
                 if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                     for child in snapshots {
@@ -58,19 +63,14 @@ struct FirebaseCheckerService {
                 alertController.addAction(actionYes)
                 alertController.addAction(actionNo)
                 
-              
                 viewController.present(alertController, animated: true, completion: nil)
+                
                 
                 
                 //loading overlay hides
                 LoadingOverlay.shared.hideOverlayView()
-            
+                timer.invalidate()
             }
-            //I should add code to return the user with the closest integral value (not just any old close value)
-            //Also search only for devices on the opposite sender/receiver type (fine on small scale)
-    
         }
-        //overlay display start
-        LoadingOverlay.shared.showOverlay(viewController.view)
     }
 }
