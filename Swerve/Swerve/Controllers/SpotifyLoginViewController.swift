@@ -26,8 +26,9 @@ class SpotifyLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSpotify()
+        
         // Before presenting the view controllers watch for the notification
-        NotificationCenter.default.addObserver(self, selector: #selector(updateAfterFirstLogin), name: NSNotification.Name(rawValue: "loginSuccessful"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(successfulLogin), name: NSNotification.Name(rawValue: "loginSuccessful"), object: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,31 +60,19 @@ class SpotifyLoginViewController: UIViewController {
     
     
     @IBAction func spotifyLoginButtonPressed(_ sender: UIButton) {
-        
-        
-        //check if first time login
-//        if auth.session != nil {
-//            if auth.session.isValid() {
-//                self.toMainStoryboard()
-//                return
-//            }
-//            //refresh token
-//            renewTokenAndShowSearchVC()
-//            return
-//        }
 
         //check if spotify installed
         if SPTAuth.supportsApplicationAuthentication() {
+            //app login
             if let url = appURL {
                 print("app url found")
                 UIApplication.shared.open(url, options: [:]) { (_) in
-                    if self.auth.canHandle(self.auth.redirectURL) {
-                        //build in error handling
-                        print("handled")
+                    if !self.auth.canHandle(self.auth.redirectURL) {
+                        print("error, redirect URL not handled")
                     }
                 }
             }
-            else { print("app url doesn't exist") }
+            else { print("app url doesn't exist") }  //could make these alerts later on
             
         }
         else {
@@ -91,8 +80,8 @@ class SpotifyLoginViewController: UIViewController {
             if let url = webURL {
                 print("web url found")
                 UIApplication.shared.open(url, options: [:]) { (_) in
-                    if self.auth.canHandle(self.auth.redirectURL) {
-                        //build in error handling
+                    if !self.auth.canHandle(self.auth.redirectURL) {
+                        print("error, redirect URL not handled")
                     }
                 }
             }
@@ -101,88 +90,26 @@ class SpotifyLoginViewController: UIViewController {
         }
     }
     
-    func renewTokenAndShowSearchVC() {
-        
-        print("Refreshing token...")
-        
-        let auth:SPTAuth = SPTAuth.defaultInstance()
-        auth.renewSession(auth.session) { (error, session) in
-            auth.session = session
-            
-            if let error = error {
-                print("Refreshing token failed.")
-                print(error.localizedDescription)
-                return
-            }
-            self.toMainStoryboard()
-        }
-    }
-    
-
-    
-    func displayErrorMessage(error: Error) {
+    @objc func successfulLogin() {
         // When changing the UI, all actions must be done on the main thread,
         // since this can be called from a notification which doesn't run on
         // the main thread, we must add this code to the main thread's queue
         
         DispatchQueue.main.async {
-            let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-            
-            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-            alertController.addAction(okAction)
-            
-            self.present(alertController, animated: true, completion: nil)
-        }
-    }
-    
-    func successfulLogin() {
-        // When changing the UI, all actions must be done on the main thread,
-        // since this can be called from a notification which doesn't run on
-        // the main thread, we must add this code to the main thread's queue
-        
-        DispatchQueue.main.async {
-            // Present next view controller or use performSegue(withIdentifier:, sender:)
-            print("successful login performed using successfulLogin()")
+            // Present next view controller
             self.toMainStoryboard()
             
         }
     }
-    
-    @objc func updateAfterFirstLogin() {
-        print("first login function reached")
-        successfulLogin()
-        
-    }
-    
-    /*
-    func initializePlayer(authSession:SPTSession){
-        if self.player == nil {
-            self.player = SPTAudioStreamingController.sharedInstance()
-            self.player!.playbackDelegate = self
-            self.player!.delegate = self
-            try! player!.start(withClientId: auth.clientID)
-            self.player!.login(withAccessToken: authSession.accessToken)
-        }
-    }
-    
-    func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
-        // after a user authenticates a session, the SPTAudioStreamingController is then initialized and this method called
-        print("logged in")
-        self.player?.playSpotifyURI("spotify:track:58s6EuEYJdlb0kO7awm3Vp", startingWith: 0, startingWithPosition: 0, callback: { (error) in
-            if (error != nil) {
-                print("playing!")
-            }
-        })
-    }
-    */
 }
 
+
+//extension for switching to the main storyboard
 extension SpotifyLoginViewController {
     func toMainStoryboard() {
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
         
         if let initialViewController = storyboard.instantiateInitialViewController() {
-            print("Main called here")
             self.view.window?.rootViewController = initialViewController
             self.view.window?.makeKeyAndVisible()
         }

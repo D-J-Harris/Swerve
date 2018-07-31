@@ -51,9 +51,9 @@ class User: Codable {
         guard let currentUser = _current else {
             fatalError("Error: current user doesn't exist")
         }
-        
         return currentUser
     }
+    
     
     static func setCurrent(_ user: User, writeToUserDefaults: Bool = false) {
         if writeToUserDefaults {
@@ -62,9 +62,9 @@ class User: Codable {
             }
             
         }
-        
         _current = user
     }
+    
     
     static func isUserAlreadyLoggedIn() -> Bool {
         let userDefaults = UserDefaults.standard
@@ -75,6 +75,20 @@ class User: Codable {
         }
         return true
     }
+    
+    static func renewToken() {
+        
+        let auth:SPTAuth = SPTAuth.defaultInstance()
+        auth.renewSession(auth.session) { (error, session) in
+            auth.session = session
+            
+            if let error = error {
+                assertionFailure(error.localizedDescription)
+                return
+            }
+        }
+    }
+}
     
     /*
     func search(query: String, callback: @escaping ([Track]) -> Void) -> Void {
@@ -106,4 +120,4 @@ class User: Codable {
         }
     }
     */
-}
+

@@ -14,7 +14,7 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var auth = SPTAuth.defaultInstance()!
+    var auth = SPTAuth()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -28,33 +28,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         auth.sessionUserDefaultsKey = "current session"
         
         // Override point for customization after application launch.
-        print("reached configure initial rootVC")
         configureInitialRootViewController(for: self.window)
-        print(auth.redirectURL)
-        
-        
         
         return true
     }
     
-//    applicationopenoptions
+
     
     //This function is called when the app is opened by a URL
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
-        print("app opened with url")
         
         //Check if app can handle redirect URL
         if auth.canHandle(auth.redirectURL) {
-            
-            print("app can handle url")
-            //notification for
             
             //handle callback in closure
             auth.handleAuthCallback(withTriggeredAuthURL: url, callback: { (error, session) in
                 
                 if let error = error {
-                    print(error.localizedDescription)
+                    assertionFailure("Error: \(error)")
                     return
                 }
                 
@@ -63,11 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let sessionData = NSKeyedArchiver.archivedData(withRootObject: session!)
                 userDefaults.set(sessionData, forKey: "SpotifySession")
                 userDefaults.synchronize()
-                print("session added to userdefaults")
                 
-                
-                
-                //Send out a notification which we can listen for in our sign in view controller
+                //Send out a notification which we can listen for in our sign-in view controller
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loginSuccessful"), object: nil)
             })
             return true
@@ -75,8 +64,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return false
     }
-    
-
     
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -106,34 +93,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-extension Notification.Name {
-    struct Spotify {
-        static let loginSuccessful = Notification.Name("loginSuccessful")
-        static let authURLOpened = Notification.Name("authURLOpened")
-    }
-}
 
+//Decide which view controller to show on loading the app //userDefault dependent
 extension AppDelegate {
     func configureInitialRootViewController(for window: UIWindow?) {
         let defaults = UserDefaults.standard
         let initialViewController: UIViewController
         
+        
+        //if user logged into Firebase
         if let _ = Auth.auth().currentUser,
             let userData = defaults.object(forKey: Constants.UserDefaults.currentUser) as? Data,
             let user = try? JSONDecoder().decode(User.self, from: userData) {
+            
+            //if user logged into spotify
             if User.isUserAlreadyLoggedIn() {
                 User.setCurrent(user)
-                print("going to main")
+                //User.renewToken()
                 initialViewController = UIStoryboard.initialViewController(for: .main)
             }
             else {
                 User.setCurrent(user)
-                print("going to spotify login")
                 initialViewController = UIStoryboard.initialViewController(for: .spotifylogin)
             }
         }
+        //user not logged into Firebase
         else {
-            print("going to login")
             initialViewController = UIStoryboard.initialViewController(for: .login)
         }
         
