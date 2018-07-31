@@ -51,7 +51,6 @@ class SpotifyLoginViewController: UIViewController {
         //for streaming purposes
         do {
             try SPTAudioStreamingController.sharedInstance().start(withClientId: Constants.spotify.clientID)
-            print("audio player found")
         } catch {
             fatalError("Couldn't start Spotify SDK")
         }
@@ -65,7 +64,6 @@ class SpotifyLoginViewController: UIViewController {
         if SPTAuth.supportsApplicationAuthentication() {
             //app login
             if let url = appURL {
-                print("app url found")
                 UIApplication.shared.open(url, options: [:]) { (_) in
                     if !self.auth.canHandle(self.auth.redirectURL) {
                         print("error, redirect URL not handled")
@@ -78,7 +76,6 @@ class SpotifyLoginViewController: UIViewController {
         else {
             //web login
             if let url = webURL {
-                print("web url found")
                 UIApplication.shared.open(url, options: [:]) { (_) in
                     if !self.auth.canHandle(self.auth.redirectURL) {
                         print("error, redirect URL not handled")
