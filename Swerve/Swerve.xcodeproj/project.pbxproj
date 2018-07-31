@@ -21,6 +21,12 @@
 		BEA780DE210ED0610068115E /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780DD210ED0610068115E /* InstructionsViewController.swift */; };
 		BEA780E0210ED0BF0068115E /* Instructions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEA780DF210ED0BF0068115E /* Instructions.storyboard */; };
 		BEA780E2210ED7BC0068115E /* DisplayResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780E1210ED7BC0068115E /* DisplayResultViewController.swift */; };
+		BEA780E6210FC0210068115E /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA780E3210FC0200068115E /* SpotifyAudioPlayback.framework */; };
+		BEA780E7210FC0210068115E /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA780E4210FC0210068115E /* SpotifyMetadata.framework */; };
+		BEA780E8210FC0210068115E /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA780E5210FC0210068115E /* SpotifyAuthentication.framework */; };
+		BEA780EC210FC0F80068115E /* BridgeHeaderFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA780EB210FC0F80068115E /* BridgeHeaderFileViewController.m */; };
+		BEA780EE210FEF990068115E /* SpotifyLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780ED210FEF990068115E /* SpotifyLoginViewController.swift */; };
+		BEA780F0210FF0AE0068115E /* SpotifyLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEA780EF210FF0AE0068115E /* SpotifyLogin.storyboard */; };
 		BEEA72E92106D261008779B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEA72E82106D261008779B0 /* AppDelegate.swift */; };
 		BEEA72EE2106D262008779B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEEA72EC2106D262008779B0 /* Main.storyboard */; };
 		BEEA72F02106D263008779B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEEA72EF2106D263008779B0 /* Assets.xcassets */; };
@@ -46,6 +52,14 @@
 		BEA780DD210ED0610068115E /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 		BEA780DF210ED0BF0068115E /* Instructions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Instructions.storyboard; sourceTree = "<group>"; };
 		BEA780E1210ED7BC0068115E /* DisplayResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayResultViewController.swift; sourceTree = "<group>"; };
+		BEA780E3210FC0200068115E /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAudioPlayback.framework; sourceTree = "<group>"; };
+		BEA780E4210FC0210068115E /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyMetadata.framework; sourceTree = "<group>"; };
+		BEA780E5210FC0210068115E /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
+		BEA780E9210FC0F70068115E /* Swerve-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Swerve-Bridging-Header.h"; sourceTree = "<group>"; };
+		BEA780EA210FC0F80068115E /* BridgeHeaderFileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgeHeaderFileViewController.h; sourceTree = "<group>"; };
+		BEA780EB210FC0F80068115E /* BridgeHeaderFileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BridgeHeaderFileViewController.m; sourceTree = "<group>"; };
+		BEA780ED210FEF990068115E /* SpotifyLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyLoginViewController.swift; sourceTree = "<group>"; };
+		BEA780EF210FF0AE0068115E /* SpotifyLogin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SpotifyLogin.storyboard; sourceTree = "<group>"; };
 		BEEA72E52106D261008779B0 /* Swerve.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swerve.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEEA72E82106D261008779B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEEA72ED2106D262008779B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -66,6 +80,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FA07E5B41745C3D8BFC3826 /* Pods_Swerve.framework in Frameworks */,
+				BEA780E8210FC0210068115E /* SpotifyAuthentication.framework in Frameworks */,
+				BEA780E7210FC0210068115E /* SpotifyMetadata.framework in Frameworks */,
+				BEA780E6210FC0210068115E /* SpotifyAudioPlayback.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +146,9 @@
 			isa = PBXGroup;
 			children = (
 				BEEA72E82106D261008779B0 /* AppDelegate.swift */,
+				BEA780E3210FC0200068115E /* SpotifyAudioPlayback.framework */,
+				BEA780E5210FC0210068115E /* SpotifyAuthentication.framework */,
+				BEA780E4210FC0210068115E /* SpotifyMetadata.framework */,
 				BE0577A4210A2F7300BCFAE1 /* Helpers */,
 				BE0577A1210A2EC200BCFAE1 /* Extensions */,
 				BE5544532108F73700A9CCA2 /* Services */,
@@ -136,6 +156,9 @@
 				BEEA73002107D87B008779B0 /* Controllers */,
 				BEEA72FF2107D862008779B0 /* Storyboards */,
 				BEEA72FE2107D84B008779B0 /* Supporting */,
+				BEA780EA210FC0F80068115E /* BridgeHeaderFileViewController.h */,
+				BEA780EB210FC0F80068115E /* BridgeHeaderFileViewController.m */,
+				BEA780E9210FC0F70068115E /* Swerve-Bridging-Header.h */,
 			);
 			path = Swerve;
 			sourceTree = "<group>";
@@ -158,6 +181,7 @@
 				BEEA72F12106D263008779B0 /* LaunchScreen.storyboard */,
 				BEEA72EC2106D262008779B0 /* Main.storyboard */,
 				BEEA73012107D9A9008779B0 /* Login.storyboard */,
+				BEA780EF210FF0AE0068115E /* SpotifyLogin.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -172,6 +196,7 @@
 				BEA780CD210B8A670068115E /* MotionViewController.swift */,
 				BEA780DD210ED0610068115E /* InstructionsViewController.swift */,
 				BEA780E1210ED7BC0068115E /* DisplayResultViewController.swift */,
+				BEA780ED210FEF990068115E /* SpotifyLoginViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -227,6 +252,7 @@
 				TargetAttributes = {
 					BEEA72E42106D261008779B0 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -257,6 +283,7 @@
 				BEA780E0210ED0BF0068115E /* Instructions.storyboard in Resources */,
 				BEEA72FD2107D6E3008779B0 /* GoogleService-Info.plist in Resources */,
 				BEEA72F02106D263008779B0 /* Assets.xcassets in Resources */,
+				BEA780F0210FF0AE0068115E /* SpotifyLogin.storyboard in Resources */,
 				BEEA73022107D9A9008779B0 /* Login.storyboard in Resources */,
 				BEEA72EE2106D262008779B0 /* Main.storyboard in Resources */,
 			);
@@ -332,6 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEA780EC210FC0F80068115E /* BridgeHeaderFileViewController.m in Sources */,
 				BE2D52082108E7A0004113DB /* CreateUsernameViewController.swift in Sources */,
 				BE5544552108F74800A9CCA2 /* UserService.swift in Sources */,
 				BEA780CA210B83A30068115E /* SenderReceiverViewController.swift in Sources */,
@@ -340,6 +368,7 @@
 				BEEA73042107DB0D008779B0 /* LoginViewController.swift in Sources */,
 				BEA780CC210B89B80068115E /* SenderInputViewController.swift in Sources */,
 				BEA780DA210D30730068115E /* PartnerCheckerService.swift in Sources */,
+				BEA780EE210FEF990068115E /* SpotifyLoginViewController.swift in Sources */,
 				BE0577A3210A2ED900BCFAE1 /* Storyboard+Utility.swift in Sources */,
 				BEA780E2210ED7BC0068115E /* DisplayResultViewController.swift in Sources */,
 				BEEA72E92106D261008779B0 /* AppDelegate.swift in Sources */,
@@ -491,8 +520,13 @@
 			baseConfigurationReference = FDCFA47EE7A537E079FF9066 /* Pods-Swerve.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AL84MLV79J;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Swerve",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Swerve/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -500,6 +534,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.danielharris.Swerve;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Swerve/Swerve-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -510,8 +546,13 @@
 			baseConfigurationReference = 1BF4EA8BC2242851E8483804 /* Pods-Swerve.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AL84MLV79J;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Swerve",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Swerve/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -519,6 +560,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.danielharris.Swerve;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Swerve/Swerve-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

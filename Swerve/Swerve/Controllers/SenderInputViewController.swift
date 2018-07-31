@@ -16,7 +16,6 @@ class SenderInputViewController: UIViewController {
     @IBOutlet weak var testTextTransferTextField: UITextField!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +33,7 @@ class SenderInputViewController: UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}

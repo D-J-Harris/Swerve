@@ -8,12 +8,14 @@
 
 import Foundation
 import UIKit
-
+import SafariServices
 
 class SenderReceiverViewController: UIViewController {
     
     @IBOutlet weak var senderButton: UIButton!
     @IBOutlet weak var receiverButton: UIButton!
+    
+
     
     
     
@@ -24,7 +26,8 @@ class SenderReceiverViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
+ 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
         
@@ -53,8 +56,4 @@ class SenderReceiverViewController: UIViewController {
     
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
     }
-    
-    
-    
-    
 }

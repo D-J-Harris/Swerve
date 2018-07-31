@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3S2-iM-fau">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Spotify Login View Controller-->
+        <scene sceneID="pZD-vI-1UQ">
+            <objects>
+                <viewController id="3S2-iM-fau" customClass="SpotifyLoginViewController" customModule="Swerve" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5SQ-ac-yUT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSc-wo-BpG">
+                                <rect key="frame" x="0.0" y="303.5" width="375" height="60"/>
+                                <color key="backgroundColor" name="tcSeafoamGreen"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Obl-XT-9vk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Login With Spotify">
+                                    <color key="titleColor" red="0.019607843140000001" green="0.21960784310000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="spotifyLoginButtonPressed:" destination="3S2-iM-fau" eventType="touchUpInside" id="Hct-SG-u2H"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="HSc-wo-BpG" firstAttribute="centerY" secondItem="5SQ-ac-yUT" secondAttribute="centerY" id="Ngq-Bu-T6V"/>
+                            <constraint firstItem="HSc-wo-BpG" firstAttribute="leading" secondItem="z4l-XP-Vrq" secondAttribute="leading" id="eB1-38-PCr"/>
+                            <constraint firstItem="z4l-XP-Vrq" firstAttribute="trailing" secondItem="HSc-wo-BpG" secondAttribute="trailing" id="p9B-tR-TC3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="z4l-XP-Vrq"/>
+                    </view>
+                    <connections>
+                        <outlet property="spotifyLoginButton" destination="HSc-wo-BpG" id="6NU-3x-gYA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NH5-jH-x2a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-100" y="-28"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="tcSeafoamGreen">
+            <color red="0.34900000689999999" green="0.85500001910000001" blue="0.64300000670000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

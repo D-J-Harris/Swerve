@@ -50,7 +50,7 @@ class CreateUsernameViewController: UIViewController {
             
             User.setCurrent(user, writeToUserDefaults: true)
             
-            let storyboard = UIStoryboard(name: "Main", bundle: .main)
+            let storyboard = UIStoryboard(name: "SpotifyLogin", bundle: .main)
             
             if let initialViewController = storyboard.instantiateInitialViewController() {
                 self.view.window?.rootViewController = initialViewController
