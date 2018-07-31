@@ -27,7 +27,10 @@ struct Constants {
     
     struct spotify {
         static let clientID = "311458c22f8f43338c47d415082330bd"
-        static let redirectURI = URL(string: "Swerve://returnAfterLogin")
+        static let redirectURI = URL(string: "Swerve://")
         static let sessionKey = "spotifySessionKey"
+    }
+    struct UserDefaults {
+        static let currentUser = "currentUser"
     }
 }

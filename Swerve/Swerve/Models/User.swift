@@ -65,4 +65,45 @@ class User: Codable {
         
         _current = user
     }
+    
+    static func isUserAlreadyLoggedIn() -> Bool {
+        let userDefaults = UserDefaults.standard
+        guard let sessionObj:AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject?,
+            let sessionDataObj = sessionObj as? Data,
+            let _ = NSKeyedUnarchiver.unarchiveObject(with: sessionDataObj) as? SPTSession else {
+                return false
+        }
+        return true
+    }
+    
+    /*
+    func search(query: String, callback: @escaping ([Track]) -> Void) -> Void {
+        
+        let auth: SPTAuth = SPTAuth.defaultInstance()
+        let token = auth.session.accessToken
+        
+        SPTSearch.perform(withQuery: query, queryType: .queryTypeTrack, accessToken: token, market: "Country_Code") { (error, result) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            if let listPage = result as? SPTListPage,
+                let items = listPage.items as? [SPTPartialTrack],
+                let artist = items.first?.artists.first as? SPTPartialArtist {
+                
+                let tracks = items.compactMap({ (pTrack) -> Track in
+                    
+                    let name: String = pTrack.name
+                    let artist: String = artist.name
+                    let album: String = pTrack.album.name
+                    
+                    return Track(name: name , artist: artist, album: album)
+                })
+                
+                callback(tracks)
+            }
+        }
+    }
+    */
 }

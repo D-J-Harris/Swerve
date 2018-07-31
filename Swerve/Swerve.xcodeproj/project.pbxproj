@@ -26,7 +26,8 @@
 		BEA780E8210FC0210068115E /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA780E5210FC0210068115E /* SpotifyAuthentication.framework */; };
 		BEA780EC210FC0F80068115E /* BridgeHeaderFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA780EB210FC0F80068115E /* BridgeHeaderFileViewController.m */; };
 		BEA780EE210FEF990068115E /* SpotifyLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780ED210FEF990068115E /* SpotifyLoginViewController.swift */; };
-		BEA780F0210FF0AE0068115E /* SpotifyLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEA780EF210FF0AE0068115E /* SpotifyLogin.storyboard */; };
+		BEA780F0210FF0AE0068115E /* Spotifylogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEA780EF210FF0AE0068115E /* Spotifylogin.storyboard */; };
+		BEA780F221101AB70068115E /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780F121101AB70068115E /* Track.swift */; };
 		BEEA72E92106D261008779B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEA72E82106D261008779B0 /* AppDelegate.swift */; };
 		BEEA72EE2106D262008779B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEEA72EC2106D262008779B0 /* Main.storyboard */; };
 		BEEA72F02106D263008779B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEEA72EF2106D263008779B0 /* Assets.xcassets */; };
@@ -59,7 +60,8 @@
 		BEA780EA210FC0F80068115E /* BridgeHeaderFileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgeHeaderFileViewController.h; sourceTree = "<group>"; };
 		BEA780EB210FC0F80068115E /* BridgeHeaderFileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BridgeHeaderFileViewController.m; sourceTree = "<group>"; };
 		BEA780ED210FEF990068115E /* SpotifyLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyLoginViewController.swift; sourceTree = "<group>"; };
-		BEA780EF210FF0AE0068115E /* SpotifyLogin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SpotifyLogin.storyboard; sourceTree = "<group>"; };
+		BEA780EF210FF0AE0068115E /* Spotifylogin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Spotifylogin.storyboard; sourceTree = "<group>"; };
+		BEA780F121101AB70068115E /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		BEEA72E52106D261008779B0 /* Swerve.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swerve.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEEA72E82106D261008779B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEEA72ED2106D262008779B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -181,7 +183,7 @@
 				BEEA72F12106D263008779B0 /* LaunchScreen.storyboard */,
 				BEEA72EC2106D262008779B0 /* Main.storyboard */,
 				BEEA73012107D9A9008779B0 /* Login.storyboard */,
-				BEA780EF210FF0AE0068115E /* SpotifyLogin.storyboard */,
+				BEA780EF210FF0AE0068115E /* Spotifylogin.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				BEEA73062107FED8008779B0 /* User.swift */,
+				BEA780F121101AB70068115E /* Track.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -283,7 +286,7 @@
 				BEA780E0210ED0BF0068115E /* Instructions.storyboard in Resources */,
 				BEEA72FD2107D6E3008779B0 /* GoogleService-Info.plist in Resources */,
 				BEEA72F02106D263008779B0 /* Assets.xcassets in Resources */,
-				BEA780F0210FF0AE0068115E /* SpotifyLogin.storyboard in Resources */,
+				BEA780F0210FF0AE0068115E /* Spotifylogin.storyboard in Resources */,
 				BEEA73022107D9A9008779B0 /* Login.storyboard in Resources */,
 				BEEA72EE2106D262008779B0 /* Main.storyboard in Resources */,
 			);
@@ -364,6 +367,7 @@
 				BE5544552108F74800A9CCA2 /* UserService.swift in Sources */,
 				BEA780CA210B83A30068115E /* SenderReceiverViewController.swift in Sources */,
 				BEA780CE210B8A670068115E /* MotionViewController.swift in Sources */,
+				BEA780F221101AB70068115E /* Track.swift in Sources */,
 				BEEA73072107FED8008779B0 /* User.swift in Sources */,
 				BEEA73042107DB0D008779B0 /* LoginViewController.swift in Sources */,
 				BEA780CC210B89B80068115E /* SenderInputViewController.swift in Sources */,
