@@ -28,6 +28,7 @@
 		BEA780EE210FEF990068115E /* SpotifyLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780ED210FEF990068115E /* SpotifyLoginViewController.swift */; };
 		BEA780F0210FF0AE0068115E /* Spotifylogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEA780EF210FF0AE0068115E /* Spotifylogin.storyboard */; };
 		BEA780F221101AB70068115E /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780F121101AB70068115E /* Track.swift */; };
+		BEA780F421126F4A0068115E /* SpotifyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780F321126F4A0068115E /* SpotifyHelper.swift */; };
 		BEEA72E92106D261008779B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEA72E82106D261008779B0 /* AppDelegate.swift */; };
 		BEEA72EE2106D262008779B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEEA72EC2106D262008779B0 /* Main.storyboard */; };
 		BEEA72F02106D263008779B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEEA72EF2106D263008779B0 /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 		BEA780ED210FEF990068115E /* SpotifyLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyLoginViewController.swift; sourceTree = "<group>"; };
 		BEA780EF210FF0AE0068115E /* Spotifylogin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Spotifylogin.storyboard; sourceTree = "<group>"; };
 		BEA780F121101AB70068115E /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		BEA780F321126F4A0068115E /* SpotifyHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyHelper.swift; sourceTree = "<group>"; };
 		BEEA72E52106D261008779B0 /* Swerve.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swerve.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEEA72E82106D261008779B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEEA72ED2106D262008779B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				BE0577A5210A2F9000BCFAE1 /* GraphFeatures.swift */,
 				BEA780DB210E3CE80068115E /* LoadingOverlay.swift */,
+				BEA780F321126F4A0068115E /* SpotifyHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				BE5544552108F74800A9CCA2 /* UserService.swift in Sources */,
 				BEA780CA210B83A30068115E /* SenderReceiverViewController.swift in Sources */,
 				BEA780CE210B8A670068115E /* MotionViewController.swift in Sources */,
+				BEA780F421126F4A0068115E /* SpotifyHelper.swift in Sources */,
 				BEA780F221101AB70068115E /* Track.swift in Sources */,
 				BEEA73072107FED8008779B0 /* User.swift in Sources */,
 				BEEA73042107DB0D008779B0 /* LoginViewController.swift in Sources */,

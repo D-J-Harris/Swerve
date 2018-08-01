@@ -14,7 +14,7 @@ class SenderInputViewController: UIViewController {
     
     @IBOutlet weak var toMotionButton: UIButton!
     @IBOutlet weak var testTextTransferTextField: UITextField!
-    let auth = SPTAuth()
+    let auth = SPTAuth.defaultInstance()!
     var spotifySession: SPTSession?
     
     
@@ -22,7 +22,12 @@ class SenderInputViewController: UIViewController {
         super.viewDidLoad()
         
         //get the current spotify session if it exists
+        print("///////")
+        print(auth.session.accessToken)
         guard let spotifySession = User.getSPTSession() else {return}
+        auth.session = spotifySession
+        print("\\\\//")
+        print(auth.session.accessToken)
         
         //Handle tapping to deactivate keyboard
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))

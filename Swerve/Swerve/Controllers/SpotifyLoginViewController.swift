@@ -15,7 +15,7 @@ class SpotifyLoginViewController: UIViewController {
     
     //Spotify initialisations
     var auth: SPTAuth = SPTAuth.defaultInstance()
-    var session: SPTSession!
+    var session = User.getSPTSession()
     
     //Initialised in either updateAfterFirstLogin or viewDidLoad (check for session in userDefaults)
     var player: SPTAudioStreamingController?
@@ -61,31 +61,40 @@ class SpotifyLoginViewController: UIViewController {
     
     
     @IBAction func spotifyLoginButtonPressed(_ sender: UIButton) {
+        
+        if auth.session == nil {
 
-        //check if spotify installed
-        if SPTAuth.supportsApplicationAuthentication() {
-            //app login
-            if let url = appURL {
-                UIApplication.shared.open(url, options: [:]) { (_) in
-                    if !self.auth.canHandle(self.auth.redirectURL) {
-                        print("error, redirect URL not handled")
+            //check if spotify installed
+            if SPTAuth.supportsApplicationAuthentication() {
+                //app login
+                if let url = appURL {
+                    UIApplication.shared.open(url, options: [:]) { (_) in
+                        if !self.auth.canHandle(self.auth.redirectURL) {
+                            print("error, redirect URL not handled")
+                        }
                     }
                 }
+                else { print("app url doesn't exist") }  //could make these alerts later on
+                
             }
-            else { print("app url doesn't exist") }  //could make these alerts later on
-            
+            else {
+                //web login
+                if let url = webURL {
+                    UIApplication.shared.open(url, options: [:]) { (_) in
+                        if !self.auth.canHandle(self.auth.redirectURL) {
+                            print("error, redirect URL not handled")
+                        }
+                    }
+                }
+                else { print("web url doesn't exist") }
+                
+            }
         }
         else {
-            //web login
-            if let url = webURL {
-                UIApplication.shared.open(url, options: [:]) { (_) in
-                    if !self.auth.canHandle(self.auth.redirectURL) {
-                        print("error, redirect URL not handled")
-                    }
-                }
+            if !auth.session.isValid() {
+                User.renewToken()
             }
-            else { print("web url doesn't exist") }
-            
+            successfulLogin()
         }
     }
     

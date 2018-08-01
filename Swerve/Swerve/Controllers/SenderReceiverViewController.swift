@@ -8,19 +8,20 @@
 
 import Foundation
 import UIKit
-import SafariServices
 
 class SenderReceiverViewController: UIViewController {
     
     @IBOutlet weak var senderButton: UIButton!
     @IBOutlet weak var receiverButton: UIButton!
-    
+    let auth = SPTAuth.defaultInstance()!
 
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        auth.session = User.getSPTSession()
+        print(auth.session)
     }
     
     override func didReceiveMemoryWarning() {

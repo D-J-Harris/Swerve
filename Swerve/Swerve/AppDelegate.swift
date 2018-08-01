@@ -58,9 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 userDefaults.set(sessionData, forKey: "SpotifySession")
                 userDefaults.synchronize()
                 
-                //add session
-                self.auth.session = session
-                
                 //Send out a notification which we can listen for in our sign-in view controller
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loginSuccessful"), object: nil)
             })
@@ -111,16 +108,8 @@ extension AppDelegate {
             let userData = defaults.object(forKey: Constants.UserDefaults.currentUser) as? Data,
             let user = try? JSONDecoder().decode(User.self, from: userData) {
             
-            //if user logged into spotify
-            if User.isUserAlreadyLoggedIn() {
-                User.setCurrent(user)
-                //User.renewToken()
-                initialViewController = UIStoryboard.initialViewController(for: .main)
-            }
-            else {
-                User.setCurrent(user)
-                initialViewController = UIStoryboard.initialViewController(for: .spotifylogin)
-            }
+            User.setCurrent(user)
+            initialViewController = UIStoryboard.initialViewController(for: .spotifylogin)
         }
         //user not logged into Firebase
         else {

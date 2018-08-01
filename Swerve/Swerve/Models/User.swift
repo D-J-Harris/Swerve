@@ -65,8 +65,9 @@ class User: Codable {
         _current = user
     }
     
-    
+    /*
     static func isUserAlreadyLoggedIn() -> Bool {
+        let auth = SPTAuth.defaultInstance()!
         let userDefaults = UserDefaults.standard
         guard
             let sessionObj: AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject?,
@@ -76,8 +77,10 @@ class User: Codable {
         }
         print("-------")
         print(session.accessToken)
+        auth.session = session
         return true
     }
+ */
     
     static func getSPTSession() -> SPTSession? {
         let userDefaults = UserDefaults.standard
@@ -92,12 +95,12 @@ class User: Codable {
         return session
     }
 
-    //not currently in use
     static func renewToken() {
         
         let auth: SPTAuth = SPTAuth.defaultInstance()
-        guard let session: SPTSession = getSPTSession() else {return}
-        auth.renewSession(session) { (error, session) in
+        auth.tokenRefreshURL = Constants.spotify.tokenRefreshURL
+        auth.tokenSwapURL = Constants.spotify.tokenSwapURL
+        auth.renewSession(auth.session) { (error, session) in
             auth.session = session
             
             if let error = error {
