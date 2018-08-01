@@ -20,11 +20,8 @@ struct Track {
         self.album = album
     }
     
-    init(json: JSON){
-        self.name = json
-        self.timezone = json["Results"][0]["tzs"].stringValue
-        self.latitude = json["Results"][0]["lat"].stringValue
-        self.longitude = json["Results"][0]["lon"].stringValue
-    }
+//    init(json: JSON){
+//
+//    }
 }
 
