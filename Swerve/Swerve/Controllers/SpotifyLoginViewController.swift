@@ -40,6 +40,8 @@ class SpotifyLoginViewController: UIViewController {
         auth.clientID = Constants.spotify.clientID
         auth.redirectURL = Constants.spotify.redirectURI
         auth.sessionUserDefaultsKey = Constants.spotify.sessionKey
+        auth.tokenSwapURL = Constants.spotify.tokenSwapURL
+        auth.tokenRefreshURL = Constants.spotify.tokenRefreshURL
         webURL = auth.spotifyWebAuthenticationURL()
         appURL = auth.spotifyAppAuthenticationURL()
         

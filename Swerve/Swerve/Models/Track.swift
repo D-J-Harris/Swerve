@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct Track {
     let name: String
@@ -18,4 +19,12 @@ struct Track {
         self.artist = artist
         self.album = album
     }
+    
+    init(json: JSON){
+        self.name = json
+        self.timezone = json["Results"][0]["tzs"].stringValue
+        self.latitude = json["Results"][0]["lat"].stringValue
+        self.longitude = json["Results"][0]["lon"].stringValue
+    }
 }
+

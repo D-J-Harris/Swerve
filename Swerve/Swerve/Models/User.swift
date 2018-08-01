@@ -68,18 +68,36 @@ class User: Codable {
     
     static func isUserAlreadyLoggedIn() -> Bool {
         let userDefaults = UserDefaults.standard
-        guard let sessionObj:AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject?,
+        guard
+            let sessionObj: AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject?,
             let sessionDataObj = sessionObj as? Data,
-            let _ = NSKeyedUnarchiver.unarchiveObject(with: sessionDataObj) as? SPTSession else {
+            let session = NSKeyedUnarchiver.unarchiveObject(with: sessionDataObj) as? SPTSession else {
                 return false
         }
+        print("-------")
+        print(session.accessToken)
         return true
     }
     
+    static func getSPTSession() -> SPTSession? {
+        let userDefaults = UserDefaults.standard
+        guard
+            let sessionObj: AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject?,
+            let sessionDataObj = sessionObj as? Data,
+            let session = NSKeyedUnarchiver.unarchiveObject(with: sessionDataObj) as? SPTSession else {
+                return nil
+        }
+        print("------->")
+        print(session.accessToken)
+        return session
+    }
+
+    //not currently in use
     static func renewToken() {
         
-        let auth:SPTAuth = SPTAuth.defaultInstance()
-        auth.renewSession(auth.session) { (error, session) in
+        let auth: SPTAuth = SPTAuth.defaultInstance()
+        guard let session: SPTSession = getSPTSession() else {return}
+        auth.renewSession(session) { (error, session) in
             auth.session = session
             
             if let error = error {
@@ -89,8 +107,9 @@ class User: Codable {
         }
     }
 }
-    
+
     /*
+ 
     func search(query: String, callback: @escaping ([Track]) -> Void) -> Void {
         
         let auth: SPTAuth = SPTAuth.defaultInstance()

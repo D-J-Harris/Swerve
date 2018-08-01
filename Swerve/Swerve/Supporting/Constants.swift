@@ -29,6 +29,9 @@ struct Constants {
         static let clientID = "311458c22f8f43338c47d415082330bd"
         static let redirectURI = URL(string: "Swerve://")
         static let sessionKey = "spotifySessionKey"
+        static let tokenRefreshURL = URL(string: "")
+        static let tokenSwapURL = URL(string: "")
+        //https://steelkiwi.com/blog/how-connect-spotify-sdk-your-project/ for token refresh implementation
     }
     struct UserDefaults {
         static let currentUser = "currentUser"

@@ -14,7 +14,7 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var auth = SPTAuth()
+    var auth = SPTAuth.defaultInstance()!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -45,16 +45,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //handle callback in closure
             auth.handleAuthCallback(withTriggeredAuthURL: url, callback: { (error, session) in
                 
+                //error handling
                 if let error = error {
                     assertionFailure("Error: \(error)")
                     return
                 }
+                guard let session = session else {return}
                 
                 //add to user defaults
                 let userDefaults = UserDefaults.standard
-                let sessionData = NSKeyedArchiver.archivedData(withRootObject: session!)
+                let sessionData = NSKeyedArchiver.archivedData(withRootObject: session)
                 userDefaults.set(sessionData, forKey: "SpotifySession")
                 userDefaults.synchronize()
+                
+                //add session
+                self.auth.session = session
                 
                 //Send out a notification which we can listen for in our sign-in view controller
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loginSuccessful"), object: nil)
