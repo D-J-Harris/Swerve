@@ -46,7 +46,6 @@ func getTrackList(completion: @escaping ([Track]) -> Void) {
                         print("name: \(track.name) albumCoverURL: \(track.albumCoverURL) artist: \(track.artist) id: \(track.id) spotifyURI: \(track.spotifyUri) URL: \(track.url)")
                     }
                 }
-                print(trackList[1].name)
                 completion(trackList)
     
             //Alamofire call failed, likely wrong token

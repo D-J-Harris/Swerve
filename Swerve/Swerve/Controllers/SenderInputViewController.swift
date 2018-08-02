@@ -23,25 +23,33 @@ class SenderInputViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
         
         //having loading progress wait for the getTrackList to complete
-        
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
         LoadingOverlay.shared.showOverlay(self.view)
-        getTrackList(completion: { (tracks) -> Void in
+        getTrackList { (tracks) in
             if !tracks.isEmpty {
                 print("tracks downloaded")
-                LoadingOverlay.shared.hideOverlayView()
+                print(tracks[0].name)
+                self.trackList = tracks
             }
             else {
                 print("no tracks exist")
+                
             }
-        })
+            dispatchGroup.leave()
+        }
+    
         
         
+        dispatchGroup.notify(queue: DispatchQueue.main) {
+            LoadingOverlay.shared.hideOverlayView()
+            print(self.trackList.count)
+            self.tableView.reloadData()
+        }
         
-        
-        
-        tableView.dataSource = self
         
         //Handle tapping to deactivate keyboard
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -89,11 +97,12 @@ class SenderInputViewController: UIViewController {
 extension SenderInputViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return trackList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TrackCell", for: indexPath)
+        cell.backgroundColor = UIColor.blue
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
