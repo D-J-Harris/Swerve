@@ -8,11 +8,14 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
 
 class SenderReceiverViewController: UIViewController {
     
     @IBOutlet weak var senderButton: UIButton!
     @IBOutlet weak var receiverButton: UIButton!
+    @IBOutlet weak var signoutButton: UIBarButtonItem!
+    
     let auth = SPTAuth.defaultInstance()!
 
     
@@ -46,6 +49,28 @@ class SenderReceiverViewController: UIViewController {
         }
     }
     
+    func handleSignOutButtonTapped() {
+        let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive) { (action) in
+            do {
+                try Auth.auth().signOut()
+                let loginStoryboard = UIStoryboard(name: "Login", bundle: Bundle.main)
+                let loginVC : UIViewController = loginStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                self.present(loginVC, animated: true, completion: nil)
+            } catch let err {
+                print("Failed to sign out with error", err)
+                UserService.showAlert(on: self, style: .alert, title: "Sign Out Error", message: err.localizedDescription)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        UserService.showAlert(on: self, style: .actionSheet, title: nil, message: nil, actions: [signOutAction, cancelAction], completion: nil)
+        
+        
+    }
+    
+    
+    @IBAction func signoutButtonTapped(_ sender: Any) {
+        handleSignOutButtonTapped()
+    }
     
     @IBAction func senderButtonTapped(_ sender: UIButton) {
         self.performSegue(withIdentifier: Constants.Segue.senderToSenderInfo, sender: self)

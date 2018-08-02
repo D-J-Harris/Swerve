@@ -101,10 +101,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0jx-nO-T7Q"/>
                     </view>
-                    <navigationItem key="navigationItem" id="qoW-ST-Gv3"/>
+                    <navigationItem key="navigationItem" id="qoW-ST-Gv3">
+                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="dxY-mo-Kax">
+                            <connections>
+                                <action selector="signoutButtonTapped:" destination="Q38-ZN-tSa" id="8YE-EU-0Fu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="receiverButton" destination="VHU-FI-Xa7" id="RR3-yb-S2A"/>
                         <outlet property="senderButton" destination="M9p-Sl-Myx" id="zwy-Hn-ET3"/>
+                        <outlet property="signoutButton" destination="dxY-mo-Kax" id="EZe-24-PZk"/>
                         <segue destination="Rhk-yU-Jch" kind="show" identifier="senderToSenderInfo" id="q8n-JX-Ekr"/>
                         <segue destination="zww-C7-nWV" kind="show" identifier="receiverToMotion" id="OnX-3Y-0Jj"/>
                     </connections>
