@@ -86,6 +86,9 @@ class SpotifyLoginViewController: UIViewController {
             if !auth.session.isValid() {
                 User.renewToken()
             }
+            print("-----------")
+            print(auth.session.accessToken!)
+            print("--------")
             successfulLogin()
         }
     }

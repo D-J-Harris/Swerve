@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 
 class SenderInputViewController: UIViewController {
@@ -21,8 +23,9 @@ class SenderInputViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(auth.session.accessToken)
+        getTrackList { (tracks) in
+            //
+        }
         
         //Handle tapping to deactivate keyboard
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -40,6 +43,7 @@ class SenderInputViewController: UIViewController {
     }
     
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
         
@@ -55,6 +59,41 @@ class SenderInputViewController: UIViewController {
             print("error no correct segue identified")
         }
     }
+    
+    
+    func getTrackList(completion: @escaping ([Track]) -> Void) {
+        var trackList: [Track] = []
+        let apiToCall = "https://api.spotify.com/v1/me/tracks"
+        
+        let auth = SPTAuth.defaultInstance()!
+        guard let accessToken = auth.session.accessToken else {return}
+
+        let headers = ["Authorization": "Bearer \(accessToken)"]
+        Alamofire.request(apiToCall, headers: headers).validate().responseJSON { (response) in
+            switch response.result {
+            case .success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    
+                    //for track in 0...49 {
+                        let track = Track.init(json: json, 0)
+                        trackList.append(track)
+                        print("name: \(track.name) album: \(track.album) artist: \(track.artist) id: \(track.id) spotifyURI: \(track.spotifyUri) URL: \(track.url)")
+                   // }
+                }
+            case .failure(let error):
+                print(error)
+            }
+            completion(trackList)
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
     
     @IBAction func toMotionButtonTapped(_ sender: UIButton) {
         self.performSegue(withIdentifier: Constants.Segue.senderInfoToMotion, sender: self)
