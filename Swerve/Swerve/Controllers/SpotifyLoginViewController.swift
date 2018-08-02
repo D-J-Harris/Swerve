@@ -82,18 +82,15 @@ class SpotifyLoginViewController: UIViewController {
             }
         }
         else {
-            //there is an invalid session, renew auth token
-            if !auth.session.isValid() {
-                User.renewToken()
-            }
-            print("-----------")
-            print(auth.session.accessToken!)
-            print("--------")
             successfulLogin()
         }
     }
     
     @objc func successfulLogin() {
+        //there is an invalid session, renew auth token
+        //renew token every time makes this less voltaile
+        User.renewToken()
+        
         DispatchQueue.main.async {
             // Present next view controller
             self.toMainStoryboard()
