@@ -28,6 +28,7 @@ func getTrackList(completion: @escaping ([Track]) -> Void) {
                 if let value = response.result.value {
                     let json = JSON(value)
                     let sampleSize = json["items"].count
+                   
                     
                     /*
                     //if sample size is 50, then update parameters ready for next call
@@ -45,13 +46,14 @@ func getTrackList(completion: @escaping ([Track]) -> Void) {
                         print("name: \(track.name) albumCoverURL: \(track.albumCoverURL) artist: \(track.artist) id: \(track.id) spotifyURI: \(track.spotifyUri) URL: \(track.url)")
                     }
                 }
+                print(trackList[1].name)
+                completion(trackList)
     
             //Alamofire call failed, likely wrong token
             case .failure(let error):
                 print(error)
+                completion([])
             }
         }
-    
-    completion(trackList)
 }
 

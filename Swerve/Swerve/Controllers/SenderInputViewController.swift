@@ -12,19 +12,36 @@ import UIKit
 
 class SenderInputViewController: UIViewController {
     
-    @IBOutlet weak var toMotionButton: UIButton!
-    @IBOutlet weak var testTextTransferTextField: UITextField!
+    //@IBOutlet weak var toMotionButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
+    
     
     //retrieve SPT default instance
     let auth = SPTAuth.defaultInstance()!
+    var trackList = [Track]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //test!!!!!!!!!!!!!!!!!!!!!!!!!!
-        getTrackList { (tracks) in
-            //
-        }
+        
+        //having loading progress wait for the getTrackList to complete
+        
+        LoadingOverlay.shared.showOverlay(self.view)
+        getTrackList(completion: { (tracks) -> Void in
+            if !tracks.isEmpty {
+                print("tracks downloaded")
+                LoadingOverlay.shared.hideOverlayView()
+            }
+            else {
+                print("no tracks exist")
+            }
+        })
+        
+        
+        
+        
+        
+        tableView.dataSource = self
         
         //Handle tapping to deactivate keyboard
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -49,8 +66,8 @@ class SenderInputViewController: UIViewController {
         switch identifier {
         case Constants.Segue.senderInfoToMotion:
             let destination = segue.destination as! MotionViewController
-            destination.testLabelText = testTextTransferTextField.text ?? "No text entered"
-            UserService.updateUserText(User.current, passableTestText: testTextTransferTextField.text ?? "No text entered")
+            //destination.testLabelText = testTextTransferTextField.text ?? "No text entered"
+            UserService.updateUserText(User.current, passableTestText: "")
         case Constants.Segue.backFromSender:
             User.current.type = Constants.UserDictionary.unselected
             UserService.updateUserType(User.current, type: Constants.UserDictionary.unselected)
@@ -60,10 +77,27 @@ class SenderInputViewController: UIViewController {
     }
 
     
-    @IBAction func toMotionButtonTapped(_ sender: UIButton) {
-        self.performSegue(withIdentifier: Constants.Segue.senderInfoToMotion, sender: self)
-    }
+    //@IBAction func toMotionButtonTapped(_ sender: UIButton) {
+    //    self.performSegue(withIdentifier: Constants.Segue.senderInfoToMotion, sender: self)
+    //}
     
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue){
     }
 }
+
+//UITableViewDataSource
+extension SenderInputViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TrackCell", for: indexPath)
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return TrackCell.height
+    }
+}
+
