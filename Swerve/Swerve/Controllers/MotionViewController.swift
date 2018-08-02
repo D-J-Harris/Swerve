@@ -57,7 +57,7 @@ class MotionViewController: UIViewController {
             }
         case Constants.Segue.toDisplayResult:
             let destination = segue.destination as! DisplayResultViewController
-            destination.receivedTextLabelText = User.current.passableTestText 
+            destination.receivedID = User.current.passableTestText 
         default:
             print("error no correct segue identified")
         }

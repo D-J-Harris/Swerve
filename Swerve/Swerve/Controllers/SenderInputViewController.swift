@@ -33,6 +33,7 @@ class SenderInputViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
         //having loading progress wait for the getTrackList to complete
         let dispatchGroup = DispatchGroup()

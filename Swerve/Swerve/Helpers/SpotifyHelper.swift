@@ -43,7 +43,7 @@ func getTrackList(completion: @escaping ([Track]) -> Void) {
                     for trackNumber in 0...sampleSize - 1 {
                         let track = Track.init(json: json, trackNumber)
                         trackList.append(track)
-                        print("name: \(track.name) albumCoverURL: \(track.albumCoverURL) artist: \(track.artist) id: \(track.id) spotifyURI: \(track.spotifyUri) URL: \(track.url)")
+                        print("name: \(track.name) albumCoverURL: \(String(describing: track.albumCoverURL)) artist: \(track.artist) id: \(track.id) spotifyURI: \(track.spotifyUri) URL: \(track.url)")
                     }
                 }
                 completion(trackList)
@@ -54,5 +54,36 @@ func getTrackList(completion: @escaping ([Track]) -> Void) {
                 completion([])
             }
         }
+}
+
+func getTrack(trackID id: String, completion: @escaping (Track) -> Void) {
+    let apiToCall = "https://api.spotify.com/v1/tracks/\(id)"
+    var track: Track = Track.init(name: "", artist: "", albumCoverURL: "", id: "", url: "", spotifyUri: "")
+
+    let auth = SPTAuth.defaultInstance()!
+    guard let accessToken = auth.session.accessToken else {return}
+    let headers = ["Authorization": "Bearer \(accessToken)"]
+
+    //call for song from users tracks list
+    Alamofire.request(apiToCall, headers: headers).validate().responseJSON { (response) in
+        switch response.result {
+        case .success:
+            if let value = response.result.value {
+                let json = JSON(value)
+
+
+                    track = Track.init(json: json)
+
+                    print("name: \(track.name) albumCoverURL: \(String(describing: track.albumCoverURL)) artist: \(track.artist) id: \(track.id) spotifyURI: \(track.spotifyUri) URL: \(track.url)")
+
+            }
+            completion(track)
+
+        //Alamofire call failed, likely wrong token
+        case .failure(let error):
+            print(error)
+            completion(track)
+        }
+    }
 }
 

@@ -34,5 +34,14 @@ struct Track {
         self.url = json["items"][i]["track"]["external_urls"]["spotify"].stringValue
         self.spotifyUri = json["items"][i]["track"]["uri"].stringValue
     }
+    
+    init(json: JSON){
+        self.name = json["name"].stringValue
+        self.artist = json["artists"][0]["name"].stringValue
+        self.albumCoverURL = json["album"]["images"][0]["url"].stringValue
+        self.id = json["id"].stringValue
+        self.url = json["external_urls"]["spotify"].stringValue
+        self.spotifyUri = json["uri"].stringValue
+    }
 }
 

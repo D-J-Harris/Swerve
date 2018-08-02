@@ -308,44 +308,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="kIZ-er-VOK">
-                                <rect key="frame" x="0.0" y="214" width="375" height="73"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="kIZ-er-VOK">
+                                <rect key="frame" x="0.0" y="214" width="375" height="24"/>
+                                <color key="backgroundColor" red="0.019607843140000001" green="0.21960784310000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Of2-VZ-1MN">
+                                <rect key="frame" x="70" y="154" width="235" height="235"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Of2-VZ-1MN" secondAttribute="height" multiplier="1:1" id="LRy-nF-sLT"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZaQ-6o-trr">
+                                <rect key="frame" x="166" y="419" width="42" height="81.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have received:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joe-5H-IE6">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="24"/>
-                                        <color key="backgroundColor" red="0.019607843140000001" green="0.21960784310000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" red="0.92941176469999998" green="0.96078431369999995" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ST4-f0-gLo">
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Received Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIu-Vd-Ev0">
-                                        <rect key="frame" x="0.0" y="49" width="375" height="24"/>
-                                        <color key="backgroundColor" red="0.019607843140000001" green="0.21960784310000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" red="0.92941176469999998" green="0.96078431369999995" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTm-Ym-9VT">
+                                        <rect key="frame" x="0.0" y="30.5" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6d-fj-Zpf">
+                                        <rect key="frame" x="0.0" y="61" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.019607843140000001" green="0.21960784310000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="joe-5H-IE6" secondAttribute="trailing" id="ALl-A5-syZ"/>
-                                    <constraint firstItem="nIu-Vd-Ev0" firstAttribute="leading" secondItem="kIZ-er-VOK" secondAttribute="leading" id="K8v-Z2-cwg"/>
-                                    <constraint firstAttribute="trailing" secondItem="nIu-Vd-Ev0" secondAttribute="trailing" id="gmA-ai-LO0"/>
-                                    <constraint firstItem="joe-5H-IE6" firstAttribute="leading" secondItem="kIZ-er-VOK" secondAttribute="leading" id="qK5-9K-QHT"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" name="tcSeafoamGreen"/>
                         <constraints>
+                            <constraint firstItem="ZaQ-6o-trr" firstAttribute="top" secondItem="Of2-VZ-1MN" secondAttribute="bottom" constant="30" id="1qg-pl-mNi"/>
                             <constraint firstItem="dz4-W1-k9z" firstAttribute="trailing" secondItem="kIZ-er-VOK" secondAttribute="trailing" id="HBr-d8-Esr"/>
                             <constraint firstItem="kIZ-er-VOK" firstAttribute="top" secondItem="dz4-W1-k9z" secondAttribute="top" constant="150" id="Qsb-pt-E9O"/>
+                            <constraint firstItem="dz4-W1-k9z" firstAttribute="trailing" secondItem="Of2-VZ-1MN" secondAttribute="trailing" constant="70" id="Wcl-wy-tX2"/>
+                            <constraint firstItem="Of2-VZ-1MN" firstAttribute="leading" secondItem="dz4-W1-k9z" secondAttribute="leading" constant="70" id="aBD-tY-AVe"/>
                             <constraint firstItem="kIZ-er-VOK" firstAttribute="leading" secondItem="dz4-W1-k9z" secondAttribute="leading" id="b6p-Vn-aZ1"/>
+                            <constraint firstItem="Of2-VZ-1MN" firstAttribute="top" secondItem="dz4-W1-k9z" secondAttribute="top" constant="90" id="dU9-oa-eHe"/>
                             <constraint firstItem="kIZ-er-VOK" firstAttribute="centerX" secondItem="zdZ-j8-0RN" secondAttribute="centerX" id="gPg-ZE-Kfo"/>
+                            <constraint firstItem="ZaQ-6o-trr" firstAttribute="centerX" secondItem="zdZ-j8-0RN" secondAttribute="centerX" id="tpf-C3-04I"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dz4-W1-k9z"/>
                     </view>
                     <connections>
-                        <outlet property="receivedTextLabel" destination="nIu-Vd-Ev0" id="Uce-Eg-8eR"/>
+                        <outlet property="albumArtwork" destination="Of2-VZ-1MN" id="pOT-BE-1gF"/>
+                        <outlet property="artistName" destination="uTm-Ym-9VT" id="pK5-ww-six"/>
+                        <outlet property="trackName" destination="ST4-f0-gLo" id="9rp-s3-uEt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i1W-CX-fWd" userLabel="First Responder" sceneMemberID="firstResponder"/>
