@@ -16,7 +16,7 @@ class MotionViewController: UIViewController {
     //Initialisation
     let motion = CMMotionManager()
     var timer = Timer()
-    var backgroundTimer = Timer()
+    var backgroundTimer = Timer() //Global sync timer
     var timerCounter: Double = 3 //Number of seconds on timer
     let updateFrequency: Double = 1.0 / 100.0 // hertz
     var resultsMatrix = [[Double]]()
@@ -41,6 +41,8 @@ class MotionViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        //Global sync timer invalidated
         backgroundTimer.invalidate()
     }
     
@@ -50,7 +52,6 @@ class MotionViewController: UIViewController {
         switch identifier {
         case Constants.Segue.backFromReceiver:
             if User.current.type == Constants.UserDictionary.receiver {
-                //UserService.deleteUserReference(User.current)
                 User.current.type = Constants.UserDictionary.unselected
                 UserService.updateUserType(User.current, type: Constants.UserDictionary.unselected)
             }
@@ -63,6 +64,7 @@ class MotionViewController: UIViewController {
     }
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
+        //disable button while waiting for syncing
         sender.isEnabled = false
         perform(#selector(MotionViewController.startDeviceMotion), with: nil, afterDelay: 10 -  NSDate.timeIntervalSinceReferenceDate.truncatingRemainder(dividingBy: 10))
         
@@ -73,7 +75,7 @@ class MotionViewController: UIViewController {
         LoadingOverlay.shared.showSwerveView(self.view)
         self.motion.deviceMotionUpdateInterval = self.updateFrequency
         self.motion.startDeviceMotionUpdates()
-        sleep(1) //fix this delay at some point
+        sleep(1)
         initialAttitude = self.motion.deviceMotion?.attitude
         self.motion.stopDeviceMotionUpdates()
         
@@ -145,20 +147,4 @@ class MotionViewController: UIViewController {
         let currTime = round(NSDate.timeIntervalSinceReferenceDate).truncatingRemainder(dividingBy: 10)
         self.timeLabel.text = String(currTime)
     }
-    
-    /*
-    
-    //save output data as csv for MATLAB testing
-    func saveAsCSV(from csvFile: String) {
-        let filemanager = FileManager.default
-        do {
-            let path = try filemanager.url(for: .documentDirectory, in: .allDomainsMask, appropriateFor: nil, create: false)
-            let fileURL = path.appendingPathComponent("accData.csv")
-            try csvFile.write(to: fileURL, atomically: true, encoding: String.Encoding.utf8)
-        } catch {
-            print("error creating file")
-        }
-    }
- 
- */
 }

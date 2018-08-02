@@ -53,6 +53,7 @@ extension LoginViewController: FUIAuthDelegate {
         
         let userRef = Database.database().reference().child("users").child(user.uid)
     
+        //if user exists go to spotify page, else create username for new user
         userRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let user = User(snapshot: snapshot) {
                 User.setCurrent(user, writeToUserDefaults: true)

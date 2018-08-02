@@ -55,33 +55,17 @@ class User: Codable {
     }
     
     
+    //write user to userDefaults
     static func setCurrent(_ user: User, writeToUserDefaults: Bool = false) {
         if writeToUserDefaults {
             if let data = try? JSONEncoder().encode(user) {
                 UserDefaults.standard.set(data, forKey: "currentUser")
             }
-            
         }
         _current = user
     }
     
-    /*
-    static func isUserAlreadyLoggedIn() -> Bool {
-        let auth = SPTAuth.defaultInstance()!
-        let userDefaults = UserDefaults.standard
-        guard
-            let sessionObj: AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject?,
-            let sessionDataObj = sessionObj as? Data,
-            let session = NSKeyedUnarchiver.unarchiveObject(with: sessionDataObj) as? SPTSession else {
-                return false
-        }
-        print("-------")
-        print(session.accessToken)
-        auth.session = session
-        return true
-    }
- */
-    
+    //returns current userDefaults SPTSession if it exists
     static func getSPTSession() -> SPTSession? {
         let userDefaults = UserDefaults.standard
         guard
@@ -90,11 +74,11 @@ class User: Codable {
             let session = NSKeyedUnarchiver.unarchiveObject(with: sessionDataObj) as? SPTSession else {
                 return nil
         }
-        print("------->")
-        print(session.accessToken)
         return session
     }
 
+    
+    //renews SPTAuth user token for sessions longer than an hour -> uses Heroku server
     static func renewToken() {
         
         let auth: SPTAuth = SPTAuth.defaultInstance()

@@ -14,19 +14,14 @@ class SenderInputViewController: UIViewController {
     
     @IBOutlet weak var toMotionButton: UIButton!
     @IBOutlet weak var testTextTransferTextField: UITextField!
+    
+    //retrieve SPT default instance
     let auth = SPTAuth.defaultInstance()!
-    var spotifySession: SPTSession?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //get the current spotify session if it exists
-        print("///////")
-        print(auth.session.accessToken)
-        guard let spotifySession = User.getSPTSession() else {return}
-        auth.session = spotifySession
-        print("\\\\//")
         print(auth.session.accessToken)
         
         //Handle tapping to deactivate keyboard
@@ -54,7 +49,6 @@ class SenderInputViewController: UIViewController {
             destination.testLabelText = testTextTransferTextField.text ?? "No text entered"
             UserService.updateUserText(User.current, passableTestText: testTextTransferTextField.text ?? "No text entered")
         case Constants.Segue.backFromSender:
-            //UserService.deleteUserReference(User.current)
             User.current.type = Constants.UserDictionary.unselected
             UserService.updateUserType(User.current, type: Constants.UserDictionary.unselected)
         default:
@@ -68,7 +62,4 @@ class SenderInputViewController: UIViewController {
     
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue){
     }
-    
-    
-    
 }

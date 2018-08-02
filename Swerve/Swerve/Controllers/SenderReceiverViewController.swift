@@ -17,14 +17,12 @@ class SenderReceiverViewController: UIViewController {
     @IBOutlet weak var signoutButton: UIBarButtonItem!
     
     let auth = SPTAuth.defaultInstance()!
-
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //initialise the SPTAuth session according to userDefaults on entering the app
         auth.session = User.getSPTSession()
-        print(auth.session)
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,11 +35,9 @@ class SenderReceiverViewController: UIViewController {
         
         switch identifier {
         case Constants.Segue.senderToSenderInfo:
-            //UserService.copyUserToSenders(User.current)
             User.current.type = Constants.UserDictionary.sender
             UserService.updateUserType(User.current, type: Constants.UserDictionary.sender)
         case Constants.Segue.receiverToMotion:
-            //UserService.copyUserToReceivers(User.current)
             User.current.type = Constants.UserDictionary.receiver
             UserService.updateUserType(User.current, type: Constants.UserDictionary.receiver)
         default:
@@ -54,11 +50,12 @@ class SenderReceiverViewController: UIViewController {
             
             let auth = SPTAuth.defaultInstance()!
             
+            //sign out of spotify session if one exists
             if auth.session != nil {
-                print("there was a session at some point")
                 auth.session = nil
             }
             do {
+                //sign out of Firebase if user signed in
                 try Auth.auth().signOut()
                 let loginStoryboard = UIStoryboard(name: "Login", bundle: Bundle.main)
                 let loginVC : UIViewController = loginStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
@@ -70,8 +67,6 @@ class SenderReceiverViewController: UIViewController {
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         UserService.showAlert(on: self, style: .actionSheet, title: nil, message: nil, actions: [signOutAction, cancelAction], completion: nil)
-        
-        
     }
     
     

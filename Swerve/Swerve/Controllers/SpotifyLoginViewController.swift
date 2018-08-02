@@ -82,6 +82,7 @@ class SpotifyLoginViewController: UIViewController {
             }
         }
         else {
+            //there is an invalid session, renew auth token
             if !auth.session.isValid() {
                 User.renewToken()
             }
@@ -90,10 +91,6 @@ class SpotifyLoginViewController: UIViewController {
     }
     
     @objc func successfulLogin() {
-        // When changing the UI, all actions must be done on the main thread,
-        // since this can be called from a notification which doesn't run on
-        // the main thread, we must add this code to the main thread's queue
-        
         DispatchQueue.main.async {
             // Present next view controller
             self.toMainStoryboard()

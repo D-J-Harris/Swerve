@@ -11,6 +11,7 @@ import FirebaseAuth.FIRUser
 import FirebaseDatabase
 
 struct UserService {
+    //create new user in Firebase database
     static func create(_ firUser: FIRUser, username: String, completion: @escaping (User?) -> Void) {
         let userAttrs = ["username": username,
                          "type": Constants.UserDictionary.unselected,
@@ -80,33 +81,12 @@ struct UserService {
         }
         on.present(alert, animated: true, completion: completion)
     }
+}
 
     /*
-    
-    static func copyUserToReceivers(_ currentUser: User) {
-        let ref = Database.database().reference().child(Constants.UserDictionary.receiver).child(currentUser.uid)
-        let userAttrs = ["username": currentUser.username,
-                         "type": Constants.UserDictionary.receiver,
-                         "integralKey": currentUser.integralKey,
-                         "passableTestText": currentUser.passableTestText,
-                         "matchedWith": currentUser.matchedWith] as [String: Any]
-        currentUser.type = Constants.UserDictionary.receiver
-        
-        ref.setValue(userAttrs)
-    }
-    
-    static func copyUserToSenders(_ currentUser: User) {
-        let ref = Database.database().reference().child(Constants.UserDictionary.sender).child(currentUser.uid)
-        let userAttrs = ["username": currentUser.username,
-                         "type": Constants.UserDictionary.sender,
-                         "integralKey": currentUser.integralKey,
-                         "passableTestText": currentUser.passableTestText,
-                         "matchedWith": currentUser.matchedWith] as [String: Any]
-        currentUser.type = Constants.UserDictionary.sender
-        
-        ref.setValue(userAttrs)
-    }
-    
+    Keep in case want to add a delete account option
+
+
     static func deleteUserReference(_ currentUser: User) {
         let userType = currentUser.type
         var ref = Database.database().reference()
@@ -129,4 +109,3 @@ struct UserService {
     }
  
     */
-}

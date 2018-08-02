@@ -12,21 +12,22 @@ import UIKit
 
 struct PartnerCheckerService {
     
-    
-    
-    
+
     //I should add code to return the user with the closest integral value (not just any old close value)
     //Also search only for devices on the opposite sender/receiver type (fine on small scale)
+    
     func findMatchingDevice(_ currentUser: User, _ viewController: UIViewController) {
         
+        //max difference between integralKeys
         let integralKeyTolerance = 0.5
         
         //overlay display start
         LoadingOverlay.shared.showOverlay(viewController.view)
         
+        //wait 5 seconds so database has time to anonymously update
         Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (timer) in
             
-            //loop over all users to find matching integralKey
+            //loop over all users to find match
             let ref = Database.database().reference().child("users")
             
             ref.observeSingleEvent(of: .value) { (snapshot) in
@@ -38,8 +39,6 @@ struct PartnerCheckerService {
                         //loop over all users but current
                         if(child.key != currentUser.uid) {
                             if abs(currentUser.integralKey - integralKey) < integralKeyTolerance {
-                                print("Match found with \(userDict["username"] ?? "somebody")")
-                                print("Word to be passed: \(userDict["passableTestText"] ?? "not applicable for sender")")
                                 currentUser.matchedWith = userDict["username"] as! String
                                 UserService.updateMatchedWith(currentUser, matchedWith: userDict["username"] as! String)
                                 if currentUser.type == Constants.UserDictionary.receiver {
