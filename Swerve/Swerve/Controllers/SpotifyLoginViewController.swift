@@ -47,15 +47,6 @@ class SpotifyLoginViewController: UIViewController {
         
         //scopes to use
         auth.requestedScopes = [SPTAuthStreamingScope, SPTAuthUserLibraryReadScope]
-        
-        
-        
-        //for streaming purposes
-        do {
-            try SPTAudioStreamingController.sharedInstance().start(withClientId: Constants.spotify.clientID)
-        } catch {
-            fatalError("Couldn't start Spotify SDK")
-        }
     }
     
     

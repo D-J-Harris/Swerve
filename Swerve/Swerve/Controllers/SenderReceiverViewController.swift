@@ -51,6 +51,13 @@ class SenderReceiverViewController: UIViewController {
     
     func handleSignOutButtonTapped() {
         let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive) { (action) in
+            
+            let auth = SPTAuth.defaultInstance()!
+            
+            if auth.session != nil {
+                print("there was a session at some point")
+                auth.session = nil
+            }
             do {
                 try Auth.auth().signOut()
                 let loginStoryboard = UIStoryboard(name: "Login", bundle: Bundle.main)
