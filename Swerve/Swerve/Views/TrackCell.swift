@@ -11,7 +11,11 @@ import UIKit
 
 class TrackCell: UITableViewCell {
     
-    static let height: CGFloat = 100
+    @IBOutlet weak var albumCover: UIImageView!
+    @IBOutlet weak var trackName: UILabel!
+    @IBOutlet weak var artistName: UILabel!
+    
+    var trackID: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -12,7 +12,7 @@ import SwiftyJSON
 struct Track {
     let name: String
     let artist: String
-    let albumCoverURL: String
+    let albumCoverURL: String?
     let id: String
     let url: String
     let spotifyUri: String

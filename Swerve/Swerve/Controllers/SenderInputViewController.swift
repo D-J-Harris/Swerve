@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AlamofireImage
 
 
 class SenderInputViewController: UIViewController {
@@ -23,7 +24,14 @@ class SenderInputViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
+    
+        //Handle tapping to deactivate keyboard
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
         //having loading progress wait for the getTrackList to complete
         let dispatchGroup = DispatchGroup()
@@ -32,29 +40,22 @@ class SenderInputViewController: UIViewController {
         getTrackList { (tracks) in
             if !tracks.isEmpty {
                 print("tracks downloaded")
-                print(tracks[0].name)
                 self.trackList = tracks
             }
             else {
                 print("no tracks exist")
-                
             }
             dispatchGroup.leave()
         }
-    
         
         
+        //Once download complete, update table view
         dispatchGroup.notify(queue: DispatchQueue.main) {
             LoadingOverlay.shared.hideOverlayView()
             print(self.trackList.count)
+            self.tableView.dataSource = self
             self.tableView.reloadData()
         }
-        
-        
-        //Handle tapping to deactivate keyboard
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
     }
     
     override func didReceiveMemoryWarning() {
@@ -101,12 +102,18 @@ extension SenderInputViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TrackCell", for: indexPath)
-        cell.backgroundColor = UIColor.blue
+        let track = trackList[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TrackCell", for: indexPath) as! TrackCell
+        
+        cell.trackName.text = track.name
+        cell.artistName.text = track.artist
+        cell.trackID = track.id
+        if let trackCoverURL = track.albumCoverURL {
+            cell.albumCover.af_setImage(withURL: URL(string: trackCoverURL)!)
+        }
+        
         return cell
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return TrackCell.height
     }
 }
 
