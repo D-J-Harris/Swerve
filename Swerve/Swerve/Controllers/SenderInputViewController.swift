@@ -20,6 +20,7 @@ class SenderInputViewController: UIViewController {
     //retrieve SPT default instance
     let auth = SPTAuth.defaultInstance()!
     var trackList = [Track]()
+    var songID: String? = nil
     
     
     override func viewDidLoad() {
@@ -54,6 +55,7 @@ class SenderInputViewController: UIViewController {
             LoadingOverlay.shared.hideOverlayView()
             print(self.trackList.count)
             self.tableView.dataSource = self
+            self.tableView.delegate = self
             self.tableView.reloadData()
         }
     }
@@ -75,8 +77,8 @@ class SenderInputViewController: UIViewController {
         switch identifier {
         case Constants.Segue.senderInfoToMotion:
             let destination = segue.destination as! MotionViewController
-            //destination.testLabelText = testTextTransferTextField.text ?? "No text entered"
-            UserService.updateUserText(User.current, passableTestText: "")
+            destination.testLabelText = songID ?? "No Song ID"
+            UserService.updateUserText(User.current, passableTestText: songID ?? "No Song ID")
         case Constants.Segue.backFromSender:
             User.current.type = Constants.UserDictionary.unselected
             UserService.updateUserType(User.current, type: Constants.UserDictionary.unselected)
@@ -84,11 +86,6 @@ class SenderInputViewController: UIViewController {
             print("error no correct segue identified")
         }
     }
-
-    
-    //@IBAction func toMotionButtonTapped(_ sender: UIButton) {
-    //    self.performSegue(withIdentifier: Constants.Segue.senderInfoToMotion, sender: self)
-    //}
     
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue){
     }
@@ -117,3 +114,26 @@ extension SenderInputViewController: UITableViewDataSource {
     }
 }
 
+extension SenderInputViewController: UITableViewDelegate {
+    
+    //selecting row sets up transition to motionVC
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentCell = tableView.cellForRow(at: indexPath) as! TrackCell
+        
+        songID = currentCell.trackID
+        
+        //set up and present alert to segue to motionVC
+        let alertController = UIAlertController(title: "Send Song", message: "Are you sure you would like to send \(trackList[indexPath.row].name)" , preferredStyle: .alert)
+        
+        let actionYes = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+            self.performSegue(withIdentifier: Constants.Segue.senderInfoToMotion, sender: self)
+            
+        })
+        let actionNo = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        alertController.addAction(actionYes)
+        alertController.addAction(actionNo)
+        
+        present(alertController, animated: true, completion: nil)
+        
+    }
+}
