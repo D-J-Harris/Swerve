@@ -13,8 +13,8 @@ import SwiftyJSON
 //Can only get first 50 for now (API limit, can be fixed with offsets)
 func getTrackList(completion: @escaping ([Track]) -> Void) {
         var trackList: [Track] = []
-        let apiToCall = "https://api.spotify.com/v1/me/tracks?limit=10&offset=0"
-        //^^^^first 10 for now to make testing faster^^^^
+        let apiToCall = "https://api.spotify.com/v1/me/tracks?limit=30&offset=0"
+        //^^^^first 30 for now to make testing faster^^^^
     
     
         let auth = SPTAuth.defaultInstance()!

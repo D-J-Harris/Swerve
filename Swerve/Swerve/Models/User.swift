@@ -81,7 +81,6 @@ class User: Codable {
                 assertionFailure(error.localizedDescription)
                 return
             }
-            LoadingOverlay.shared.hideOverlayView()
         }
     }
 }

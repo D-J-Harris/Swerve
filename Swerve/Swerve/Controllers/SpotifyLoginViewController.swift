@@ -90,7 +90,6 @@ class SpotifyLoginViewController: UIViewController {
         DispatchQueue.main.async {
             //there is an invalid session, renew auth token
             //renew token every time makes this less voltaile
-            LoadingOverlay.shared.showOverlay(self.view)
             User.renewToken()
    
         

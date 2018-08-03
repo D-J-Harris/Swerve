@@ -39,6 +39,7 @@ class SenderInputViewController: UIViewController {
             if !tracks.isEmpty {
                 print("tracks downloaded")
                 self.trackList = tracks
+                LoadingOverlay.shared.hideOverlayView()
             }
             else {
                 print("no tracks exist")
@@ -52,7 +53,6 @@ class SenderInputViewController: UIViewController {
             self.tableView.dataSource = self
             self.tableView.delegate = self
             self.tableView.reloadData()
-            LoadingOverlay.shared.hideOverlayView()
         }
     }
     
