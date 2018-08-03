@@ -49,11 +49,10 @@ class SenderInputViewController: UIViewController {
         
         //Once download complete, update table view
         dispatchGroup.notify(queue: DispatchQueue.main) {
-            LoadingOverlay.shared.hideOverlayView()
-            print(self.trackList.count)
             self.tableView.dataSource = self
             self.tableView.delegate = self
             self.tableView.reloadData()
+            LoadingOverlay.shared.hideOverlayView()
         }
     }
     

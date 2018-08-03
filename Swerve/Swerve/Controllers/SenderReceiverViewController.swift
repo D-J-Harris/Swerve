@@ -20,9 +20,6 @@ class SenderReceiverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //initialise the SPTAuth session according to userDefaults on entering the app
-        auth.session = User.getSPTSession()
     }
     
     override func didReceiveMemoryWarning() {

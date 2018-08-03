@@ -64,26 +64,16 @@ class User: Codable {
         }
         _current = user
     }
-    
-    //returns current userDefaults SPTSession if it exists
-    static func getSPTSession() -> SPTSession? {
-        let userDefaults = UserDefaults.standard
-        guard
-            let sessionObj: AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject?,
-            let sessionDataObj = sessionObj as? Data,
-            let session = NSKeyedUnarchiver.unarchiveObject(with: sessionDataObj) as? SPTSession else {
-                return nil
-        }
-        return session
-    }
 
     
     //renews SPTAuth user token for sessions longer than an hour -> uses Heroku server
     static func renewToken() {
         
-        let auth: SPTAuth = SPTAuth.defaultInstance()
+        let auth: SPTAuth = SPTAuth.defaultInstance()!
         auth.tokenRefreshURL = Constants.spotify.tokenRefreshURL
         auth.tokenSwapURL = Constants.spotify.tokenSwapURL
+        
+        
         auth.renewSession(auth.session) { (error, session) in
             auth.session = session
             
@@ -91,6 +81,7 @@ class User: Codable {
                 assertionFailure(error.localizedDescription)
                 return
             }
+            LoadingOverlay.shared.hideOverlayView()
         }
     }
 }

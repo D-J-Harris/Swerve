@@ -15,7 +15,6 @@ class SpotifyLoginViewController: UIViewController {
     
     //Spotify initialisations
     var auth: SPTAuth = SPTAuth.defaultInstance()
-    var session = User.getSPTSession()
     
     //Initialised in either updateAfterFirstLogin or viewDidLoad (check for session in userDefaults)
     var player: SPTAudioStreamingController?
@@ -87,14 +86,16 @@ class SpotifyLoginViewController: UIViewController {
     }
     
     @objc func successfulLogin() {
-        //there is an invalid session, renew auth token
-        //renew token every time makes this less voltaile
-        User.renewToken()
-        
+    
         DispatchQueue.main.async {
+            //there is an invalid session, renew auth token
+            //renew token every time makes this less voltaile
+            LoadingOverlay.shared.showOverlay(self.view)
+            User.renewToken()
+   
+        
             // Present next view controller
             self.toMainStoryboard()
-            
         }
     }
 }
