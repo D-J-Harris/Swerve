@@ -143,16 +143,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="6fO-a9-oAX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="129.5" height="65.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="66"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gEA-lx-rRG">
-                                                            <rect key="frame" x="0.0" y="0.0" width="65.5" height="65.5"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gEA-lx-rRG">
+                                                            <rect key="frame" x="0.0" y="0.0" width="66" height="66"/>
                                                             <constraints>
+                                                                <constraint firstAttribute="height" constant="66" id="1T3-Gb-n2b"/>
                                                                 <constraint firstAttribute="width" secondItem="gEA-lx-rRG" secondAttribute="height" multiplier="1:1" id="aYN-m3-FHb"/>
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7dD-pz-3ta">
-                                                            <rect key="frame" x="87.5" y="8.5" width="42" height="49"/>
+                                                            <rect key="frame" x="88" y="8.5" width="42" height="49"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7A-Bq-CLb">
                                                                     <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
@@ -169,12 +170,14 @@
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="gEA-lx-rRG" secondAttribute="bottom" id="kwA-HD-Nke"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="6fO-a9-oAX" firstAttribute="top" secondItem="kSc-di-Rlk" secondAttribute="top" id="KGE-wn-tjL"/>
                                                 <constraint firstItem="6fO-a9-oAX" firstAttribute="leading" secondItem="kSc-di-Rlk" secondAttribute="leading" id="dAg-qt-TqD"/>
-                                                <constraint firstAttribute="bottom" secondItem="6fO-a9-oAX" secondAttribute="bottom" id="u2G-9p-Oqm"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
