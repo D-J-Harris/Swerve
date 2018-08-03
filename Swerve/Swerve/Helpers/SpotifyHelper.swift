@@ -28,7 +28,6 @@ func getTrackList(completion: @escaping ([Track]) -> Void) {
                 if let value = response.result.value {
                     let json = JSON(value)
                     let sampleSize = json["items"].count
-                   
                     
                     /*
                     //if sample size is 50, then update parameters ready for next call

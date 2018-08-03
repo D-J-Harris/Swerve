@@ -43,5 +43,16 @@ struct Track {
         self.url = json["external_urls"]["spotify"].stringValue
         self.spotifyUri = json["uri"].stringValue
     }
+    
+//    init(orgJson: AnyObject, _ i: Int){
+//        guard let array = orgJson as? NSArray else {return}
+//
+//        self.name = array[1][i][1][10] as String
+//        self.artist = array["items"][i]["track"]["artists"][0]["name"] as String
+//        self.albumCoverURL = array["items"][i]["track"]["album"]["images"][0]["url"] as String
+//        self.id = array["items"][i]["track"]["id"] as String
+//        self.url = array["items"][i]["track"]["external_urls"]["spotify"] as String
+//        self.spotifyUri = array["items"][i]["track"]["uri"] as String
+//    }
 }
 

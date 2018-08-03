@@ -21,15 +21,11 @@ class SenderInputViewController: UIViewController {
     let auth = SPTAuth.defaultInstance()!
     var trackList = [Track]()
     var songID: String? = nil
+    var arrIndexSection : NSArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        //Handle tapping to deactivate keyboard
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,14 +60,9 @@ class SenderInputViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+
     
-    //Calls this function when the tap is recognized
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
-    
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
         
@@ -92,22 +83,47 @@ class SenderInputViewController: UIViewController {
     }
 }
 
+
+
 //UITableViewDataSource
 extension SenderInputViewController: UITableViewDataSource {
     
+    //26 sections for each letter of alphabet
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return arrIndexSection.count
+    }
+    
+    //Jump nav bar
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return arrIndexSection as? [String]
+    }
+    
+    func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return index
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return arrIndexSection.object(at: section) as? String
+    }
+    
+    
+    
+    //rows for each section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return trackList.count
+        let predicate = NSPredicate(format: "SELF beginswith[c] %@", arrIndexSection.object(at: section) as! CVarArg)
+        let filteredTracks = (trackList.map {$0.name} as NSArray).filtered(using: predicate)
+        return filteredTracks.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let track = trackList[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TrackCell", for: indexPath) as! TrackCell
-        
-        cell.trackName.text = track.name
-        cell.artistName.text = track.artist
-        cell.trackID = track.id
-        if let trackCoverURL = track.albumCoverURL {
+        let predicate = NSPredicate(format: "SELF beginswith[c] %@", arrIndexSection.object(at: indexPath.section) as! CVarArg)
+        let filteredTracks = trackList.filter({return predicate.evaluate(with: $0.name)})
+        cell.trackName.text = filteredTracks[indexPath.row].name
+        cell.artistName.text = filteredTracks[indexPath.row].artist
+        cell.trackID = filteredTracks[indexPath.row].id
+        if let trackCoverURL = filteredTracks[indexPath.row].albumCoverURL {
             cell.albumCover.af_setImage(withURL: URL(string: trackCoverURL)!)
         }
         
@@ -117,6 +133,7 @@ extension SenderInputViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return TrackCell.height
     }
+    
 }
 
 extension SenderInputViewController: UITableViewDelegate {
