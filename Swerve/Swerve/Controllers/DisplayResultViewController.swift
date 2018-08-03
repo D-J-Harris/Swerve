@@ -15,7 +15,10 @@ class DisplayResultViewController: UIViewController {
     @IBOutlet weak var trackName: UILabel!
     @IBOutlet weak var artistName: UILabel!
     @IBOutlet weak var albumArtwork: UIImageView!
+    @IBOutlet weak var openInSpotifyButton: UIButton!
+    @IBOutlet weak var addToSpotifyButton: UIButton!
     
+    //Empty initialisations
     var receivedID = ""
     var track: Track = Track.init(name: "", artist: "", albumCoverURL: "", id: "", url: "", spotifyUri: "")
     
@@ -57,4 +60,20 @@ class DisplayResultViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func openInSpotifyButtonTapped(_ sender: UIButton) {
+        //check if spotify installed
+        if SPTAuth.supportsApplicationAuthentication() {
+            //app login
+            UIApplication.shared.open(URL(string: track.spotifyUri)!, options: [:], completionHandler: nil)
+        }
+        else {
+            //web login
+            UIApplication.shared.open(URL(string: track.url)!, options: [:], completionHandler: nil)
+        }
+    }
+    
+    @IBAction func addToSpotifyButtonTapped(_ sender: UIButton) {
+    }
+    
 }

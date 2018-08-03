@@ -308,7 +308,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="kIZ-er-VOK">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="kIZ-er-VOK">
                                 <rect key="frame" x="0.0" y="214" width="375" height="24"/>
                                 <color key="backgroundColor" red="0.019607843140000001" green="0.21960784310000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                             </stackView>
@@ -318,47 +318,57 @@
                                     <constraint firstAttribute="width" secondItem="Of2-VZ-1MN" secondAttribute="height" multiplier="1:1" id="LRy-nF-sLT"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZaQ-6o-trr">
-                                <rect key="frame" x="166" y="419" width="42" height="81.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="THW-Ro-gDg">
+                                <rect key="frame" x="127.5" y="424" width="121" height="146"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ST4-f0-gLo">
-                                        <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ST4-f0-gLo">
+                                        <rect key="frame" x="0.0" y="0.0" width="121" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTm-Ym-9VT">
-                                        <rect key="frame" x="0.0" y="30.5" width="42" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTm-Ym-9VT">
+                                        <rect key="frame" x="0.0" y="35.5" width="121" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6d-fj-Zpf">
-                                        <rect key="frame" x="0.0" y="61" width="42" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ay1-qF-Zve">
+                                        <rect key="frame" x="0.0" y="71" width="121" height="30"/>
+                                        <state key="normal" title="Open in spotify"/>
+                                        <connections>
+                                            <action selector="openInSpotifyButtonTapped:" destination="SZT-Ox-KRy" eventType="touchUpInside" id="LCc-aD-Le1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Is5-7S-ZS6">
+                                        <rect key="frame" x="0.0" y="116" width="121" height="30"/>
+                                        <state key="normal" title="Add to my spotify"/>
+                                        <connections>
+                                            <action selector="addToSpotifyButtonTapped:" destination="SZT-Ox-KRy" eventType="touchUpInside" id="OC4-5p-9Qb"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" name="tcSeafoamGreen"/>
                         <constraints>
-                            <constraint firstItem="ZaQ-6o-trr" firstAttribute="top" secondItem="Of2-VZ-1MN" secondAttribute="bottom" constant="30" id="1qg-pl-mNi"/>
                             <constraint firstItem="dz4-W1-k9z" firstAttribute="trailing" secondItem="kIZ-er-VOK" secondAttribute="trailing" id="HBr-d8-Esr"/>
-                            <constraint firstItem="kIZ-er-VOK" firstAttribute="top" secondItem="dz4-W1-k9z" secondAttribute="top" constant="150" id="Qsb-pt-E9O"/>
+                            <constraint firstItem="kIZ-er-VOK" firstAttribute="top" secondItem="dz4-W1-k9z" secondAttribute="top" constant="150" id="N9q-d2-Yha"/>
                             <constraint firstItem="dz4-W1-k9z" firstAttribute="trailing" secondItem="Of2-VZ-1MN" secondAttribute="trailing" constant="70" id="Wcl-wy-tX2"/>
                             <constraint firstItem="Of2-VZ-1MN" firstAttribute="leading" secondItem="dz4-W1-k9z" secondAttribute="leading" constant="70" id="aBD-tY-AVe"/>
                             <constraint firstItem="kIZ-er-VOK" firstAttribute="leading" secondItem="dz4-W1-k9z" secondAttribute="leading" id="b6p-Vn-aZ1"/>
                             <constraint firstItem="Of2-VZ-1MN" firstAttribute="top" secondItem="dz4-W1-k9z" secondAttribute="top" constant="90" id="dU9-oa-eHe"/>
-                            <constraint firstItem="kIZ-er-VOK" firstAttribute="centerX" secondItem="zdZ-j8-0RN" secondAttribute="centerX" id="gPg-ZE-Kfo"/>
-                            <constraint firstItem="ZaQ-6o-trr" firstAttribute="centerX" secondItem="zdZ-j8-0RN" secondAttribute="centerX" id="tpf-C3-04I"/>
+                            <constraint firstAttribute="bottom" secondItem="kIZ-er-VOK" secondAttribute="bottom" constant="429" id="fzb-K4-vQi"/>
+                            <constraint firstItem="THW-Ro-gDg" firstAttribute="centerX" secondItem="zdZ-j8-0RN" secondAttribute="centerX" id="lTm-xg-eRn"/>
+                            <constraint firstItem="THW-Ro-gDg" firstAttribute="top" secondItem="Of2-VZ-1MN" secondAttribute="bottom" constant="35" id="zRq-pc-hLo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dz4-W1-k9z"/>
                     </view>
                     <connections>
+                        <outlet property="addToSpotifyButton" destination="Is5-7S-ZS6" id="eO9-hV-tdW"/>
                         <outlet property="albumArtwork" destination="Of2-VZ-1MN" id="pOT-BE-1gF"/>
                         <outlet property="artistName" destination="uTm-Ym-9VT" id="pK5-ww-six"/>
+                        <outlet property="openInSpotifyButton" destination="ay1-qF-Zve" id="Xn4-VK-0au"/>
                         <outlet property="trackName" destination="ST4-f0-gLo" id="9rp-s3-uEt"/>
                     </connections>
                 </viewController>
