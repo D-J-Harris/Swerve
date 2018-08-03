@@ -87,3 +87,25 @@ func getTrack(trackID id: String, completion: @escaping (Track) -> Void) {
     }
 }
 
+func addToSpotify(songID id: String) {
+    let apiToCall = "https://api.spotify.com/v1/me/tracks"
+    let auth = SPTAuth.defaultInstance()!
+    
+    guard let accessToken = auth.session.accessToken else {return}
+    let headers = ["Authorization": "Bearer \(accessToken)"]
+    
+    //PUT request to add to current session user tracks
+    Alamofire.request(apiToCall, method: .put, parameters: [:],encoding: JSONEncoding.default, headers: headers).responseJSON {
+        response in
+        switch response.result {
+        case .success:
+            print(response)
+            
+            break
+        case .failure(let error):
+            
+            print(error)
+        }
+    }
+}
+

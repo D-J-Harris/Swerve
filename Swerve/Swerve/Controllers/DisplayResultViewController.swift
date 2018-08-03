@@ -74,6 +74,7 @@ class DisplayResultViewController: UIViewController {
     }
     
     @IBAction func addToSpotifyButtonTapped(_ sender: UIButton) {
+        addToSpotify(songID: track.id)
     }
     
 }
