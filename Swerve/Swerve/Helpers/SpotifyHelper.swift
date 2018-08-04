@@ -45,6 +45,7 @@ func getTrackList(completion: @escaping ([Track]) -> Void) {
                         print("name: \(track.name) albumCoverURL: \(String(describing: track.albumCoverURL)) artist: \(track.artist) id: \(track.id) spotifyURI: \(track.spotifyUri) URL: \(track.url)")
                     }
                 }
+                trackList = trackList.sorted{ $0.name < $1.name }
                 completion(trackList)
     
             //Alamofire call failed, likely wrong token

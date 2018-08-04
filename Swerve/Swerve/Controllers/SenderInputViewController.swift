@@ -140,11 +140,11 @@ extension SenderInputViewController: UITableViewDelegate {
     //selecting row sets up transition to motionVC
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentCell = tableView.cellForRow(at: indexPath) as! TrackCell
-        
+        print("selected row number \(indexPath)")
         songID = currentCell.trackID
         
         //set up and present alert to segue to motionVC
-        let alertController = UIAlertController(title: "Send Song", message: "Are you sure you would like to send \(trackList[indexPath.row].name)" , preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Send Song", message: "Are you sure?" , preferredStyle: .alert)
         
         let actionYes = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
             self.performSegue(withIdentifier: Constants.Segue.senderInfoToMotion, sender: self)
