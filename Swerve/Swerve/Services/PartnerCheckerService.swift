@@ -44,10 +44,8 @@ struct PartnerCheckerService {
                             let keyDiff = abs(currentUser.integralKey - integralKey)
                             if keyDiff < integralKeyTolerance && keyDiff < bestKeyDiff {
                                 bestKeyDiff = keyDiff
-                                currentUser.matchedWith = userDict["username"] as! String
                                 UserService.updateMatchedWith(currentUser, matchedWith: userDict["username"] as! String)
                                 if currentUser.type == Constants.UserDictionary.receiver {
-                                    currentUser.passableTestText = userDict["passableTestText"] as! String
                                     UserService.updatePassableTestText(currentUser, passableTestText: userDict["passableTestText"] as! String)
                                 }
                             }

@@ -33,34 +33,32 @@ struct UserService {
         }
     }
     
-    static func updateUserText(_ user: User, passableTestText: String) {
-        let ref = Database.database().reference().child("users").child(user.uid)
-        let userAttrs = ["passableTestText": passableTestText]
-        ref.updateChildValues(userAttrs)
-    }
-    
     static func updateMatchedWith(_ user: User, matchedWith: String) {
         let ref = Database.database().reference().child("users").child(user.uid)
         let userAttrs = ["matchedWith": matchedWith]
         ref.updateChildValues(userAttrs)
+        user.matchedWith = matchedWith
     }
     
     static func updateUserIntegralKey(_ user: User, integralKey: Double) {
         let ref = Database.database().reference().child("users").child(user.uid)
         let userAttrs = ["integralKey": integralKey]
         ref.updateChildValues(userAttrs)
+        user.integralKey = integralKey
     }
     
     static func updateUserType(_ user: User, type: String) {
         let ref = Database.database().reference().child("users").child(user.uid)
         let userAttrs = ["type": type]
         ref.updateChildValues(userAttrs)
+        user.type = type
     }
     
     static func updatePassableTestText(_ user: User, passableTestText: String) {
         let ref = Database.database().reference().child("users").child(user.uid)
         let userAttrs = ["passableTestText": passableTestText]
         ref.updateChildValues(userAttrs)
+        user.passableTestText = passableTestText
     }
     
     static func resetUserValues(_ user: User) {
