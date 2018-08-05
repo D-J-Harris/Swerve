@@ -229,7 +229,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receiver So No Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwe-af-Vgl">
-                                <rect key="frame" x="0.0" y="84" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="40" width="375" height="80"/>
                                 <color key="backgroundColor" red="0.019607843140000001" green="0.21960784310000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="1gD-Nt-ys8"/>
@@ -312,17 +312,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="kIZ-er-VOK">
-                                <rect key="frame" x="0.0" y="214" width="375" height="24"/>
+                                <rect key="frame" x="0.0" y="170" width="375" height="68"/>
                                 <color key="backgroundColor" red="0.019607843140000001" green="0.21960784310000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Of2-VZ-1MN">
-                                <rect key="frame" x="70" y="154" width="235" height="235"/>
+                                <rect key="frame" x="70" y="110" width="235" height="235"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Of2-VZ-1MN" secondAttribute="height" multiplier="1:1" id="LRy-nF-sLT"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="THW-Ro-gDg">
-                                <rect key="frame" x="127.5" y="424" width="121" height="146"/>
+                                <rect key="frame" x="127.5" y="380" width="121" height="146"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ST4-f0-gLo">
                                         <rect key="frame" x="0.0" y="0.0" width="121" height="20.5"/>
@@ -373,11 +373,12 @@
                         <outlet property="artistName" destination="uTm-Ym-9VT" id="pK5-ww-six"/>
                         <outlet property="openInSpotifyButton" destination="ay1-qF-Zve" id="Xn4-VK-0au"/>
                         <outlet property="trackName" destination="ST4-f0-gLo" id="9rp-s3-uEt"/>
+                        <segue destination="zww-C7-nWV" kind="show" identifier="displayResultsToMotion" id="uKM-xx-8TU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i1W-CX-fWd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4652" y="315"/>
+            <point key="canvasLocation" x="4575" y="307"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vs9-dG-IbF">
@@ -415,6 +416,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6Wf-Xf-yQo"/>
+        <segue reference="uKM-xx-8TU"/>
     </inferredMetricsTieBreakers>
 </document>

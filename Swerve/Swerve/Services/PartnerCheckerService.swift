@@ -19,7 +19,7 @@ struct PartnerCheckerService {
     func findMatchingDevice(_ currentUser: User, _ viewController: UIViewController) {
         
         //max difference between integralKeys
-        let integralKeyTolerance = 0.5
+        let integralKeyTolerance = 0.3
         
         //overlay display start
         LoadingOverlay.shared.showOverlay(viewController.view)
@@ -33,12 +33,17 @@ struct PartnerCheckerService {
             ref.observeSingleEvent(of: .value) { (snapshot) in
                 if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                     for child in snapshots {
-                        guard let userDict = child.value as? [String: Any],
+                        guard
+                            let userDict = child.value as? [String: Any],
                             let integralKey = userDict["integralKey"] as? Double else { return }
                         
+                        //for getting the closest key pair
+                        var bestKeyDiff = 999.0
                         //loop over all users but current
                         if(child.key != currentUser.uid) {
-                            if abs(currentUser.integralKey - integralKey) < integralKeyTolerance {
+                            let keyDiff = abs(currentUser.integralKey - integralKey)
+                            if keyDiff < integralKeyTolerance && keyDiff < bestKeyDiff {
+                                bestKeyDiff = keyDiff
                                 currentUser.matchedWith = userDict["username"] as! String
                                 UserService.updateMatchedWith(currentUser, matchedWith: userDict["username"] as! String)
                                 if currentUser.type == Constants.UserDictionary.receiver {
@@ -57,9 +62,18 @@ struct PartnerCheckerService {
                 let actionYes = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
                     if currentUser.type == Constants.UserDictionary.receiver {
                         viewController.performSegue(withIdentifier: Constants.Segue.toDisplayResult, sender: viewController)
+                        UserService.updatePassableTestText(User.current, passableTestText: "")
                     }
+                    UserService.updateUserIntegralKey(User.current, integralKey: -1.0)
+                    UserService.updateMatchedWith(User.current, matchedWith: "")
                 })
-                let actionNo = UIAlertAction(title: "No", style: .cancel, handler: nil)
+                let actionNo = UIAlertAction(title: "No", style: .cancel, handler: { (action) in
+                    if currentUser.type == Constants.UserDictionary.receiver {
+                        UserService.updatePassableTestText(User.current, passableTestText: "")
+                    }
+                    UserService.updateUserIntegralKey(User.current, integralKey: -1.0)
+                    UserService.updateMatchedWith(User.current, matchedWith: "")
+                })
                 
                 alertController.addAction(actionYes)
                 alertController.addAction(actionNo)

@@ -49,14 +49,24 @@ class DisplayResultViewController: UIViewController {
         }
         
         
-        //Once download complete, update table view
+        //Once download complete, update track info
         dispatchGroup.notify(queue: DispatchQueue.main) {
             LoadingOverlay.shared.hideOverlayView()
 
             self.trackName.text = self.track.name
             self.artistName.text = self.track.artist
-            if let trackCoverURL = self.track.albumCoverURL {
-                self.albumArtwork.af_setImage(withURL: URL(string: trackCoverURL)!)
+            guard let albumCoverURL = self.track.albumCoverURL else {return}
+            if albumCoverURL != "" {
+                self.albumArtwork.af_setImage(withURL: URL(string: self.track.albumCoverURL!)!)
+            }
+            else {
+                //Alert the user that no song was transferred
+                let alert = UIAlertController(title: nil, message: "No song found!", preferredStyle: .alert)
+                let actionOK = UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                    self.performSegue(withIdentifier: Constants.Segue.displayResultsToMotion, sender: self)
+                })
+                alert.addAction(actionOK)
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
