@@ -25,8 +25,6 @@ class CreateUsernameViewController: UIViewController {
         nextButton.layer.borderWidth = 1
         nextButton.layer.borderColor = UIColor(displayP3Red: 0.431, green: 0.918, blue: 0.667, alpha: 1).cgColor
         createUsernameLabel.adjustsFontSizeToFitWidth = true
-        createUsernameLabel.layer.borderWidth = 1
-        createUsernameLabel.layer.borderColor = UIColor(displayP3Red: 0.431, green: 0.918, blue: 0.667, alpha: 1).cgColor
         
         //Handle tapping to deactivate keyboard
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
