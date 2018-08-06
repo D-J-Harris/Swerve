@@ -17,6 +17,7 @@ class DisplayResultViewController: UIViewController {
     @IBOutlet weak var albumArtwork: UIImageView!
     @IBOutlet weak var openInSpotifyButton: UIButton!
     @IBOutlet weak var addToSpotifyButton: UIButton!
+    @IBOutlet weak var gradientView: UIView!
     
     //Empty initialisations
     var receivedID = ""
@@ -24,6 +25,17 @@ class DisplayResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let gradient = CAGradientLayer()
+        
+        gradient.frame = gradientView.bounds
+        gradient.colors = [UIColor(displayP3Red: 0.431, green: 0.918, blue: 0.667, alpha: 1).cgColor,
+                           UIColor(displayP3Red: 0.961, green: 0.408, blue: 0.349, alpha: 1).cgColor,
+                           UIColor(displayP3Red: 0.878, green: 0.898, blue: 0.243, alpha: 1).cgColor]
+        gradientView.layer.insertSublayer(gradient, at: 0)
+        trackName.layer.cornerRadius = 5
+        artistName.layer.cornerRadius = 5
+        openInSpotifyButton.layer.cornerRadius = 5
+        addToSpotifyButton.layer.cornerRadius = 5
     }
     
     override func didReceiveMemoryWarning() {
