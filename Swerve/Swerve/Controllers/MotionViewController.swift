@@ -24,10 +24,24 @@ class MotionViewController: UIViewController {
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
-
+    @IBOutlet weak var timerView: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        timerView.layer.masksToBounds = true
+        timerView.layer.cornerRadius = timerView.frame.width / 2
+        timerView.layer.borderWidth = 4
+        
+        //add color animation to timer border
+        let colorAnimation = CABasicAnimation(keyPath: "borderColor")
+        colorAnimation.fromValue = UIColor(displayP3Red: 0.431, green: 0.918, blue: 0.667, alpha: 1).cgColor
+        colorAnimation.toValue = UIColor(displayP3Red: 0.961, green: 0.408, blue: 0.349, alpha: 1).cgColor
+        colorAnimation.duration = 10
+        colorAnimation.repeatCount = .infinity
+        colorAnimation.timeOffset = round(NSDate.timeIntervalSinceReferenceDate).truncatingRemainder(dividingBy: 10)
+        timerView.layer.add(colorAnimation, forKey: "borderColor")
+        
         backgroundTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.getTime), userInfo: nil, repeats: true)
     }
     
@@ -132,7 +146,7 @@ class MotionViewController: UIViewController {
     
     //function to retrieve the rounded time modulo 10
     @objc func getTime() {
-        let currTime = round(NSDate.timeIntervalSinceReferenceDate).truncatingRemainder(dividingBy: 10)
+        let currTime = 10 - round(NSDate.timeIntervalSinceReferenceDate).truncatingRemainder(dividingBy: 10)
         self.timeLabel.text = String(currTime)
     }
 }
