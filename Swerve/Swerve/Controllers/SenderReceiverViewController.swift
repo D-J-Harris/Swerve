@@ -15,11 +15,25 @@ class SenderReceiverViewController: UIViewController {
     @IBOutlet weak var senderButton: UIButton!
     @IBOutlet weak var receiverButton: UIButton!
     @IBOutlet weak var signoutButton: UIBarButtonItem!
+    @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var welcomeBackLabel: UILabel!
+    
     
     let auth = SPTAuth.defaultInstance()!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let gradient = CAGradientLayer()
+        
+        gradient.frame = gradientView.bounds
+        gradient.colors = [UIColor(displayP3Red: 0.431, green: 0.918, blue: 0.667, alpha: 1).cgColor,
+                           UIColor(displayP3Red: 0.961, green: 0.408, blue: 0.349, alpha: 1).cgColor,
+                           UIColor(displayP3Red: 0.878, green: 0.898, blue: 0.243, alpha: 1).cgColor]
+        gradientView.layer.insertSublayer(gradient, at: 0)
+        receiverButton.layer.cornerRadius = 5
+        senderButton.layer.cornerRadius = 5
+        welcomeBackLabel.text = "Welcome back, \(User.current.username)"
+        welcomeBackLabel.adjustsFontSizeToFitWidth = true
     }
     
     override func didReceiveMemoryWarning() {

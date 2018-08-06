@@ -22,8 +22,6 @@ class CreateUsernameViewController: UIViewController {
         super.viewDidLoad()
         nextButton.layer.masksToBounds = true
         nextButton.layer.cornerRadius = nextButton.frame.width / 2
-        nextButton.layer.borderWidth = 1
-        nextButton.layer.borderColor = UIColor(displayP3Red: 0.431, green: 0.918, blue: 0.667, alpha: 1).cgColor
         createUsernameLabel.adjustsFontSizeToFitWidth = true
         
         //Handle tapping to deactivate keyboard

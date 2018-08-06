@@ -24,8 +24,6 @@ class SpotifyLoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        spotifyLoginButton.layer.borderWidth = 1
-        spotifyLoginButton.layer.borderColor = UIColor(displayP3Red: 0.961, green: 0.408, blue: 0.349, alpha: 1).cgColor
         setupSpotify()
         
         // Before presenting the view controllers watch for the notification
