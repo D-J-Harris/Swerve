@@ -21,17 +21,13 @@ class MotionViewController: UIViewController {
     let updateFrequency: Double = 1.0 / 100.0 // hertz
     var resultsMatrix = [[Double]]()
     var initialAttitude: CMAttitude? = nil
-    var testLabelText: String = "Receiver So No Data"
     
-    @IBOutlet weak var testLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var integralLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        testLabel.text = testLabelText
         backgroundTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.getTime), userInfo: nil, repeats: true)
     }
     
@@ -115,7 +111,6 @@ class MotionViewController: UIViewController {
         let graphFeatures = GraphFeatures()
         self.timer.invalidate()
         self.motion.stopDeviceMotionUpdates()
-        self.integralLabel.text = String(format: "%.3f", graphFeatures.getIntegral(results: self.resultsMatrix))
         UserService.updateUserIntegralKey(User.current, integralKey: graphFeatures.getIntegral(results: self.resultsMatrix))
         User.current.integralKey = graphFeatures.getIntegral(results: self.resultsMatrix)
         
