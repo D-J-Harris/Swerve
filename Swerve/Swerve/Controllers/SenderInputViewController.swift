@@ -26,6 +26,7 @@ class SenderInputViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.sectionIndexColor = UIColor(displayP3Red: 0.482, green: 0.502, blue: 0.478, alpha: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {

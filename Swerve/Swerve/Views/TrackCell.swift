@@ -16,7 +16,7 @@ class TrackCell: UITableViewCell {
     @IBOutlet weak var artistName: UILabel!
     
     var trackID: String?
-    static let height: CGFloat = 66
+    static let height: CGFloat = 80
     
     override func awakeFromNib() {
         super.awakeFromNib()
