@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import SwiftyJSON
 
 struct Track {
+    
     let name: String
     let artist: String
     let albumCoverURL: String?
@@ -26,33 +26,25 @@ struct Track {
         self.spotifyUri = spotifyUri
     }
     
-    init(json: JSON, _ i: Int){
-        self.name = json["items"][i]["track"]["name"].stringValue
-        self.artist = json["items"][i]["track"]["artists"][0]["name"].stringValue
-        self.albumCoverURL = json["items"][i]["track"]["album"]["images"][0]["url"].stringValue
-        self.id = json["items"][i]["track"]["id"].stringValue
-        self.url = json["items"][i]["track"]["external_urls"]["spotify"].stringValue
-        self.spotifyUri = json["items"][i]["track"]["uri"].stringValue
+    
+    init(jsonDict: JSON, _ i: Int){
+        self.name = ((jsonDict["items"] as! [JSON])[i]["track"] as! JSON)["name"] as! String
+        self.artist = (((jsonDict["items"] as! [JSON])[i]["track"] as! JSON)["artists"] as! [JSON])[0]["name"] as! String
+        self.albumCoverURL = ((((jsonDict["items"] as! [JSON])[i]["track"] as! JSON)["album"] as! JSON)["images"] as! [JSON])[0]["url"] as? String
+        self.id = ((jsonDict["items"] as! [JSON])[i]["track"] as! JSON)["id"] as! String
+        self.url = (((jsonDict["items"] as! [JSON])[i]["track"] as! JSON)["external_urls"] as! JSON)["spotify"] as! String
+        self.spotifyUri = ((jsonDict["items"] as! [JSON])[i]["track"] as! JSON)["uri"] as! String
+
     }
     
-    init(json: JSON){
-        self.name = json["name"].stringValue
-        self.artist = json["artists"][0]["name"].stringValue
-        self.albumCoverURL = json["album"]["images"][0]["url"].stringValue
-        self.id = json["id"].stringValue
-        self.url = json["external_urls"]["spotify"].stringValue
-        self.spotifyUri = json["uri"].stringValue
-    }
     
-//    init(orgJson: AnyObject, _ i: Int){
-//        guard let array = orgJson as? NSArray else {return}
-//
-//        self.name = array[1][i][1][10] as String
-//        self.artist = array["items"][i]["track"]["artists"][0]["name"] as String
-//        self.albumCoverURL = array["items"][i]["track"]["album"]["images"][0]["url"] as String
-//        self.id = array["items"][i]["track"]["id"] as String
-//        self.url = array["items"][i]["track"]["external_urls"]["spotify"] as String
-//        self.spotifyUri = array["items"][i]["track"]["uri"] as String
-//    }
+    init(jsonDict: JSON){
+        self.name = jsonDict["name"] as! String
+        self.artist = (jsonDict["artists"] as! [JSON])[0]["name"] as! String
+        self.albumCoverURL = ((jsonDict["album"] as! JSON)["images"] as! [JSON])[0]["url"] as? String
+        self.id = jsonDict["id"] as! String
+        self.url = (jsonDict["external_urls"] as! JSON)["spotify"] as! String
+        self.spotifyUri = jsonDict["uri"] as! String
+    }
 }
 

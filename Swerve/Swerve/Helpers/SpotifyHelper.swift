@@ -8,13 +8,13 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
+
+typealias JSON = [String: Any]
 
 //Can only get first 50 for now (API limit, can be fixed with offsets)
 func getTrackList(completion: @escaping ([Track]) -> Void) {
         var trackList: [Track] = []
-        let apiToCall = "https://api.spotify.com/v1/me/tracks?limit=30&offset=0"
-        //^^^^first 30 for now to make testing faster^^^^
+        let apiToCall = "https://api.spotify.com/v1/me/tracks?limit=50&offset=0"
     
     
         let auth = SPTAuth.defaultInstance()!
@@ -26,23 +26,14 @@ func getTrackList(completion: @escaping ([Track]) -> Void) {
             switch response.result {
             case .success:
                 if let value = response.result.value {
-                    let json = JSON(value)
-                    let sampleSize = json["items"].count
-                    
-                    /*
-                    //if sample size is 50, then update parameters ready for next call
-                    if sampleSize == 50 {
-                        offset += 50
-                    } else {
-                        tracksAreExhausted = true
-                    }
-                    */
+                    let jsonDict = value as! JSON
+
+
                     
                     //add each track to an array of tracks
-                    for trackNumber in 0...sampleSize - 1 {
-                        let track = Track.init(json: json, trackNumber)
+                    for trackNumber in 0...49 {
+                        let track = Track.init(jsonDict: jsonDict, trackNumber)
                         trackList.append(track)
-                        print("name: \(track.name) albumCoverURL: \(String(describing: track.albumCoverURL)) artist: \(track.artist) id: \(track.id) spotifyURI: \(track.spotifyUri) URL: \(track.url)")
                     }
                 }
                 trackList = trackList.sorted{ $0.name < $1.name }
@@ -69,13 +60,10 @@ func getTrack(trackID id: String, completion: @escaping (Track) -> Void) {
         switch response.result {
         case .success:
             if let value = response.result.value {
-                let json = JSON(value)
+                let jsonDict = value as! JSON
 
 
-                    track = Track.init(json: json)
-
-                    print("name: \(track.name) albumCoverURL: \(String(describing: track.albumCoverURL)) artist: \(track.artist) id: \(track.id) spotifyURI: \(track.spotifyUri) URL: \(track.url)")
-
+                    track = Track.init(jsonDict: jsonDict)
             }
             completion(track)
 
