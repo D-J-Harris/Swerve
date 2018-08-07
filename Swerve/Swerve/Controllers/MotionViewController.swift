@@ -21,6 +21,7 @@ class MotionViewController: UIViewController {
     let updateFrequency: Double = 1.0 / 100.0 // hertz
     var resultsMatrix = [[Double]]()
     var initialAttitude: CMAttitude? = nil
+    let colorAnimation = CABasicAnimation(keyPath: "borderColor")
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
@@ -43,15 +44,18 @@ class MotionViewController: UIViewController {
         startButton.layer.shadowOffset = CGSize(width: 5, height: 5)
         
         //add color animation to timer border
-        let colorAnimation = CABasicAnimation(keyPath: "borderColor")
-        colorAnimation.fromValue = UIColor(displayP3Red: 0.431, green: 0.918, blue: 0.667, alpha: 1).cgColor
-        colorAnimation.toValue = UIColor(displayP3Red: 0.961, green: 0.408, blue: 0.349, alpha: 1).cgColor
-        colorAnimation.duration = 10
-        colorAnimation.repeatCount = .infinity
-        colorAnimation.timeOffset = round(NSDate.timeIntervalSinceReferenceDate).truncatingRemainder(dividingBy: 10)
-        timerView.layer.add(colorAnimation, forKey: "borderColor")
+        self.colorAnimation.fromValue = UIColor(displayP3Red: 0.431, green: 0.918, blue: 0.667, alpha: 1).cgColor
+        self.colorAnimation.toValue = UIColor(displayP3Red: 0.961, green: 0.408, blue: 0.349, alpha: 1).cgColor
+        self.colorAnimation.duration = 10
+        self.colorAnimation.repeatCount = .infinity
         
         backgroundTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.getTime), userInfo: nil, repeats: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.colorAnimation.timeOffset = round(NSDate.timeIntervalSinceReferenceDate).truncatingRemainder(dividingBy: 10)
+        timerView.layer.add(colorAnimation, forKey: "borderColor")
     }
     
     override func didReceiveMemoryWarning() {
