@@ -71,11 +71,33 @@
                                 <color key="pageIndicatorTintColor" red="0.4823529412" green="0.50196078430000002" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </pageControl>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tutorial3" translatesAutoresizingMaskIntoConstraints="NO" id="PDj-nu-Doy">
+                                <rect key="frame" x="37" y="70" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="0UF-aQ-3u4"/>
+                                    <constraint firstAttribute="height" constant="300" id="rzg-KU-ZfY"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="To pair, users hold phones together so that any motion is unique to both." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hwR-7s-glU">
+                                <rect key="frame" x="37" y="380" width="300" height="100"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="81S-kY-bBE"/>
+                                    <constraint firstAttribute="height" constant="100" id="vrf-RY-MEK"/>
+                                </constraints>
+                                <color key="textColor" red="0.4823529412" green="0.50196078430000002" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="hwR-7s-glU" firstAttribute="centerX" secondItem="u10-a3-YEt" secondAttribute="centerX" id="Nh5-Ka-axc"/>
+                            <constraint firstItem="PDj-nu-Doy" firstAttribute="top" secondItem="qtO-Kk-P0W" secondAttribute="top" constant="50" id="UAG-l0-mVD"/>
                             <constraint firstItem="xAG-lX-nmI" firstAttribute="centerX" secondItem="u10-a3-YEt" secondAttribute="centerX" id="gV7-I5-pYW"/>
+                            <constraint firstItem="PDj-nu-Doy" firstAttribute="centerX" secondItem="u10-a3-YEt" secondAttribute="centerX" id="jyK-WG-d3C"/>
                             <constraint firstItem="qtO-Kk-P0W" firstAttribute="bottom" secondItem="xAG-lX-nmI" secondAttribute="bottom" constant="30" id="xbe-5H-XWe"/>
+                            <constraint firstItem="hwR-7s-glU" firstAttribute="top" secondItem="PDj-nu-Doy" secondAttribute="bottom" constant="10" id="zTL-Iv-GYG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qtO-Kk-P0W"/>
                     </view>
@@ -97,11 +119,38 @@
                                 <color key="pageIndicatorTintColor" red="0.4823529412" green="0.50196078430000002" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </pageControl>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tutorial2" translatesAutoresizingMaskIntoConstraints="NO" id="TUe-Rs-une">
+                                <rect key="frame" x="37.5" y="70" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="8sg-hW-gaX"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="FBy-S5-Vn5"/>
+                                    <constraint firstAttribute="height" constant="300" id="Pxm-6Q-X3z"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="bVZ-cf-rfS"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Jf5-IO-zbj">
+                                <rect key="frame" x="37.5" y="380" width="300" height="100"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="1GX-hP-Xjs"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="U8K-uk-NkM"/>
+                                    <constraint firstAttribute="width" constant="300" id="aYo-Y4-Zl6"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="jOt-6J-K6W"/>
+                                </constraints>
+                                <string key="text">Make sure to give yourself time to hold devices together before 'swerving' - once the button is tapped, motion is captured when the countdown hits zero!</string>
+                                <color key="textColor" red="0.4823529412" green="0.50196078430000002" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="dw8-3S-MWw" firstAttribute="centerX" secondItem="UTG-aJ-WxB" secondAttribute="centerX" id="41S-4a-PbN"/>
+                            <constraint firstItem="Jf5-IO-zbj" firstAttribute="centerX" secondItem="UTG-aJ-WxB" secondAttribute="centerX" id="I6n-Uy-wHU"/>
+                            <constraint firstItem="TUe-Rs-une" firstAttribute="top" secondItem="xGD-gC-GIJ" secondAttribute="top" constant="50" id="Qfc-Rw-KHg"/>
+                            <constraint firstItem="Jf5-IO-zbj" firstAttribute="top" secondItem="TUe-Rs-une" secondAttribute="bottom" constant="10" id="aMy-Vu-YYf"/>
                             <constraint firstItem="xGD-gC-GIJ" firstAttribute="bottom" secondItem="dw8-3S-MWw" secondAttribute="bottom" constant="30" id="j8V-UY-Ri3"/>
+                            <constraint firstItem="TUe-Rs-une" firstAttribute="centerX" secondItem="UTG-aJ-WxB" secondAttribute="centerX" id="jaT-WZ-9vK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xGD-gC-GIJ"/>
                     </view>
@@ -123,11 +172,40 @@
                                 <color key="pageIndicatorTintColor" red="0.4823529412" green="0.50196078430000002" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </pageControl>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tutorial4" translatesAutoresizingMaskIntoConstraints="NO" id="QvK-Gh-R0O">
+                                <rect key="frame" x="37" y="70" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="AJA-BF-Crf"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="MkM-vD-aEn"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="OZ0-hc-gER"/>
+                                    <constraint firstAttribute="width" constant="300" id="oWg-AG-7ty"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pEl-VM-OWp">
+                                <rect key="frame" x="37.5" y="380" width="300" height="100"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="3Xm-Ag-MmB"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="4nh-xM-YWZ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="5Kc-dJ-GDG"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="QME-8F-3Ig"/>
+                                    <constraint firstAttribute="height" constant="100" id="TDK-pX-HMi"/>
+                                    <constraint firstAttribute="width" constant="300" id="Ufg-BM-3Xm"/>
+                                </constraints>
+                                <string key="text">Once you're ready to swerve, be sure to move the two devices together with slow, fluid motion. This process takes around 3 seconds.</string>
+                                <color key="textColor" red="0.4823529412" green="0.50196078430000002" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="pEl-VM-OWp" firstAttribute="centerX" secondItem="MdH-QO-C5S" secondAttribute="centerX" id="HaU-Lf-yiO"/>
                             <constraint firstItem="AFW-eX-2oR" firstAttribute="centerX" secondItem="MdH-QO-C5S" secondAttribute="centerX" id="OQz-eN-CFg"/>
                             <constraint firstItem="HVo-an-VCB" firstAttribute="bottom" secondItem="AFW-eX-2oR" secondAttribute="bottom" constant="30" id="WA1-ep-a5R"/>
+                            <constraint firstItem="QvK-Gh-R0O" firstAttribute="centerX" secondItem="MdH-QO-C5S" secondAttribute="centerX" id="eth-lc-WNg"/>
+                            <constraint firstItem="QvK-Gh-R0O" firstAttribute="top" secondItem="HVo-an-VCB" secondAttribute="top" constant="50" id="kew-S0-cMu"/>
+                            <constraint firstItem="pEl-VM-OWp" firstAttribute="top" secondItem="QvK-Gh-R0O" secondAttribute="bottom" constant="10" id="yZO-Ja-lCL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HVo-an-VCB"/>
                     </view>
@@ -147,5 +225,8 @@
     </scenes>
     <resources>
         <image name="Tutorial1" width="1000" height="1000"/>
+        <image name="Tutorial2" width="1000" height="1000"/>
+        <image name="Tutorial3" width="1000" height="1000"/>
+        <image name="Tutorial4" width="1000" height="1000"/>
     </resources>
 </document>
