@@ -14,7 +14,7 @@ class SpotifyLoginViewController: UIViewController {
     @IBOutlet weak var spotifyLoginButton: UIButton!
     
     //Spotify initialisations
-    var auth: SPTAuth = SPTAuth.defaultInstance()
+    var auth: SPTAuth = SPTAuth.defaultInstance()!
     
     //Initialised in either updateAfterFirstLogin or viewDidLoad (check for session in userDefaults)
     var appURL: URL?
@@ -40,11 +40,10 @@ class SpotifyLoginViewController: UIViewController {
         auth.sessionUserDefaultsKey = Constants.spotify.sessionKey
         auth.tokenSwapURL = Constants.spotify.tokenSwapURL
         auth.tokenRefreshURL = Constants.spotify.tokenRefreshURL
+        auth.requestedScopes = [SPTAuthUserLibraryReadScope, SPTAuthUserLibraryModifyScope]
         webURL = auth.spotifyWebAuthenticationURL()
         appURL = auth.spotifyAppAuthenticationURL()
         
-        //scopes to use
-        auth.requestedScopes = [SPTAuthStreamingScope, SPTAuthUserLibraryReadScope]
     }
     
     

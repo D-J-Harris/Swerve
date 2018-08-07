@@ -21,6 +21,7 @@ func getTrackList(completion: @escaping ([Track]) -> Void) {
 
     //Spotify auth related info
     let auth = SPTAuth.defaultInstance()!
+    auth.requestedScopes = [SPTAuthUserLibraryReadScope]
     guard let accessToken = auth.session.accessToken else {return completion([])}
     let headers = ["Authorization": "Bearer \(accessToken)"]
     
@@ -100,7 +101,10 @@ func addToSpotify(songID id: String) {
     let auth = SPTAuth.defaultInstance()!
     
     guard let accessToken = auth.session.accessToken else {return}
-    let headers = ["Authorization": "Bearer \(accessToken)"]
+    let headers = [
+        "Authorization": "Bearer \(accessToken)",
+        "Content-Type": "application/json --data [\\\(id)\\]"
+    ]
     
     //PUT request to add to current session user tracks
     Alamofire.request(apiToCall, method: .put, parameters: [:],encoding: JSONEncoding.default, headers: headers).responseJSON {
