@@ -51,6 +51,8 @@ class SenderReceiverViewController: UIViewController {
         case Constants.Segue.receiverToMotion:
             User.current.type = Constants.UserDictionary.receiver
             UserService.updateUserType(User.current, type: Constants.UserDictionary.receiver)
+//        case Constants.Segue.toInstructions:
+//            self.performSegue(withIdentifier: Constants.Segue.toInstructions, sender: self)
         default:
             print("error no correct segue identified")
         }
