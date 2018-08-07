@@ -25,6 +25,7 @@ class MotionViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var timerView: UIView!
+    @IBOutlet weak var usernameLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -32,6 +33,7 @@ class MotionViewController: UIViewController {
         timerView.layer.masksToBounds = true
         timerView.layer.cornerRadius = timerView.frame.width / 2
         timerView.layer.borderWidth = 4
+        usernameLabel.text = User.current.username
         
         //add color animation to timer border
         let colorAnimation = CABasicAnimation(keyPath: "borderColor")
