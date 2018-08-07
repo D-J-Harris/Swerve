@@ -35,6 +35,13 @@ class MotionViewController: UIViewController {
         timerView.layer.borderWidth = 4
         usernameLabel.text = User.current.username
         
+        //button shadow and effect
+        startButton.layer.masksToBounds = false
+        startButton.layer.shadowOpacity = 0.8
+        startButton.layer.shadowColor = UIColor.black.cgColor
+        startButton.layer.shadowRadius = 5
+        startButton.layer.shadowOffset = CGSize(width: 5, height: 5)
+        
         //add color animation to timer border
         let colorAnimation = CABasicAnimation(keyPath: "borderColor")
         colorAnimation.fromValue = UIColor(displayP3Red: 0.431, green: 0.918, blue: 0.667, alpha: 1).cgColor

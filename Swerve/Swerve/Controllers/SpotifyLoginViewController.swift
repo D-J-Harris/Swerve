@@ -17,7 +17,6 @@ class SpotifyLoginViewController: UIViewController {
     var auth: SPTAuth = SPTAuth.defaultInstance()
     
     //Initialised in either updateAfterFirstLogin or viewDidLoad (check for session in userDefaults)
-    var player: SPTAudioStreamingController?
     var appURL: URL?
     var webURL: URL?
     
