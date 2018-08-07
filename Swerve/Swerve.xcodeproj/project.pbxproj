@@ -12,6 +12,11 @@
 		BE0577A6210A2F9000BCFAE1 /* GraphFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0577A5210A2F9000BCFAE1 /* GraphFeatures.swift */; };
 		BE2D52082108E7A0004113DB /* CreateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2D52072108E7A0004113DB /* CreateUsernameViewController.swift */; };
 		BE5544552108F74800A9CCA2 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5544542108F74800A9CCA2 /* UserService.swift */; };
+		BEA37ADE21194289008E52C5 /* Tutorial1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA37ADD21194289008E52C5 /* Tutorial1ViewController.swift */; };
+		BEA37AE02119429A008E52C5 /* Tutorial2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA37ADF2119429A008E52C5 /* Tutorial2ViewController.swift */; };
+		BEA37AE2211942AB008E52C5 /* Tutorial3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA37AE1211942AB008E52C5 /* Tutorial3ViewController.swift */; };
+		BEA37AE4211942BC008E52C5 /* Tutorial4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA37AE3211942BC008E52C5 /* Tutorial4ViewController.swift */; };
+		BEA37AE62119439F008E52C5 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA37AE52119439F008E52C5 /* TutorialPageViewController.swift */; };
 		BEA780CA210B83A30068115E /* SenderReceiverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780C9210B83A30068115E /* SenderReceiverViewController.swift */; };
 		BEA780CC210B89B80068115E /* SenderInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780CB210B89B80068115E /* SenderInputViewController.swift */; };
 		BEA780CE210B8A670068115E /* MotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA780CD210B8A670068115E /* MotionViewController.swift */; };
@@ -47,6 +52,11 @@
 		BE0577A5210A2F9000BCFAE1 /* GraphFeatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphFeatures.swift; sourceTree = "<group>"; };
 		BE2D52072108E7A0004113DB /* CreateUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameViewController.swift; sourceTree = "<group>"; };
 		BE5544542108F74800A9CCA2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		BEA37ADD21194289008E52C5 /* Tutorial1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial1ViewController.swift; sourceTree = "<group>"; };
+		BEA37ADF2119429A008E52C5 /* Tutorial2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial2ViewController.swift; sourceTree = "<group>"; };
+		BEA37AE1211942AB008E52C5 /* Tutorial3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial3ViewController.swift; sourceTree = "<group>"; };
+		BEA37AE3211942BC008E52C5 /* Tutorial4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial4ViewController.swift; sourceTree = "<group>"; };
+		BEA37AE52119439F008E52C5 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 		BEA780C9210B83A30068115E /* SenderReceiverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderReceiverViewController.swift; sourceTree = "<group>"; };
 		BEA780CB210B89B80068115E /* SenderInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderInputViewController.swift; sourceTree = "<group>"; };
 		BEA780CD210B8A670068115E /* MotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +144,18 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		BEA37ADC2119426D008E52C5 /* TutorialControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BEA37ADD21194289008E52C5 /* Tutorial1ViewController.swift */,
+				BEA37ADF2119429A008E52C5 /* Tutorial2ViewController.swift */,
+				BEA37AE1211942AB008E52C5 /* Tutorial3ViewController.swift */,
+				BEA37AE3211942BC008E52C5 /* Tutorial4ViewController.swift */,
+				BEA37AE52119439F008E52C5 /* TutorialPageViewController.swift */,
+			);
+			path = TutorialControllers;
+			sourceTree = "<group>";
+		};
 		BEA780F721137EE70068115E /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +230,7 @@
 		BEEA73002107D87B008779B0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BEA37ADC2119426D008E52C5 /* TutorialControllers */,
 				BEEA73032107DB0D008779B0 /* LoginViewController.swift */,
 				BE2D52072108E7A0004113DB /* CreateUsernameViewController.swift */,
 				BEA780C9210B83A30068115E /* SenderReceiverViewController.swift */,
@@ -391,8 +414,11 @@
 				BEA780CA210B83A30068115E /* SenderReceiverViewController.swift in Sources */,
 				BEA780CE210B8A670068115E /* MotionViewController.swift in Sources */,
 				BEA780F62113668B0068115E /* SpotifyHelper.swift in Sources */,
+				BEA37ADE21194289008E52C5 /* Tutorial1ViewController.swift in Sources */,
 				BEA780F221101AB70068115E /* Track.swift in Sources */,
+				BEA37AE62119439F008E52C5 /* TutorialPageViewController.swift in Sources */,
 				BEEA73072107FED8008779B0 /* User.swift in Sources */,
+				BEA37AE02119429A008E52C5 /* Tutorial2ViewController.swift in Sources */,
 				BEA780FB2113AC120068115E /* AlertCentre.swift in Sources */,
 				BEEA73042107DB0D008779B0 /* LoginViewController.swift in Sources */,
 				BEA780CC210B89B80068115E /* SenderInputViewController.swift in Sources */,
@@ -405,6 +431,8 @@
 				BEA780DC210E3CE80068115E /* LoadingOverlay.swift in Sources */,
 				BE0577A6210A2F9000BCFAE1 /* GraphFeatures.swift in Sources */,
 				BEA780DE210ED0610068115E /* InstructionsViewController.swift in Sources */,
+				BEA37AE4211942BC008E52C5 /* Tutorial4ViewController.swift in Sources */,
+				BEA37AE2211942AB008E52C5 /* Tutorial3ViewController.swift in Sources */,
 				BEA780D2210B9B070068115E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
