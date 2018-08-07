@@ -11,40 +11,73 @@ import Alamofire
 
 typealias JSON = [String: Any]
 
-//Can only get first 50 for now (API limit, can be fixed with offsets)
+//Each call can return a max of 50 tracks, offset used to get others in separate calls
 func getTrackList(completion: @escaping ([Track]) -> Void) {
         var trackList: [Track] = []
-        let apiToCall = "https://api.spotify.com/v1/me/tracks?limit=50&offset=0"
     
-    
+        //boolean value to check if call should be made again
+        var isExhausted = false
+        var callCount: Int = 50
+        var offset: Int = 0
+
+        //Spotify auth related info
         let auth = SPTAuth.defaultInstance()!
         guard let accessToken = auth.session.accessToken else {return}
         let headers = ["Authorization": "Bearer \(accessToken)"]
     
-        //call for first 50 songs from users tracks list
-        Alamofire.request(apiToCall, headers: headers).validate().responseJSON { (response) in
-            switch response.result {
-            case .success:
-                if let value = response.result.value {
-                    let jsonDict = value as! JSON
-
-
-                    
-                    //add each track to an array of tracks
-                    for trackNumber in 0...49 {
-                        let track = Track.init(jsonDict: jsonDict, trackNumber)
-                        trackList.append(track)
-                    }
-                }
-                trackList = trackList.sorted{ $0.name < $1.name }
-                completion(trackList)
+        let apiToCall = "https://api.spotify.com/v1/me/tracks?limit=50&offset=\(offset)"
     
-            //Alamofire call failed, likely wrong token
-            case .failure(let error):
-                print(error)
-                completion([])
+    
+        //create dispatchQueue so we can wait to see if another call should be made
+//        let dispatchQueue = DispatchGroup()
+    
+//        while isExhausted != true {
+//            dispatchQueue.enter()
+    
+    
+            //HERE BEGINS CODE ASYNC TO UPDATE TRACKLIST W 50 SONGS
+            Alamofire.request(apiToCall, headers: headers).validate().responseJSON { (response) in
+                switch response.result {
+                case .success:
+                    if let value = response.result.value {
+                        let jsonDict = value as! JSON
+                        print("-------\(jsonDict)")
+                        callCount = (jsonDict["items"] as! [JSON]).count
+
+                        
+                        //add each track to an array of tracks
+                        for trackNumber in 0...callCount - 1 {
+                            let track = Track.init(jsonDict: jsonDict, trackNumber)
+                            trackList.append(track)
+                        }
+                    }
+                    trackList = trackList.sorted{ $0.name < $1.name }
+//                    dispatchQueue.leave()
+                    completion(trackList)
+        
+                //Alamofire call failed, likely wrong token
+                case .failure(let error):
+                    print(error)
+//                    dispatchQueue.leave()
+                    completion([])
+                }
+                
             }
-        }
+            //HERE ENDS CODE ASYNC TO UPDATE TRACKLIST W 50 SONGS
+        
+//            dispatchQueue.wait()
+//                if callCount != 50 {
+//                    print(callCount)
+//                    print("----\(isExhausted)")
+//                    isExhausted = true
+//                }
+//                else {
+//                    offset += 50
+//                    print("------------")
+//                }
+    
+//    }
+
 }
 
 func getTrack(trackID id: String, completion: @escaping (Track) -> Void) {

@@ -32,8 +32,8 @@ class DisplayResultViewController: UIViewController {
                            UIColor(displayP3Red: 0.961, green: 0.408, blue: 0.349, alpha: 1).cgColor,
                            UIColor(displayP3Red: 0.878, green: 0.898, blue: 0.243, alpha: 1).cgColor]
         gradientView.layer.insertSublayer(gradient, at: 0)
-        trackName.layer.cornerRadius = 5
-        artistName.layer.cornerRadius = 5
+        trackName.layer.cornerRadius = 9
+        artistName.layer.cornerRadius = 9
         openInSpotifyButton.layer.cornerRadius = 5
         addToSpotifyButton.layer.cornerRadius = 5
     }
