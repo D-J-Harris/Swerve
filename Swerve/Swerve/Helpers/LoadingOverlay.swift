@@ -48,14 +48,16 @@ public class LoadingOverlay {
     }
     
     public func showSwerveView(_ view: UIView) {
-        swerveOverlayView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+        swerveOverlayView.frame = CGRect(x: 0, y: 0, width: 3*view.frame.width/4, height: view.frame.height/2)
         swerveOverlayView.center = view.center
-        swerveOverlayView.backgroundColor = UIColor.black
+        swerveOverlayView.backgroundColor = UIColor.white
         swerveOverlayView.clipsToBounds = true
         swerveOverlayView.layer.cornerRadius = 10
+        swerveOverlayView.layer.borderWidth = 1
+        swerveOverlayView.layer.borderColor = UIColor.black.cgColor
         
         swerveLabel.text = "Swerve!"
-        swerveLabel.textColor = UIColor.white
+        swerveLabel.textColor = UIColor(displayP3Red: 0.482, green: 0.502, blue: 0.478, alpha: 1)
         swerveLabel.sizeToFit()
         
         view.addSubview(swerveOverlayView)

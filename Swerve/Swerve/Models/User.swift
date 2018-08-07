@@ -25,7 +25,7 @@ class User: Codable {
         self.type = Constants.UserDictionary.unselected
         self.integralKey = -1.0
         self.passableTestText = ""
-        self.matchedWith = ""
+        self.matchedWith = "nobody"
     }
     
     init?(snapshot: DataSnapshot) {

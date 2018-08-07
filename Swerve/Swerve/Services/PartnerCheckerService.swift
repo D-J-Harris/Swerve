@@ -63,14 +63,14 @@ struct PartnerCheckerService {
                         UserService.updatePassableTestText(User.current, passableTestText: "")
                     }
                     UserService.updateUserIntegralKey(User.current, integralKey: -1.0)
-                    UserService.updateMatchedWith(User.current, matchedWith: "")
+                    UserService.updateMatchedWith(User.current, matchedWith: "nobody")
                 })
                 let actionNo = UIAlertAction(title: "No", style: .cancel, handler: { (action) in
                     if currentUser.type == Constants.UserDictionary.receiver {
                         UserService.updatePassableTestText(User.current, passableTestText: "")
                     }
                     UserService.updateUserIntegralKey(User.current, integralKey: -1.0)
-                    UserService.updateMatchedWith(User.current, matchedWith: "")
+                    UserService.updateMatchedWith(User.current, matchedWith: "nobody")
                 })
                 
                 alertController.addAction(actionYes)

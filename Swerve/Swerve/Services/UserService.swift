@@ -17,7 +17,7 @@ struct UserService {
                          "type": Constants.UserDictionary.unselected,
                          "integralKey": -1.0,
                          "passableTestText": "",
-                         "matchedWith": ""] as [String: Any]
+                         "matchedWith": "nobody"] as [String: Any]
         
         let ref = Database.database().reference().child("users").child(firUser.uid)
         ref.setValue(userAttrs) { (error, ref) in
@@ -66,9 +66,9 @@ struct UserService {
         let userAttrs = ["type": Constants.UserDictionary.unselected,
                          "integralKey": -1.0,
                          "passableTestText": "",
-                         "matchedWith": ""] as [String: Any]
+                         "matchedWith": "nobody"] as [String: Any]
         ref.updateChildValues(userAttrs)
-        user.integralKey = -1.0; user.matchedWith = ""; user.passableTestText = ""; user.type = Constants.UserDictionary.unselected
+        user.integralKey = -1.0; user.matchedWith = "nobody"; user.passableTestText = ""; user.type = Constants.UserDictionary.unselected
     }
     
     //function to display alerts
