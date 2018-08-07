@@ -13,29 +13,22 @@ typealias JSON = [String: Any]
 
 //Each call can return a max of 50 tracks, offset used to get others in separate calls
 func getTrackList(completion: @escaping ([Track]) -> Void) {
-        var trackList: [Track] = []
+    var trackList: [Track] = []
     
-        //boolean value to check if call should be made again
-        var isExhausted = false
-        var callCount: Int = 50
-        var offset: Int = 0
+    //Initialise callback helpers
+    var callCount: Int = 50
+    var offset: Int = 0
 
-        //Spotify auth related info
-        let auth = SPTAuth.defaultInstance()!
-        guard let accessToken = auth.session.accessToken else {return}
-        let headers = ["Authorization": "Bearer \(accessToken)"]
+    //Spotify auth related info
+    let auth = SPTAuth.defaultInstance()!
+    guard let accessToken = auth.session.accessToken else {return}
+    let headers = ["Authorization": "Bearer \(accessToken)"]
     
-        let apiToCall = "https://api.spotify.com/v1/me/tracks?limit=50&offset="
-    
-    
-        //create dispatchQueue so we can wait to see if another call should be made
-//        let dispatchQueue = DispatchGroup()
-    
-//        while isExhausted != true {
-//            dispatchQueue.enter()
+    //near-complete api url, appended with relevant offset for corresponding call
+    let apiToCall = "https://api.spotify.com/v1/me/tracks?limit=50&offset="
     
     
-            //HERE BEGINS CODE ASYNC TO UPDATE TRACKLIST W 50 SONGS
+    //HERE BEGINS CODE ASYNC TO UPDATE TRACKLIST W ALL SONGS
     var callback: ((DataResponse<Any>) -> (Void))!
     callback = { (response) in
         switch response.result {
@@ -44,47 +37,34 @@ func getTrackList(completion: @escaping ([Track]) -> Void) {
                 let jsonDict = value as! JSON
                 let tracks = jsonDict["items"] as! [JSON]
                 callCount = tracks.count
-                
-                
+                    
+                    
                 //add each track to an array of tracks
                 for t in tracks {
-                    let track = Track.init(spotify: t)
+                    let track = Track.init(libraryJsonDict: t)
                     trackList.append(track)
                 }
             }
             trackList = trackList.sorted{ $0.name < $1.name }
-            //                    dispatchQueue.leave()
             if trackList.count % 50 != 0 || callCount == 0 {
                 completion(trackList)
             } else {
+                //offset the api call and go again
                 offset += 50
                 Alamofire.request(apiToCall + String(offset), headers: headers).validate().responseJSON(completionHandler: callback)
             }
-            
+                
         //Alamofire call failed, likely wrong token
         case .failure(let error):
             print(error)
-            //                    dispatchQueue.leave()
             completion([])
         }
-        
     }
-            Alamofire.request(apiToCall + String(offset), headers: headers).validate().responseJSON(completionHandler: callback)
-            //HERE ENDS CODE ASYNC TO UPDATE TRACKLIST W 50 SONGS
-        
-//            dispatchQueue.wait()
-//                if callCount != 50 {
-//                    print(callCount)
-//                    print("----\(isExhausted)")
-//                    isExhausted = true
-//                }
-//                else {
-//                    offset += 50
-//                    print("------------")
-//                }
     
-//    }
-
+    
+    //Initial request that triggers all calls via callback above
+    Alamofire.request(apiToCall + String(offset), headers: headers).validate().responseJSON(completionHandler: callback)
+            //HERE ENDS CODE ASYNC TO UPDATE TRACKLIST W ALL SONGS
 }
 
 func getTrack(trackID id: String, completion: @escaping (Track) -> Void) {
