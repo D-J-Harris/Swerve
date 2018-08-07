@@ -27,13 +27,13 @@ struct Track {
     }
     
     
-    init(jsonDict: JSON, _ i: Int){
-        self.name = ((jsonDict["items"] as! [JSON])[i]["track"] as! JSON)["name"] as! String
-        self.artist = (((jsonDict["items"] as! [JSON])[i]["track"] as! JSON)["artists"] as! [JSON])[0]["name"] as! String
-        self.albumCoverURL = ((((jsonDict["items"] as! [JSON])[i]["track"] as! JSON)["album"] as! JSON)["images"] as! [JSON])[0]["url"] as? String
-        self.id = ((jsonDict["items"] as! [JSON])[i]["track"] as! JSON)["id"] as! String
-        self.url = (((jsonDict["items"] as! [JSON])[i]["track"] as! JSON)["external_urls"] as! JSON)["spotify"] as! String
-        self.spotifyUri = ((jsonDict["items"] as! [JSON])[i]["track"] as! JSON)["uri"] as! String
+    init(spotify: JSON){
+        self.name = (spotify["track"] as! JSON)["name"] as! String
+        self.artist = ((spotify["track"] as! JSON)["artists"] as! [JSON])[0]["name"] as! String
+        self.albumCoverURL = (((spotify["track"] as! JSON)["album"] as! JSON)["images"] as! [JSON])[0]["url"] as? String
+        self.id = (spotify["track"] as! JSON)["id"] as! String
+        self.url = ((spotify["track"] as! JSON)["external_urls"] as! JSON)["spotify"] as! String
+        self.spotifyUri = (spotify["track"] as! JSON)["uri"] as! String
 
     }
     

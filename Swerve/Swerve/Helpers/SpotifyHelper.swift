@@ -25,7 +25,7 @@ func getTrackList(completion: @escaping ([Track]) -> Void) {
         guard let accessToken = auth.session.accessToken else {return}
         let headers = ["Authorization": "Bearer \(accessToken)"]
     
-        let apiToCall = "https://api.spotify.com/v1/me/tracks?limit=50&offset=\(offset)"
+        let apiToCall = "https://api.spotify.com/v1/me/tracks?limit=50&offset="
     
     
         //create dispatchQueue so we can wait to see if another call should be made
@@ -36,33 +36,40 @@ func getTrackList(completion: @escaping ([Track]) -> Void) {
     
     
             //HERE BEGINS CODE ASYNC TO UPDATE TRACKLIST W 50 SONGS
-            Alamofire.request(apiToCall, headers: headers).validate().responseJSON { (response) in
-                switch response.result {
-                case .success:
-                    if let value = response.result.value {
-                        let jsonDict = value as! JSON
-                        print("-------\(jsonDict)")
-                        callCount = (jsonDict["items"] as! [JSON]).count
-
-                        
-                        //add each track to an array of tracks
-                        for trackNumber in 0...callCount - 1 {
-                            let track = Track.init(jsonDict: jsonDict, trackNumber)
-                            trackList.append(track)
-                        }
-                    }
-                    trackList = trackList.sorted{ $0.name < $1.name }
-//                    dispatchQueue.leave()
-                    completion(trackList)
-        
-                //Alamofire call failed, likely wrong token
-                case .failure(let error):
-                    print(error)
-//                    dispatchQueue.leave()
-                    completion([])
-                }
+    var callback: ((DataResponse<Any>) -> (Void))!
+    callback = { (response) in
+        switch response.result {
+        case .success:
+            if let value = response.result.value {
+                let jsonDict = value as! JSON
+                let tracks = jsonDict["items"] as! [JSON]
+                callCount = tracks.count
                 
+                
+                //add each track to an array of tracks
+                for t in tracks {
+                    let track = Track.init(spotify: t)
+                    trackList.append(track)
+                }
             }
+            trackList = trackList.sorted{ $0.name < $1.name }
+            //                    dispatchQueue.leave()
+            if trackList.count % 50 != 0 || callCount == 0 {
+                completion(trackList)
+            } else {
+                offset += 50
+                Alamofire.request(apiToCall + String(offset), headers: headers).validate().responseJSON(completionHandler: callback)
+            }
+            
+        //Alamofire call failed, likely wrong token
+        case .failure(let error):
+            print(error)
+            //                    dispatchQueue.leave()
+            completion([])
+        }
+        
+    }
+            Alamofire.request(apiToCall + String(offset), headers: headers).validate().responseJSON(completionHandler: callback)
             //HERE ENDS CODE ASYNC TO UPDATE TRACKLIST W 50 SONGS
         
 //            dispatchQueue.wait()
