@@ -96,15 +96,13 @@ func getTrack(trackID id: String, completion: @escaping (Track) -> Void) {
     }
 }
 
+//PUT API call to add song to current user's spotify
 func addToSpotify(songID id: String) {
     let apiToCall = "https://api.spotify.com/v1/me/tracks?ids=\(id)"
     let auth = SPTAuth.defaultInstance()!
     
     guard let accessToken = auth.session.accessToken else {return}
-    let headers = [
-        "Authorization": "Bearer \(accessToken)"
-        //"Content-Type": "application/json --data [\\\(id)\\]"
-    ]
+    let headers = ["Authorization": "Bearer \(accessToken)"]
     
     //PUT request to add to current session user tracks
     Alamofire.request(apiToCall, method: .put, parameters: [:],encoding: JSONEncoding.default, headers: headers).responseJSON {

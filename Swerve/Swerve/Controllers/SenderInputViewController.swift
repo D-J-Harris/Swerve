@@ -68,7 +68,7 @@ class SenderInputViewController: UIViewController {
         
         switch identifier {
         case Constants.Segue.senderInfoToMotion:
-            UserService.updatePassableTestText(User.current, passableTestText: songID ?? "No song ID")
+            UserService.updateSongID(User.current, songID: songID ?? "No song ID")
         case Constants.Segue.backFromSender:
             User.current.type = Constants.UserDictionary.unselected
             UserService.updateUserType(User.current, type: Constants.UserDictionary.unselected)

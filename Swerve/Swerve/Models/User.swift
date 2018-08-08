@@ -15,7 +15,7 @@ class User: Codable {
     let username: String
     var type: String
     var integralKey: Double
-    var passableTestText: String
+    var songID: String
     var matchedWith: String
     
     
@@ -24,7 +24,7 @@ class User: Codable {
         self.username = username
         self.type = Constants.UserDictionary.unselected
         self.integralKey = -1.0
-        self.passableTestText = ""
+        self.songID = ""
         self.matchedWith = "nobody"
     }
     
@@ -33,7 +33,7 @@ class User: Codable {
             let username = dict["username"] as? String,
             let type = dict["type"] as? String,
             let integralKey = dict["integralKey"] as? Double,
-            let passableTestText = dict["passableTestText"] as? String,
+            let songID = dict["songID"] as? String,
             let matchedWith = dict["matchedWith"] as? String
             else { return nil }
         
@@ -41,7 +41,7 @@ class User: Codable {
         self.username = username
         self.type = type
         self.integralKey = integralKey
-        self.passableTestText = passableTestText
+        self.songID = songID
         self.matchedWith = matchedWith
     }
     

@@ -73,7 +73,7 @@ class MotionViewController: UIViewController {
             }
         case Constants.Segue.toDisplayResult:
             let destination = segue.destination as! DisplayResultViewController
-            destination.receivedID = User.current.passableTestText 
+            destination.receivedID = User.current.songID
         default:
             print("error no correct segue identified")
         }

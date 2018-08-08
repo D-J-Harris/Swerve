@@ -12,10 +12,6 @@ import UIKit
 
 struct PartnerCheckerService {
     
-
-    //I should add code to return the user with the closest integral value (not just any old close value)
-    //Also search only for devices on the opposite sender/receiver type (fine on small scale)
-    
     func findMatchingDevice(_ currentUser: User, _ viewController: UIViewController) {
         
         //max difference between integralKeys
@@ -46,7 +42,7 @@ struct PartnerCheckerService {
                                 bestKeyDiff = keyDiff
                                 UserService.updateMatchedWith(currentUser, matchedWith: userDict["username"] as! String)
                                 if currentUser.type == Constants.UserDictionary.receiver {
-                                    UserService.updatePassableTestText(currentUser, passableTestText: userDict["passableTestText"] as! String)
+                                    UserService.updateSongID(currentUser, songID: userDict["songID"] as! String)
                                 }
                             }
                         }
@@ -60,14 +56,14 @@ struct PartnerCheckerService {
                 let actionYes = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
                     if currentUser.type == Constants.UserDictionary.receiver {
                         viewController.performSegue(withIdentifier: Constants.Segue.toDisplayResult, sender: viewController)
-                        UserService.updatePassableTestText(User.current, passableTestText: "")
+                        UserService.updateSongID(User.current, songID: "")
                     }
                     UserService.updateUserIntegralKey(User.current, integralKey: -1.0)
                     UserService.updateMatchedWith(User.current, matchedWith: "nobody")
                 })
                 let actionNo = UIAlertAction(title: "No", style: .cancel, handler: { (action) in
                     if currentUser.type == Constants.UserDictionary.receiver {
-                        UserService.updatePassableTestText(User.current, passableTestText: "")
+                        UserService.updateSongID(User.current, songID: "")
                     }
                     UserService.updateUserIntegralKey(User.current, integralKey: -1.0)
                     UserService.updateMatchedWith(User.current, matchedWith: "nobody")

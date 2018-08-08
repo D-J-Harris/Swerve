@@ -25,8 +25,13 @@ class GraphFeatures {
         
         return 0.5 * interval * runningHelpSum
     }
+}
     
-    
+    /*
+    Two unused functions maybe useful to keep for future optimisation
+ 
+ 
+ 
     func normalise(results: [Double]) -> [Double] {
         let mean: Double = results.reduce(0,+) / Double(results.count)
         let deviationTemp: [Double] = results.map{ $0 - mean }.map{ pow($0, 2) }
@@ -47,4 +52,5 @@ class GraphFeatures {
         }
         return counter
     }
-}
+    */
+

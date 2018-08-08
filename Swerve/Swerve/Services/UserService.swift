@@ -16,7 +16,7 @@ struct UserService {
         let userAttrs = ["username": username,
                          "type": Constants.UserDictionary.unselected,
                          "integralKey": -1.0,
-                         "passableTestText": "",
+                         "songID": "",
                          "matchedWith": "nobody"] as [String: Any]
         
         let ref = Database.database().reference().child("users").child(firUser.uid)
@@ -54,21 +54,21 @@ struct UserService {
         user.type = type
     }
     
-    static func updatePassableTestText(_ user: User, passableTestText: String) {
+    static func updateSongID(_ user: User, songID: String) {
         let ref = Database.database().reference().child("users").child(user.uid)
-        let userAttrs = ["passableTestText": passableTestText]
+        let userAttrs = ["songID": songID]
         ref.updateChildValues(userAttrs)
-        user.passableTestText = passableTestText
+        user.songID = songID
     }
     
     static func resetUserValues(_ user: User) {
         let ref = Database.database().reference().child("users").child(user.uid)
         let userAttrs = ["type": Constants.UserDictionary.unselected,
                          "integralKey": -1.0,
-                         "passableTestText": "",
+                         "songID": "",
                          "matchedWith": "nobody"] as [String: Any]
         ref.updateChildValues(userAttrs)
-        user.integralKey = -1.0; user.matchedWith = "nobody"; user.passableTestText = ""; user.type = Constants.UserDictionary.unselected
+        user.integralKey = -1.0; user.matchedWith = "nobody"; user.songID = ""; user.type = Constants.UserDictionary.unselected
     }
     
     //function to display alerts
