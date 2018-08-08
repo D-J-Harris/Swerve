@@ -139,7 +139,6 @@ extension SenderInputViewController: UITableViewDelegate {
     //selecting row sets up transition to motionVC
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentCell = tableView.cellForRow(at: indexPath) as! TrackCell
-        print("selected row number \(indexPath)")
         songID = currentCell.trackID
         
         //set up and present alert to segue to motionVC
