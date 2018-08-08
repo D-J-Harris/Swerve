@@ -97,13 +97,13 @@ func getTrack(trackID id: String, completion: @escaping (Track) -> Void) {
 }
 
 func addToSpotify(songID id: String) {
-    let apiToCall = "https://api.spotify.com/v1/me/tracks"
+    let apiToCall = "https://api.spotify.com/v1/me/tracks?ids=\(id)"
     let auth = SPTAuth.defaultInstance()!
     
     guard let accessToken = auth.session.accessToken else {return}
     let headers = [
-        "Authorization": "Bearer \(accessToken)",
-        "Content-Type": "application/json --data [\\\(id)\\]"
+        "Authorization": "Bearer \(accessToken)"
+        //"Content-Type": "application/json --data [\\\(id)\\]"
     ]
     
     //PUT request to add to current session user tracks
