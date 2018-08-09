@@ -30,7 +30,7 @@
                                     <color key="titleColor" red="0.4823529412" green="0.50196078430000002" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="bsR-Tw-OeS" kind="show" identifier="toInstructions" id="UQb-yU-6oZ"/>
+                                    <action selector="instructionsButtonTapped:" destination="Q38-ZN-tSa" eventType="touchUpInside" id="fOU-5C-Yc2"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Swerve Logo" translatesAutoresizingMaskIntoConstraints="NO" id="qKK-0r-Ge9">
@@ -121,6 +121,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="gradientView" destination="l5t-Yw-jXt" id="bmr-kr-ddz"/>
+                        <outlet property="instructionsButton" destination="cdS-vc-A1x" id="Tkm-2l-ySe"/>
                         <outlet property="receiverButton" destination="VHU-FI-Xa7" id="RR3-yb-S2A"/>
                         <outlet property="senderButton" destination="M9p-Sl-Myx" id="zwy-Hn-ET3"/>
                         <outlet property="signoutButton" destination="dxY-mo-Kax" id="EZe-24-PZk"/>

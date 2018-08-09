@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import FirebaseAuth
+import AVKit
+import AVFoundation
 
 class SenderReceiverViewController: UIViewController {
     
@@ -17,9 +19,12 @@ class SenderReceiverViewController: UIViewController {
     @IBOutlet weak var signoutButton: UIBarButtonItem!
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var welcomeBackLabel: UILabel!
+    @IBOutlet weak var instructionsButton: UIButton!
     
     
     let auth = SPTAuth.defaultInstance()!
+    //Initialise player controller for instructions
+    let playerController = AVPlayerViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +97,32 @@ class SenderReceiverViewController: UIViewController {
     @IBAction func receiverButtonTapped(_ sender: UIButton) {
         self.performSegue(withIdentifier: Constants.Segue.receiverToMotion, sender: self)
     }
+    
+    //TUTORIAL VIDEO START
+    
+    @IBAction func instructionsButtonTapped(_ sender: UIButton) {
+        playVideo()
+    }
+    
+    private func playVideo() {
+        guard let path = Bundle.main.path(forResource: "SwerveTutorial", ofType:"mp4") else {
+            debugPrint("SwerveTutorial.mp4 not found")
+            return
+        }
+        let player = AVPlayer(url: URL(fileURLWithPath: path))
+        playerController.player = player
+        NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerController.player?.currentItem)
+        present(playerController, animated: true) {
+            player.play()
+        }
+    }
+    
+    @objc func playerDidFinishPlaying(note: NSNotification) {
+        playerController.dismiss(animated: true, completion: nil)
+    }
+    
+    //TUTORIAL VIDEO END
+    
     
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
     }

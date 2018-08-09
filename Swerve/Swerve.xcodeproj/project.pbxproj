@@ -10,9 +10,6 @@
 		9FA07E5B41745C3D8BFC3826 /* Pods_Swerve.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F063702A96D56C3A069C6B39 /* Pods_Swerve.framework */; };
 		BE0577A3210A2ED900BCFAE1 /* Storyboard+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0577A2210A2ED900BCFAE1 /* Storyboard+Utility.swift */; };
 		BE0577A6210A2F9000BCFAE1 /* GraphFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0577A5210A2F9000BCFAE1 /* GraphFeatures.swift */; };
-		BE1DAB41211A431F0008B1CB /* SwerveSplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = BE1DAB3F211A431E0008B1CB /* SwerveSplashScreen.png */; };
-		BE1DAB42211A431F0008B1CB /* SwerveSplashScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE1DAB40211A431E0008B1CB /* SwerveSplashScreen@2x.png */; };
-		BE2B4E5F211CC79D0044ECE1 /* TutorialVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4E5E211CC79D0044ECE1 /* TutorialVideoViewController.swift */; };
 		BE2B4E63211CC9650044ECE1 /* SwerveTutorial.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BE2B4E62211CC95D0044ECE1 /* SwerveTutorial.mp4 */; };
 		BE2D52082108E7A0004113DB /* CreateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2D52072108E7A0004113DB /* CreateUsernameViewController.swift */; };
 		BE5544552108F74800A9CCA2 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5544542108F74800A9CCA2 /* UserService.swift */; };
@@ -53,10 +50,7 @@
 		1BF4EA8BC2242851E8483804 /* Pods-Swerve.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swerve.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swerve/Pods-Swerve.release.xcconfig"; sourceTree = "<group>"; };
 		BE0577A2210A2ED900BCFAE1 /* Storyboard+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+Utility.swift"; sourceTree = "<group>"; };
 		BE0577A5210A2F9000BCFAE1 /* GraphFeatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphFeatures.swift; sourceTree = "<group>"; };
-		BE1DAB3F211A431E0008B1CB /* SwerveSplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwerveSplashScreen.png; sourceTree = "<group>"; };
-		BE1DAB40211A431E0008B1CB /* SwerveSplashScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SwerveSplashScreen@2x.png"; sourceTree = "<group>"; };
 		BE2B4E5D211B86B90044ECE1 /* Swerve.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Swerve.entitlements; sourceTree = "<group>"; };
-		BE2B4E5E211CC79D0044ECE1 /* TutorialVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialVideoViewController.swift; sourceTree = "<group>"; };
 		BE2B4E62211CC95D0044ECE1 /* SwerveTutorial.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = SwerveTutorial.mp4; sourceTree = "<group>"; };
 		BE2D52072108E7A0004113DB /* CreateUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameViewController.swift; sourceTree = "<group>"; };
 		BE5544542108F74800A9CCA2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -174,8 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				BE2B4E62211CC95D0044ECE1 /* SwerveTutorial.mp4 */,
-				BE1DAB3F211A431E0008B1CB /* SwerveSplashScreen.png */,
-				BE1DAB40211A431E0008B1CB /* SwerveSplashScreen@2x.png */,
 				BEEA72E72106D261008779B0 /* Swerve */,
 				BEEA72E62106D261008779B0 /* Products */,
 				4D2049D7B390A06F3E0055AE /* Pods */,
@@ -249,7 +241,6 @@
 				BEA780DD210ED0610068115E /* InstructionsViewController.swift */,
 				BEA780E1210ED7BC0068115E /* DisplayResultViewController.swift */,
 				BEA780ED210FEF990068115E /* SpotifyLoginViewController.swift */,
-				BE2B4E5E211CC79D0044ECE1 /* TutorialVideoViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -339,9 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE2B4E63211CC9650044ECE1 /* SwerveTutorial.mp4 in Resources */,
-				BE1DAB41211A431F0008B1CB /* SwerveSplashScreen.png in Resources */,
 				BEEA72F32106D263008779B0 /* LaunchScreen.storyboard in Resources */,
-				BE1DAB42211A431F0008B1CB /* SwerveSplashScreen@2x.png in Resources */,
 				BEA780E0210ED0BF0068115E /* Instructions.storyboard in Resources */,
 				BEEA72FD2107D6E3008779B0 /* GoogleService-Info.plist in Resources */,
 				BEEA72F02106D263008779B0 /* Assets.xcassets in Resources */,
@@ -431,7 +420,6 @@
 				BE2D52082108E7A0004113DB /* CreateUsernameViewController.swift in Sources */,
 				BE5544552108F74800A9CCA2 /* UserService.swift in Sources */,
 				BEA780CA210B83A30068115E /* SenderReceiverViewController.swift in Sources */,
-				BE2B4E5F211CC79D0044ECE1 /* TutorialVideoViewController.swift in Sources */,
 				BEA780CE210B8A670068115E /* MotionViewController.swift in Sources */,
 				BEA780F62113668B0068115E /* SpotifyHelper.swift in Sources */,
 				BEA37ADE21194289008E52C5 /* Tutorial1ViewController.swift in Sources */,
