@@ -56,8 +56,10 @@ public class LoadingOverlay {
         swerveOverlayView.layer.borderWidth = 1
         swerveOverlayView.layer.borderColor = UIColor.black.cgColor
         
+        swerveLabel.font = UIFont(name: "Helvetica", size: 30)
         swerveLabel.text = "Swerve!"
         swerveLabel.textColor = UIColor(displayP3Red: 0.482, green: 0.502, blue: 0.478, alpha: 1)
+        
         swerveLabel.sizeToFit()
         
         view.addSubview(swerveOverlayView)

@@ -30,6 +30,7 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
+        //sender.isEnabled = false
        guard let authUI = FUIAuth.defaultAuthUI()
         else{
             return
