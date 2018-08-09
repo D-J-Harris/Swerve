@@ -12,6 +12,7 @@
 		BE0577A6210A2F9000BCFAE1 /* GraphFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0577A5210A2F9000BCFAE1 /* GraphFeatures.swift */; };
 		BE2B4E63211CC9650044ECE1 /* SwerveTutorial.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BE2B4E62211CC95D0044ECE1 /* SwerveTutorial.mp4 */; };
 		BE2B4E65211CE6650044ECE1 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4E64211CE6650044ECE1 /* Playlist.swift */; };
+		BE2B4E67211CF4080044ECE1 /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4E66211CF4080044ECE1 /* PlaylistCell.swift */; };
 		BE2D52082108E7A0004113DB /* CreateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2D52072108E7A0004113DB /* CreateUsernameViewController.swift */; };
 		BE5544552108F74800A9CCA2 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5544542108F74800A9CCA2 /* UserService.swift */; };
 		BEA37ADE21194289008E52C5 /* Tutorial1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA37ADD21194289008E52C5 /* Tutorial1ViewController.swift */; };
@@ -54,6 +55,7 @@
 		BE2B4E5D211B86B90044ECE1 /* Swerve.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Swerve.entitlements; sourceTree = "<group>"; };
 		BE2B4E62211CC95D0044ECE1 /* SwerveTutorial.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = SwerveTutorial.mp4; sourceTree = "<group>"; };
 		BE2B4E64211CE6650044ECE1 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		BE2B4E66211CF4080044ECE1 /* PlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
 		BE2D52072108E7A0004113DB /* CreateUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameViewController.swift; sourceTree = "<group>"; };
 		BE5544542108F74800A9CCA2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		BEA37ADD21194289008E52C5 /* Tutorial1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial1ViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				BEA780F821137EF40068115E /* TrackCell.swift */,
+				BE2B4E66211CF4080044ECE1 /* PlaylistCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				BEA780E2210ED7BC0068115E /* DisplayResultViewController.swift in Sources */,
 				BEEA72E92106D261008779B0 /* AppDelegate.swift in Sources */,
 				BEA780F921137EF40068115E /* TrackCell.swift in Sources */,
+				BE2B4E67211CF4080044ECE1 /* PlaylistCell.swift in Sources */,
 				BEA780DC210E3CE80068115E /* LoadingOverlay.swift in Sources */,
 				BE0577A6210A2F9000BCFAE1 /* GraphFeatures.swift in Sources */,
 				BEA780DE210ED0610068115E /* InstructionsViewController.swift in Sources */,

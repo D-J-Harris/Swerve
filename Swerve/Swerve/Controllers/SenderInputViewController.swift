@@ -23,6 +23,7 @@ class SenderInputViewController: UIViewController {
     var trackList = [Track]()
     var playlists = [Playlist]()
     var songID: String? = nil
+    var playlistID: String? = nil
     var currentTableView: Int = 0
     var arrIndexSection : NSArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     
@@ -78,7 +79,7 @@ class SenderInputViewController: UIViewController {
     }
     
     @IBAction func switchTableViewAction(_ sender: UISegmentedControl) {
-        currentTableView = 1
+        currentTableView = currentTableView == 1 ? 0 : 1
         tableView.reloadData()
     }
     
@@ -108,12 +109,27 @@ extension SenderInputViewController: UITableViewDataSource {
     
     //26 sections for each letter of alphabet
     func numberOfSections(in tableView: UITableView) -> Int {
-        return arrIndexSection.count
+        switch currentTableView {
+        case 0:
+            return arrIndexSection.count
+        case 1:
+            return 1
+        default:
+            return 1
+        }
+        
     }
     
     //Jump nav bar
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return arrIndexSection as? [String]
+        switch currentTableView {
+        case 0:
+            return arrIndexSection as? [String]
+        case 1:
+            return [""]
+        default:
+            return [""]
+        }
     }
     
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
@@ -121,58 +137,110 @@ extension SenderInputViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return arrIndexSection.object(at: section) as? String
+        switch currentTableView {
+        case 0:
+            return arrIndexSection.object(at: section) as? String
+        case 1:
+            return "My Playlists"
+        default:
+            return "No title header found"
+        }
     }
     
     
     
     //rows for each section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let predicate = NSPredicate(format: "SELF beginswith[c] %@", arrIndexSection.object(at: section) as! CVarArg)
-        let filteredTracks = (trackList.map {$0.name} as NSArray).filtered(using: predicate)
-        return filteredTracks.count;
+        switch currentTableView {
+        case 0:
+            let predicate = NSPredicate(format: "SELF beginswith[c] %@", arrIndexSection.object(at: section) as! CVarArg)
+            let filteredTracks = (trackList.map {$0.name} as NSArray).filtered(using: predicate)
+            return filteredTracks.count;
+        case 1:
+            return playlists.count
+        default:
+            return 1
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TrackCell", for: indexPath) as! TrackCell
-        let predicate = NSPredicate(format: "SELF beginswith[c] %@", arrIndexSection.object(at: indexPath.section) as! CVarArg)
-        let filteredTracks = trackList.filter({return predicate.evaluate(with: $0.name)})
-        cell.trackName.text = filteredTracks[indexPath.row].name
-        cell.artistName.text = filteredTracks[indexPath.row].artist
-        cell.trackID = filteredTracks[indexPath.row].id
-        if let trackCoverURL = filteredTracks[indexPath.row].albumCoverURL {
-            cell.albumCover.af_setImage(withURL: URL(string: trackCoverURL)!)
+        switch currentTableView {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TrackCell", for: indexPath) as! TrackCell
+            let predicate = NSPredicate(format: "SELF beginswith[c] %@", arrIndexSection.object(at: indexPath.section) as! CVarArg)
+            let filteredTracks = trackList.filter({return predicate.evaluate(with: $0.name)})
+            cell.trackName.text = filteredTracks[indexPath.row].name
+            cell.artistName.text = filteredTracks[indexPath.row].artist
+            cell.trackID = filteredTracks[indexPath.row].id
+            if let trackCoverURL = filteredTracks[indexPath.row].albumCoverURL {
+                cell.albumCover.af_setImage(withURL: URL(string: trackCoverURL)!)
+            }
+            
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PlaylistCell", for: indexPath) as! PlaylistCell
+            cell.creatorName.text = playlists[indexPath.row].creator
+            cell.playlistName.text = playlists[indexPath.row].name
+            return cell
+        default:
+            return tableView.dequeueReusableCell(withIdentifier: "TrackCell", for: indexPath)
         }
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return TrackCell.height
+        switch currentTableView {
+        case 0:
+            return TrackCell.height
+        case 1:
+            return PlaylistCell.height
+        default:
+            return 80.0
+        }
     }
-    
 }
 
 extension SenderInputViewController: UITableViewDelegate {
     
     //selecting row sets up transition to motionVC
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentCell = tableView.cellForRow(at: indexPath) as! TrackCell
-        songID = currentCell.trackID
-        
-        //set up and present alert to segue to motionVC
-        let alertController = UIAlertController(title: "Send Song", message: "Are you sure?" , preferredStyle: .alert)
-        
-        let actionYes = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
-            self.performSegue(withIdentifier: Constants.Segue.senderInfoToMotion, sender: self)
+        switch currentTableView {
+        case 0:
+            let currentCell = tableView.cellForRow(at: indexPath) as! TrackCell
+            songID = currentCell.trackID
             
-        })
-        let actionNo = UIAlertAction(title: "No", style: .cancel, handler: nil)
-        alertController.addAction(actionYes)
-        alertController.addAction(actionNo)
+            //set up and present alert to segue to motionVC
+            let alertController = UIAlertController(title: "Send Song", message: "Are you sure?" , preferredStyle: .alert)
+            
+            let actionYes = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+                self.performSegue(withIdentifier: Constants.Segue.senderInfoToMotion, sender: self)
+                
+            })
+            let actionNo = UIAlertAction(title: "No", style: .cancel, handler: nil)
+            alertController.addAction(actionYes)
+            alertController.addAction(actionNo)
+            
+            present(alertController, animated: true, completion: nil)
+        case 1:
+            let currentCell = tableView.cellForRow(at: indexPath) as! PlaylistCell
+            playlistID = currentCell.playlistID
+            
+            //set up and present alert to segue to motionVC
+            let alertController = UIAlertController(title: "Send Playlist", message: "Are you sure?" , preferredStyle: .alert)
+            
+            let actionYes = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+                //self.performSegue(withIdentifier: Constants.Segue.senderInfoToMotion, sender: self)
+                print("segue to playlists successful")
+            })
+            let actionNo = UIAlertAction(title: "No", style: .cancel, handler: nil)
+            alertController.addAction(actionYes)
+            alertController.addAction(actionNo)
+            
+            present(alertController, animated: true, completion: nil)
+        default:
+            print("Non-applicable cell tapped")
+        }
         
-        present(alertController, animated: true, completion: nil)
         
     }
 }

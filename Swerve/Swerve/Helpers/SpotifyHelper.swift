@@ -173,3 +173,32 @@ func getPlaylists(completion: @escaping ([Playlist]) -> Void) {
     //HERE ENDS CODE ASYNC TO UPDATE TRACKLIST W ALL SONGS
 }
 
+
+func getPlaylist(playlistID id: String, _ creatorID: String, completion: @escaping (Playlist) -> Void) {
+    let apiToCall = "https://api.spotify.com/v1/users/\(creatorID)/playlists/\(id)"
+    var playlist: Playlist = Playlist.init(name: "", creator: "", id: "", url: "", spotifyUri: "")
+    
+    let auth = SPTAuth.defaultInstance()!
+    guard let accessToken = auth.session.accessToken else {return}
+    let headers = ["Authorization": "Bearer \(accessToken)"]
+    
+    //call for song from users tracks list
+    Alamofire.request(apiToCall, headers: headers).validate().responseJSON { (response) in
+        switch response.result {
+        case .success:
+            if let value = response.result.value {
+                let jsonDict = value as! JSON
+                
+                
+                playlist = Playlist.init(jsonDict: jsonDict)
+            }
+            completion(playlist)
+            
+        //Alamofire call failed, likely wrong token
+        case .failure(let error):
+            print(error)
+            completion(playlist)
+        }
+    }
+}
+

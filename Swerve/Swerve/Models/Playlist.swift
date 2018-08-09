@@ -16,9 +16,9 @@ struct Playlist {
     let url: String
     let spotifyUri: String
     
-    init(name: String, artist: String, id: String, url: String, spotifyUri: String) {
+    init(name: String, creator: String, id: String, url: String, spotifyUri: String) {
         self.name = name
-        self.creator = artist
+        self.creator = creator
         self.id = id
         self.url = url
         self.spotifyUri = spotifyUri
