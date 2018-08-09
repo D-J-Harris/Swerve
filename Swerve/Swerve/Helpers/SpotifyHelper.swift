@@ -21,7 +21,6 @@ func getTrackList(completion: @escaping ([Track]) -> Void) {
 
     //Spotify auth related info
     let auth = SPTAuth.defaultInstance()!
-    auth.requestedScopes = [SPTAuthUserLibraryReadScope]
     guard let accessToken = auth.session.accessToken else {return completion([])}
     let headers = ["Authorization": "Bearer \(accessToken)"]
     
@@ -117,5 +116,60 @@ func addToSpotify(songID id: String) {
             print(error)
         }
     }
+}
+
+func getPlaylists(completion: @escaping ([Playlist]) -> Void) {
+    var playlists: [Playlist] = []
+
+    //Initialise callback helpers
+    var callCount: Int = 50
+    var offset: Int = 0
+
+    //Spotify auth related info
+    let auth = SPTAuth.defaultInstance()!
+    guard let accessToken = auth.session.accessToken else {return completion([])}
+    let headers = ["Authorization": "Bearer \(accessToken)"]
+
+    //near-complete api url, appended with relevant offset for corresponding call
+    let apiToCall = "https://api.spotify.com/v1/me/playlists?limit=50&offset="
+
+
+    //HERE BEGINS CODE ASYNC TO UPDATE TRACKLIST W ALL SONGS
+    var callback: ((DataResponse<Any>) -> (Void))!
+    callback = { (response) in
+        switch response.result {
+        case .success:
+            if let value = response.result.value {
+                let jsonDict = value as! JSON
+                let allPlaylists = jsonDict["items"] as! [JSON]
+                callCount = allPlaylists.count
+
+
+                //add each track to an array of tracks
+                for p in allPlaylists {
+                    let playlist = Playlist.init(libraryJsonDict: p)
+                    playlists.append(playlist)
+                }
+            }
+            if playlists.count % 50 != 0 || callCount == 0 {
+                print(playlists)
+                completion(playlists)
+            } else {
+                //offset the api call and go again
+                offset += 50
+                Alamofire.request(apiToCall + String(offset), headers: headers).validate().responseJSON(completionHandler: callback)
+            }
+
+        //Alamofire call failed, likely wrong token
+        case .failure(let error):
+            print(error)
+            completion([])
+        }
+    }
+
+
+    //Initial request that triggers all calls via callback above
+    Alamofire.request(apiToCall + String(offset), headers: headers).validate().responseJSON(completionHandler: callback)
+    //HERE ENDS CODE ASYNC TO UPDATE TRACKLIST W ALL SONGS
 }
 

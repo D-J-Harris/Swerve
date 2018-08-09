@@ -21,6 +21,7 @@ class SenderInputViewController: UIViewController {
     //retrieve SPT default instance
     let auth = SPTAuth.defaultInstance()!
     var trackList = [Track]()
+    var playlists = [Playlist]()
     var songID: String? = nil
     var currentTableView: Int = 0
     var arrIndexSection : NSArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
@@ -36,13 +37,14 @@ class SenderInputViewController: UIViewController {
         
         //having loading progress wait for the getTrackList to complete
         let dispatchGroup = DispatchGroup()
+        //enter twice, this must be balanced by two complete API requests
+        dispatchGroup.enter()
         dispatchGroup.enter()
         LoadingOverlay.shared.showOverlay(self.view)
         getTrackList { (tracks) in
             if !tracks.isEmpty {
                 print("tracks downloaded")
                 self.trackList = tracks
-                LoadingOverlay.shared.hideOverlayView()
             }
             else {
                 print("no tracks exist")
@@ -50,9 +52,21 @@ class SenderInputViewController: UIViewController {
             dispatchGroup.leave()
         }
         
+        getPlaylists { (playlists) in
+            if !playlists.isEmpty {
+                print("playlists downloaded")
+                self.playlists = playlists
+            }
+            else {
+                print("no playlists exist")
+            }
+            dispatchGroup.leave()
+        }
+        
         
         //Once download complete, update table view
         dispatchGroup.notify(queue: DispatchQueue.main) {
+            LoadingOverlay.shared.hideOverlayView()
             self.tableView.dataSource = self
             self.tableView.delegate = self
             self.tableView.reloadData()

@@ -40,7 +40,12 @@ class SpotifyLoginViewController: UIViewController {
         auth.sessionUserDefaultsKey = Constants.spotify.sessionKey
         auth.tokenSwapURL = Constants.spotify.tokenSwapURL
         auth.tokenRefreshURL = Constants.spotify.tokenRefreshURL
-        auth.requestedScopes = [SPTAuthUserLibraryReadScope, SPTAuthUserLibraryModifyScope]
+        auth.requestedScopes = [
+            SPTAuthUserLibraryReadScope,
+            SPTAuthUserLibraryModifyScope,
+            SPTAuthPlaylistReadPrivateScope,
+            SPTAuthPlaylistReadCollaborativeScope
+        ]
         webURL = auth.spotifyWebAuthenticationURL()
         appURL = auth.spotifyAppAuthenticationURL()
         
