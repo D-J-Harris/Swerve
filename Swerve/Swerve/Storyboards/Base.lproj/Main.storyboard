@@ -146,10 +146,10 @@
                                 <rect key="frame" x="0.0" y="214" width="375" height="30"/>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QoL-Cu-LNR">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="94" width="375" height="573"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrackCell" rowHeight="80" id="CXY-6a-0nE" customClass="TrackCell" customModule="Swerve" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrackCell" rowHeight="80" id="CXY-6a-0nE" customClass="TrackCell" customModule="Swerve" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CXY-6a-0nE" id="kSc-di-Rlk">
@@ -167,7 +167,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7dD-pz-3ta">
-                                                            <rect key="frame" x="88" y="8" width="262" height="50.5"/>
+                                                            <rect key="frame" x="88" y="7.5" width="262" height="51"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7A-Bq-CLb">
                                                                     <rect key="frame" x="0.0" y="0.0" width="262" height="22"/>
@@ -179,7 +179,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zjC-Wo-nSB">
-                                                                    <rect key="frame" x="0.0" y="30" width="262" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="30" width="262" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20.5" id="VfD-lS-XQo"/>
                                                                     </constraints>
@@ -211,6 +211,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="E9f-0l-wbA">
+                                <rect key="frame" x="0.0" y="64" width="375" height="31"/>
+                                <segments>
+                                    <segment title="Songs"/>
+                                    <segment title="Playlists"/>
+                                </segments>
+                                <color key="tintColor" red="0.4823529412" green="0.50196078430000002" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="switchTableViewAction:" destination="Rhk-yU-Jch" eventType="valueChanged" id="fJW-8p-tSB"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -219,10 +230,14 @@
                             <constraint firstItem="oI8-YQ-pHh" firstAttribute="bottom" secondItem="NTv-nK-Mbn" secondAttribute="bottom" constant="423" id="CmZ-YS-PNL"/>
                             <constraint firstItem="QoL-Cu-LNR" firstAttribute="leading" secondItem="oI8-YQ-pHh" secondAttribute="leading" id="KSQ-yE-hux"/>
                             <constraint firstItem="NTv-nK-Mbn" firstAttribute="top" secondItem="oI8-YQ-pHh" secondAttribute="top" constant="150" id="NYa-Nt-Q3A"/>
+                            <constraint firstItem="E9f-0l-wbA" firstAttribute="leading" secondItem="oI8-YQ-pHh" secondAttribute="leading" id="RSw-Mc-woM"/>
                             <constraint firstItem="QoL-Cu-LNR" firstAttribute="bottom" secondItem="oI8-YQ-pHh" secondAttribute="bottom" id="YsV-X1-RuD"/>
+                            <constraint firstItem="E9f-0l-wbA" firstAttribute="top" secondItem="oI8-YQ-pHh" secondAttribute="top" id="ceQ-m2-bI4"/>
                             <constraint firstItem="NTv-nK-Mbn" firstAttribute="centerX" secondItem="Rzt-bc-FuI" secondAttribute="centerX" id="hUd-e3-JX4"/>
                             <constraint firstItem="oI8-YQ-pHh" firstAttribute="trailing" secondItem="NTv-nK-Mbn" secondAttribute="trailing" id="jZp-p3-80a"/>
-                            <constraint firstItem="QoL-Cu-LNR" firstAttribute="top" secondItem="oI8-YQ-pHh" secondAttribute="top" id="qSp-FC-dZi"/>
+                            <constraint firstItem="oI8-YQ-pHh" firstAttribute="trailing" secondItem="E9f-0l-wbA" secondAttribute="trailing" id="kf8-dL-eUx"/>
+                            <constraint firstItem="QoL-Cu-LNR" firstAttribute="top" secondItem="E9f-0l-wbA" secondAttribute="bottom" id="lyD-RC-0VJ"/>
+                            <constraint firstItem="QoL-Cu-LNR" firstAttribute="top" secondItem="oI8-YQ-pHh" secondAttribute="top" constant="30" id="qSp-FC-dZi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oI8-YQ-pHh"/>
                     </view>
@@ -235,6 +250,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="sendTypeSelector" destination="E9f-0l-wbA" id="p9V-W3-RYJ"/>
                         <outlet property="tableView" destination="QoL-Cu-LNR" id="9pJ-z1-WMe"/>
                         <segue destination="zww-C7-nWV" kind="show" identifier="senderInfoToMotion" id="6Wf-Xf-yQo"/>
                     </connections>
@@ -499,6 +515,6 @@
         <image name="Swerve Logo" width="1536" height="1536"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OnX-3Y-0Jj"/>
+        <segue reference="6Wf-Xf-yQo"/>
     </inferredMetricsTieBreakers>
 </document>

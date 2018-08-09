@@ -15,12 +15,14 @@ class SenderInputViewController: UIViewController {
     
     //@IBOutlet weak var toMotionButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var sendTypeSelector: UISegmentedControl!
     
     
     //retrieve SPT default instance
     let auth = SPTAuth.defaultInstance()!
     var trackList = [Track]()
     var songID: String? = nil
+    var currentTableView: Int = 0
     var arrIndexSection : NSArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     
     
@@ -60,7 +62,11 @@ class SenderInputViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
+    @IBAction func switchTableViewAction(_ sender: UISegmentedControl) {
+        currentTableView = 1
+        tableView.reloadData()
+    }
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
