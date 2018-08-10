@@ -11,6 +11,8 @@ import Alamofire
 
 typealias JSON = [String: Any]
 
+//SONG FUNCTIONS START
+
 //Each call can return a max of 50 tracks, offset used to get others in separate calls
 func getTrackList(completion: @escaping ([Track]) -> Void) {
     var trackList: [Track] = []
@@ -96,7 +98,7 @@ func getTrack(trackID id: String, completion: @escaping (Track) -> Void) {
 }
 
 //PUT API call to add song to current user's spotify
-func addToSpotify(songID id: String) {
+func addSongToSpotify(songID id: String) {
     let apiToCall = "https://api.spotify.com/v1/me/tracks?ids=\(id)"
     let auth = SPTAuth.defaultInstance()!
     
@@ -117,6 +119,10 @@ func addToSpotify(songID id: String) {
         }
     }
 }
+
+//SONG FUNCTIONS END
+
+//PLAYLIST FUNCTIONS START
 
 func getPlaylists(completion: @escaping ([Playlist]) -> Void) {
     var playlists: [Playlist] = []
@@ -198,6 +204,63 @@ func getPlaylist(playlistID id: String, _ creatorID: String, completion: @escapi
         case .failure(let error):
             print(error)
             completion(playlist)
+        }
+    }
+}
+
+func addPlaylistToSpotify(playlistID id: String, _ currentID: String) {
+    
+    //use the api call that allows to follow a playlist
+    let apiToCall = "https://api.spotify.com/v1/users/\(currentID)/playlists/\(id)/followers"
+    let auth = SPTAuth.defaultInstance()!
+    
+    guard let accessToken = auth.session.accessToken else {return}
+    let headers = [
+        "Authorization": "Bearer \(accessToken)",
+        "Content-Type": "application/json"
+    ]
+    
+    //PUT request to add to current session user tracks
+    Alamofire.request(apiToCall, method: .put, parameters: [:],encoding: JSONEncoding.default, headers: headers).responseJSON {
+        response in
+        switch response.result {
+        case .success:
+            print(response)
+            
+            break
+        case .failure(let error):
+            
+            print(error)
+        }
+    }
+}
+
+//PLAYLIST FUNCTIONS END
+
+func getCurrentSpotifyID(completion: @escaping (String?) -> Void) {
+    let apiToCall = "https://api.spotify.com/v1/me"
+    let auth = SPTAuth.defaultInstance()!
+    var currentSpotifyID: String? = nil
+    
+    guard let accessToken = auth.session.accessToken else {return}
+    let headers = ["Authorization": "Bearer \(accessToken)"]
+    
+    //Call to get user profile
+    Alamofire.request(apiToCall, headers: headers).validate().responseJSON { (response) in
+        switch response.result {
+        case .success:
+            if let value = response.result.value {
+                let jsonDict = value as! JSON
+                
+                
+                currentSpotifyID = jsonDict["id"] as? String
+            }
+            completion(currentSpotifyID)
+            
+        //Alamofire call failed, likely wrong token
+        case .failure(let error):
+            print(error)
+            completion(currentSpotifyID)
         }
     }
 }

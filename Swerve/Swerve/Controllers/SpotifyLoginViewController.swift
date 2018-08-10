@@ -44,7 +44,9 @@ class SpotifyLoginViewController: UIViewController {
             SPTAuthUserLibraryReadScope,
             SPTAuthUserLibraryModifyScope,
             SPTAuthPlaylistReadPrivateScope,
-            SPTAuthPlaylistReadCollaborativeScope
+            SPTAuthPlaylistReadCollaborativeScope,
+            SPTAuthPlaylistModifyPublicScope,
+            SPTAuthPlaylistModifyPrivateScope
         ]
         webURL = auth.spotifyWebAuthenticationURL()
         appURL = auth.spotifyAppAuthenticationURL()

@@ -22,6 +22,8 @@ class DisplayResultViewController: UIViewController {
     //Empty initialisations
     var receivedID = ""
     var receivedSpotifyMatchedID = ""
+    var currentSpotifyID = ""
+    //Initialisation of empty incoming instances
     var track: Track = Track.init(name: "", artist: "", albumCoverURL: "", id: "", url: "", spotifyUri: "")
     var playlist: Playlist = Playlist.init(name: "", creator: "", id: "", url: "", spotifyUri: "")
     
@@ -133,7 +135,26 @@ class DisplayResultViewController: UIViewController {
     }
     
     @IBAction func addToSpotifyButtonTapped(_ sender: UIButton) {
-        addToSpotify(songID: track.id)
+        
+        //if song passed
+        if track.id != "" {
+            addSongToSpotify(songID: track.id)
+        }
+        //if playlist passed
+        else {
+            let dispatchGroup = DispatchGroup()
+            dispatchGroup.enter()
+            getCurrentSpotifyID { (id) in
+                guard let id = id else{dispatchGroup.leave(); return}
+                self.currentSpotifyID = id
+                dispatchGroup.leave()
+            }
+            
+            dispatchGroup.notify(queue: DispatchQueue.main) {
+                addPlaylistToSpotify(playlistID: self.playlist.id, self.currentSpotifyID)
+            }
+        }
+        
     }
     
 }

@@ -75,6 +75,7 @@ class SenderReceiverViewController: UIViewController {
                 try Auth.auth().signOut()
                 let loginStoryboard = UIStoryboard(name: "Login", bundle: Bundle.main)
                 let loginVC : UIViewController = loginStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                UserService.resetUserValues(User.current)
                 self.present(loginVC, animated: true, completion: nil)
             } catch let err {
                 print("Failed to sign out with error", err)
