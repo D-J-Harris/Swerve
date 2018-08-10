@@ -350,7 +350,6 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="IsS-m4-Hc3" firstAttribute="centerY" secondItem="Q6g-CV-yjx" secondAttribute="centerY" id="Fe0-dR-ePf"/>
-                                    <constraint firstItem="IsS-m4-Hc3" firstAttribute="leading" secondItem="Q6g-CV-yjx" secondAttribute="leading" id="GBy-P0-JYj"/>
                                     <constraint firstAttribute="height" constant="240" id="Kig-Cn-ORn"/>
                                     <constraint firstAttribute="trailing" secondItem="IsS-m4-Hc3" secondAttribute="trailing" id="WMk-aZ-4El"/>
                                     <constraint firstItem="IsS-m4-Hc3" firstAttribute="centerX" secondItem="Q6g-CV-yjx" secondAttribute="centerX" id="ZGE-Ne-m95"/>
@@ -385,7 +384,6 @@
                             <constraint firstItem="VXD-HY-UaT" firstAttribute="top" secondItem="Pgz-w8-mzf" secondAttribute="top" constant="5" id="Aae-j9-xOU"/>
                             <constraint firstItem="VXD-HY-UaT" firstAttribute="leading" secondItem="Pgz-w8-mzf" secondAttribute="leading" constant="10" id="K2G-WM-dIZ"/>
                             <constraint firstItem="Pgz-w8-mzf" firstAttribute="trailing" secondItem="Rog-dy-Lb7" secondAttribute="trailing" constant="15" id="NYQ-0X-nRR"/>
-                            <constraint firstItem="Pgz-w8-mzf" firstAttribute="trailing" secondItem="eHD-CM-EFJ" secondAttribute="trailing" constant="15" id="SYx-Hs-0om"/>
                             <constraint firstItem="Q6g-CV-yjx" firstAttribute="centerX" secondItem="HSX-YO-Nn8" secondAttribute="centerX" id="a48-hK-NAz"/>
                             <constraint firstItem="Pgz-w8-mzf" firstAttribute="bottom" secondItem="eHD-CM-EFJ" secondAttribute="bottom" constant="70" id="gFi-Qy-RqH"/>
                             <constraint firstItem="Q6g-CV-yjx" firstAttribute="top" secondItem="Pgz-w8-mzf" secondAttribute="top" constant="70" id="o4H-ZL-a19"/>

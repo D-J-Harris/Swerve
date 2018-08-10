@@ -85,7 +85,7 @@ class DisplayResultViewController: UIViewController {
         
         //Once download complete, update track info
         dispatchGroup.notify(queue: DispatchQueue.main) {
-            LoadingOverlay.shared.hideOverlayView()
+            LoadingOverlay.shared.hideOverlayView(self.view)
             
             
             if self.track.name != "" {

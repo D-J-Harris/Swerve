@@ -80,7 +80,7 @@ struct PartnerCheckerService {
                 
                 
                 //loading overlay hides
-                LoadingOverlay.shared.hideOverlayView()
+                LoadingOverlay.shared.hideOverlayView(viewController.view)
             }
         }
     }
