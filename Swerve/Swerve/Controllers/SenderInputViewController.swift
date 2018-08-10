@@ -24,6 +24,7 @@ class SenderInputViewController: UIViewController {
     var playlists = [Playlist]()
     var songID: String? = nil
     var playlistID: String? = nil
+    var creatorID: String? = nil
     var currentTableView: Int = 0
     var arrIndexSection : NSArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     
@@ -89,7 +90,8 @@ class SenderInputViewController: UIViewController {
         
         switch identifier {
         case Constants.Segue.senderInfoToMotion:
-            UserService.updateSongID(User.current, songID: songID ?? "No song ID")
+            UserService.updateSendID(User.current, sendID: songID ?? playlistID ?? "No ID")
+            UserService.updateMatchedSpotifyID(User.current, matchedSpotifyID: creatorID ?? "No creator ID")
         case Constants.Segue.backFromSender:
             User.current.type = Constants.UserDictionary.unselected
             UserService.updateUserType(User.current, type: Constants.UserDictionary.unselected)
@@ -182,6 +184,8 @@ extension SenderInputViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PlaylistCell", for: indexPath) as! PlaylistCell
             cell.creatorName.text = playlists[indexPath.row].creator
             cell.playlistName.text = playlists[indexPath.row].name
+            cell.playlistID = playlists[indexPath.row].id
+            cell.creatorID = playlists[indexPath.row].creator
             return cell
         default:
             return tableView.dequeueReusableCell(withIdentifier: "TrackCell", for: indexPath)
@@ -224,13 +228,13 @@ extension SenderInputViewController: UITableViewDelegate {
         case 1:
             let currentCell = tableView.cellForRow(at: indexPath) as! PlaylistCell
             playlistID = currentCell.playlistID
+            creatorID = currentCell.creatorID
             
             //set up and present alert to segue to motionVC
             let alertController = UIAlertController(title: "Send Playlist", message: "Are you sure?" , preferredStyle: .alert)
             
             let actionYes = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
-                //self.performSegue(withIdentifier: Constants.Segue.senderInfoToMotion, sender: self)
-                print("segue to playlists successful")
+                self.performSegue(withIdentifier: Constants.Segue.senderInfoToMotion, sender: self)
             })
             let actionNo = UIAlertAction(title: "No", style: .cancel, handler: nil)
             alertController.addAction(actionYes)

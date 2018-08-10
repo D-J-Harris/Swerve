@@ -16,7 +16,8 @@ struct UserService {
         let userAttrs = ["username": username,
                          "type": Constants.UserDictionary.unselected,
                          "integralKey": -1.0,
-                         "songID": "",
+                         "sendID": "",
+                         "matchedSpotifyID": "",
                          "matchedWith": "nobody"] as [String: Any]
         
         let ref = Database.database().reference().child("users").child(firUser.uid)
@@ -54,21 +55,29 @@ struct UserService {
         user.type = type
     }
     
-    static func updateSongID(_ user: User, songID: String) {
+    static func updateSendID(_ user: User, sendID: String) {
         let ref = Database.database().reference().child("users").child(user.uid)
-        let userAttrs = ["songID": songID]
+        let userAttrs = ["sendID": sendID]
         ref.updateChildValues(userAttrs)
-        user.songID = songID
+        user.sendID = sendID
+    }
+    
+    static func updateMatchedSpotifyID(_ user: User, matchedSpotifyID: String) {
+        let ref = Database.database().reference().child("users").child(user.uid)
+        let userAttrs = ["matchedSpotifyID": matchedSpotifyID]
+        ref.updateChildValues(userAttrs)
+        user.matchedSpotifyID = matchedSpotifyID
     }
     
     static func resetUserValues(_ user: User) {
         let ref = Database.database().reference().child("users").child(user.uid)
         let userAttrs = ["type": Constants.UserDictionary.unselected,
                          "integralKey": -1.0,
-                         "songID": "",
+                         "sendID": "",
+                         "matchedSpotifyID": "",
                          "matchedWith": "nobody"] as [String: Any]
         ref.updateChildValues(userAttrs)
-        user.integralKey = -1.0; user.matchedWith = "nobody"; user.songID = ""; user.type = Constants.UserDictionary.unselected
+        user.integralKey = -1.0; user.matchedWith = "nobody"; user.sendID = ""; user.matchedSpotifyID = ""; user.type = Constants.UserDictionary.unselected
     }
     
     //function to display alerts

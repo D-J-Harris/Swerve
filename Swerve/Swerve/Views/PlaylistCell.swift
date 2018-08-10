@@ -16,6 +16,7 @@ class PlaylistCell: UITableViewCell {
     @IBOutlet weak var creatorName: UILabel!
     
     var playlistID: String?
+    var creatorID: String?
     static let height: CGFloat = 80
     
     override func awakeFromNib() {

@@ -42,7 +42,8 @@ struct PartnerCheckerService {
                                 bestKeyDiff = keyDiff
                                 UserService.updateMatchedWith(currentUser, matchedWith: userDict["username"] as! String)
                                 if currentUser.type == Constants.UserDictionary.receiver {
-                                    UserService.updateSongID(currentUser, songID: userDict["songID"] as! String)
+                                    UserService.updateSendID(currentUser, sendID: userDict["sendID"] as! String)
+                                    UserService.updateMatchedSpotifyID(currentUser, matchedSpotifyID: userDict["matchedSpotifyID"] as! String)
                                 }
                             }
                         }
@@ -56,14 +57,16 @@ struct PartnerCheckerService {
                 let actionYes = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
                     if currentUser.type == Constants.UserDictionary.receiver {
                         viewController.performSegue(withIdentifier: Constants.Segue.toDisplayResult, sender: viewController)
-                        UserService.updateSongID(User.current, songID: "")
+                        UserService.updateSendID(User.current, sendID: "")
+                        UserService.updateMatchedSpotifyID(User.current, matchedSpotifyID: "")
                     }
                     UserService.updateUserIntegralKey(User.current, integralKey: -1.0)
                     UserService.updateMatchedWith(User.current, matchedWith: "nobody")
                 })
                 let actionNo = UIAlertAction(title: "No", style: .cancel, handler: { (action) in
                     if currentUser.type == Constants.UserDictionary.receiver {
-                        UserService.updateSongID(User.current, songID: "")
+                        UserService.updateSendID(User.current, sendID: "")
+                        UserService.updateMatchedSpotifyID(User.current, matchedSpotifyID: "")
                     }
                     UserService.updateUserIntegralKey(User.current, integralKey: -1.0)
                     UserService.updateMatchedWith(User.current, matchedWith: "nobody")

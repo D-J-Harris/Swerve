@@ -21,7 +21,9 @@ class DisplayResultViewController: UIViewController {
     
     //Empty initialisations
     var receivedID = ""
+    var receivedSpotifyMatchedID = ""
     var track: Track = Track.init(name: "", artist: "", albumCoverURL: "", id: "", url: "", spotifyUri: "")
+    var playlist: Playlist = Playlist.init(name: "", creator: "", id: "", url: "", spotifyUri: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +54,7 @@ class DisplayResultViewController: UIViewController {
         //having loading progress wait for the getTrack to complete
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
+        dispatchGroup.enter()
         LoadingOverlay.shared.showOverlay(self.view)
         getTrack(trackID: receivedID) { (track) in
             if track.name != "" {
@@ -64,16 +67,36 @@ class DisplayResultViewController: UIViewController {
             dispatchGroup.leave()
         }
         
+        if track.name == "" {
+            getPlaylist(playlistID: receivedID, receivedSpotifyMatchedID) { (playlist) in
+                if playlist.name != "" {
+                    print("playlist downloaded")
+                    self.playlist = playlist
+                }
+                else {
+                    print("no playlist exists")
+                }
+                dispatchGroup.leave()
+            }
+        } else {dispatchGroup.leave()}
+        
         
         //Once download complete, update track info
         dispatchGroup.notify(queue: DispatchQueue.main) {
             LoadingOverlay.shared.hideOverlayView()
-
-            self.trackName.text = self.track.name
-            self.artistName.text = self.track.artist
-            guard let albumCoverURL = self.track.albumCoverURL else {return}
-            if albumCoverURL != "" {
-                self.albumArtwork.af_setImage(withURL: URL(string: self.track.albumCoverURL!)!)
+            
+            
+            if self.track.name != "" {
+                self.trackName.text = self.track.name
+                self.artistName.text = self.track.artist
+                guard let albumCoverURL = self.track.albumCoverURL else {return}
+                if albumCoverURL != "" {
+                    self.albumArtwork.af_setImage(withURL: URL(string: self.track.albumCoverURL!)!)
+                }
+            } else if self.playlist.name != "" {
+                self.trackName.text = self.playlist.name
+                self.artistName.text = self.playlist.creator
+                self.albumArtwork.image = #imageLiteral(resourceName: "Swerve Logo")
             }
             else {
                 //Alert the user that no song was transferred
@@ -91,11 +114,21 @@ class DisplayResultViewController: UIViewController {
         //check if spotify installed
         if SPTAuth.supportsApplicationAuthentication() {
             //app login
-            UIApplication.shared.open(URL(string: track.spotifyUri)!, options: [:], completionHandler: nil)
+            if track.url != "" {
+                UIApplication.shared.open(URL(string: track.spotifyUri)!, options: [:], completionHandler: nil)
+            }
+            else {
+                UIApplication.shared.open(URL(string: playlist.spotifyUri)!, options: [:], completionHandler: nil)
+            }
         }
         else {
             //web login
-            UIApplication.shared.open(URL(string: track.url)!, options: [:], completionHandler: nil)
+            if track.url != "" {
+                UIApplication.shared.open(URL(string: track.url)!, options: [:], completionHandler: nil)
+            }
+            else {
+                UIApplication.shared.open(URL(string: playlist.url)!, options: [:], completionHandler: nil)
+            }
         }
     }
     

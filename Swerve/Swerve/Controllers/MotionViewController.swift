@@ -73,7 +73,8 @@ class MotionViewController: UIViewController {
             }
         case Constants.Segue.toDisplayResult:
             let destination = segue.destination as! DisplayResultViewController
-            destination.receivedID = User.current.songID
+            destination.receivedID = User.current.sendID
+            destination.receivedSpotifyMatchedID = User.current.matchedSpotifyID
         default:
             print("error no correct segue identified")
         }
