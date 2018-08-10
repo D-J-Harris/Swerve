@@ -26,26 +26,20 @@ public class LoadingOverlay {
     
     public func showOverlay(_ view: UIView) {
         
-//        overlayView.frame = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: view.frame.width, height: view.frame.height))
-//        overlayView.center = view.center
-//        overlayView.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.7)
-//        overlayView.clipsToBounds = true
-//
-//        activityIndicator.frame = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: 40, height: 40))
-//        activityIndicator.activityIndicatorViewStyle = .whiteLarge
-//        activityIndicator.center = view.center
-//
-//        overlayView.addSubview(activityIndicator)
-//        view.addSubview(overlayView)
-//        overlayView.bringSubview(toFront: overlayView)
-//
-//        activityIndicator.startAnimating()
+        overlayView.frame = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: view.frame.width, height: view.frame.height))
+        overlayView.center = view.center
+        overlayView.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.7)
+        overlayView.clipsToBounds = true
+
+        view.addSubview(overlayView)
+        overlayView.bringSubview(toFront: overlayView)
+
         view.addSubview(UIView().customActivityIndicator(view: view))
     }
     
     public func hideOverlayView(_ view: UIView) {
-//        activityIndicator.stopAnimating()
-//        overlayView.removeFromSuperview()
+
+        overlayView.removeFromSuperview()
         view.subviews.last?.removeFromSuperview()
     }
     
