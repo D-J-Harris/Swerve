@@ -14,6 +14,7 @@
 		BE2B4E65211CE6650044ECE1 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4E64211CE6650044ECE1 /* Playlist.swift */; };
 		BE2B4E67211CF4080044ECE1 /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4E66211CF4080044ECE1 /* PlaylistCell.swift */; };
 		BE2B4E69211E04C70044ECE1 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4E68211E04C70044ECE1 /* UIViewExtension.swift */; };
+		BE2B4E6B211E108B0044ECE1 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4E6A211E108B0044ECE1 /* UITextField+Extensions.swift */; };
 		BE2D52082108E7A0004113DB /* CreateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2D52072108E7A0004113DB /* CreateUsernameViewController.swift */; };
 		BE5544552108F74800A9CCA2 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5544542108F74800A9CCA2 /* UserService.swift */; };
 		BEA37ADE21194289008E52C5 /* Tutorial1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA37ADD21194289008E52C5 /* Tutorial1ViewController.swift */; };
@@ -58,6 +59,7 @@
 		BE2B4E64211CE6650044ECE1 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		BE2B4E66211CF4080044ECE1 /* PlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
 		BE2B4E68211E04C70044ECE1 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		BE2B4E6A211E108B0044ECE1 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		BE2D52072108E7A0004113DB /* CreateUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameViewController.swift; sourceTree = "<group>"; };
 		BE5544542108F74800A9CCA2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		BEA37ADD21194289008E52C5 /* Tutorial1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial1ViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			children = (
 				BE0577A2210A2ED900BCFAE1 /* Storyboard+Utility.swift */,
 				BE2B4E68211E04C70044ECE1 /* UIViewExtension.swift */,
+				BE2B4E6A211E108B0044ECE1 /* UITextField+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				BEA780DA210D30730068115E /* PartnerCheckerService.swift in Sources */,
 				BEA780EE210FEF990068115E /* SpotifyLoginViewController.swift in Sources */,
 				BE0577A3210A2ED900BCFAE1 /* Storyboard+Utility.swift in Sources */,
+				BE2B4E6B211E108B0044ECE1 /* UITextField+Extensions.swift in Sources */,
 				BEA780E2210ED7BC0068115E /* DisplayResultViewController.swift in Sources */,
 				BE2B4E69211E04C70044ECE1 /* UIViewExtension.swift in Sources */,
 				BEEA72E92106D261008779B0 /* AppDelegate.swift in Sources */,
