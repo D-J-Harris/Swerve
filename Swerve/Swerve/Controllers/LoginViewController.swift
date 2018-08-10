@@ -30,7 +30,8 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
-        //sender.isEnabled = false
+        //overlay to prevent multiple tapping
+        LoadingOverlay.shared.showOverlay(self.view)
        guard let authUI = FUIAuth.defaultAuthUI()
         else{
             return
@@ -45,7 +46,9 @@ class LoginViewController: UIViewController {
 extension LoginViewController: FUIAuthDelegate {
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         if let error = error {
-            assertionFailure("Error signing in: \(error.localizedDescription)")
+            //assertionFailure("Error signing in: \(error.localizedDescription)")
+            print(error)
+            LoadingOverlay.shared.hideOverlayView(self.view)
             return
         }
         

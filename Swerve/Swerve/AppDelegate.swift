@@ -38,6 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //This function is called when the app is opened by a URL
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
+        guard let rootViewController = UIApplication.topViewController() else {return false}
+        
+        //Loading overlay to prevent attempt at multiple api calls
+        LoadingOverlay.shared.showOverlay(rootViewController.view)
         
         //Check if app can handle redirect URL
         if auth.canHandle(auth.redirectURL) {
@@ -47,7 +51,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 //error handling
                 if let error = error {
-                    assertionFailure("Error: \(error)")
+                    print(error)
+                    LoadingOverlay.shared.hideOverlayView(rootViewController.view)
+                    let alert = UIAlertController(title: "Spotify Login Failed", message: "Please make sure you own a premium account before continuing.", preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    
+                    rootViewController.present(alert, animated: true)
                     return
                 }
                 guard let session = session else {return}
@@ -63,6 +73,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
             return true
         }
+        //alert that redirect cannot be handled
+        let alert = UIAlertController(title: "Redirect URL cannot be handled", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        LoadingOverlay.shared.hideOverlayView(rootViewController.view)
+        rootViewController.present(alert, animated: true)
         
         return false
     }
@@ -117,6 +132,24 @@ extension AppDelegate {
         
         window?.rootViewController = initialViewController
         window?.makeKeyAndVisible()
+    }
+}
+
+//retrieving current view controller
+extension UIApplication {
+    class func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return topViewController(base: nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController {
+            if let selected = tab.selectedViewController {
+                return topViewController(base: selected)
+            }
+        }
+        if let presented = base?.presentedViewController {
+            return topViewController(base: presented)
+        }
+        return base
     }
 }
 

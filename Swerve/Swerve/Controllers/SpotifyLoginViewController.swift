@@ -56,7 +56,8 @@ class SpotifyLoginViewController: UIViewController {
     
     
     @IBAction func spotifyLoginButtonPressed(_ sender: UIButton) {
-        
+        //loading overlay to prevent multiple attempts at authentication
+        LoadingOverlay.shared.showOverlay(self.view)
         if auth.session == nil {
 
             //check if spotify installed
@@ -99,6 +100,7 @@ class SpotifyLoginViewController: UIViewController {
    
         
             // Present next view controller
+            LoadingOverlay.shared.hideOverlayView(self.view)
             self.toMainStoryboard()
         }
     }
